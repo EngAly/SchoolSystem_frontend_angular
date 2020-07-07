@@ -1,0 +1,29 @@
+$selectText: none;
+body {
+  -webkit-touch-callout: $selectText;
+  -webkit-user-select: $selectText;
+  -khtml-user-select: $selectText;
+  -moz-user-select: $selectText;
+  -ms-user-select: $selectText;
+  user-select: $selectText;
+}
+
+.center-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 7px;
+}
+
+.school-headers {
+  color: indianred;
+  margin-top: 1%;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.btn-distance {
+  margin-top: 5px;
+}

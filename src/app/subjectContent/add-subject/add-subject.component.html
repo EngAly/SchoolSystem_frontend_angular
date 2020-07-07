@@ -1,0 +1,41 @@
+<body>
+    <div class="container">
+
+        <div class="center-screen">
+            <h1 class="school-headers">{{'subjectContent.add.hint' | translate}}</h1>
+            <img id="profile-img" src="assets/images/subject.png" class="profile-img-card" />
+        </div>
+
+        <form [formGroup]="subjectDataForm" (submit)="save()">
+            <div class="row">
+                <div class="form-group center-screen">
+
+                    <!-- subject name  -->
+                    <div class="col-sm-5">
+                        <label for="subject_id">{{'subjectContent.add.name' | translate}}</label>
+                        <input id="subject_id" type="text" [(ngModel)]="subject.name" formControlName="name"
+                            class="form-control">
+                        <div *ngIf="subjectControls.name.touched && subjectControls.name.errors?.required"
+                            class="alert alert-danger">
+                            {{'subjectContent.add.nameMsg' | translate}}
+                        </div>
+                    </div>
+
+                    <!-- subject desc  -->
+                    <div class="col-sm-10">
+                        <h4 for="desc_id">{{'subjectContent.add.desc' | translate}}</h4>
+                        <textarea [(ngModel)]="subject.desc" formControlName="desc" id="desc_id" rows="7"
+                            class="form-control"></textarea>
+                    </div>
+
+                    <!-- save subject  -->
+                    <div class="col-sm-2 btn-distance">
+                        <input type="submit" [disabled]="subjectDataForm.invalid" class="form-control btn btn-primary"
+                            value="{{'subjectContent.add.save' | translate}}">
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</body>

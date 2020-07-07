@@ -1,0 +1,74 @@
+{
+    "scratch": {
+        "login": {
+            "hint": "أدخل بيانات الدخول",
+            "username": "إسم المستخدم",
+            "password": "كلمه المرور",
+            "loginBtn": "تسجيل الدخول",
+            "usernameMsg": "برجاء إدخال إسم المستخدم",
+            "passwordMsg": "برجاء إدخال كلمه المرور"
+        },
+        "register": {
+            "hint": "أدخل بيانات التسجيل",
+            "confirmPassword": "تاكيد كلمه المرور",
+            "confirmPasswordMsg": "كلمتا المرور غير متطابقتين",
+            "gender": "النوع",
+            "male": "ذكر",
+            "female": "انثي",
+            "genderMsg": "برجاء إختيار النوع",
+            "phone": "رقم الموبيل",
+            "address": "العنوان",
+            "register": "تسجيل"
+        },
+        "start": {
+            "sitename": "نظام إداره المدرسة",
+            "languageMenu": {
+                "language": "اختر اللغة",
+                "arabic": "اللغة العربية",
+                "english": "اللغة الأنجليزية"
+            },
+            "login": "الدخول",
+            "logout": "الخروج",
+            "register": "تسجيل",
+            "addMenu": {
+                "addNew": "إضافه",
+                "student": "طالب",
+                "teacher": "معلم",
+                "worker": "عامل",
+                "class": "فصل دراسي",
+                "subject": "ماده دراسية"
+            },
+            "statistics": "الإحصائيات"
+        }
+    },
+    "studentContent": {},
+    "teacherContent": {},
+    "workerContent": {},
+    "classContent": {
+        "add": {
+            "hint": "إضافه فصل جديد",
+            "name": "أدخل أسم الفصل",
+            "nameMsg": "برجاء إدخال أسم الفصل",
+            "floor": "إدخل رقم الطابق",
+            "floorMsg": "برجاء إدخال رقم الطابق",
+            "maxSize": "أدخل الحد الأقصي للفصل",
+            "maxSizeMsg": "برجاء إدخال الحد الأقصي للفصل",
+            "currentSize": "أدخل العدد الحالي للفصل",
+            "currentSizeMsg": "برجاء إدخال العدد الحالي للفصل",
+            "desc": "معلومات إضافيه",
+            "save": "إضافه الفصل"
+        }
+    },
+    "subjectContent": {
+        "add": {
+            "hint": "إضافة ماده جديدة",
+            "name": "إسم الماده",
+            "nameMsg": "برجاء إدخال إسم الماده",
+            "desc": "وصف",
+            "save": "إضافه الماده"
+        },
+        "subjects": {
+            "subjectList": "الموضوعات الدراسية للفصل"
+        }
+    }
+}

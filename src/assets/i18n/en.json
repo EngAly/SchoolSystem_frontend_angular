@@ -1,0 +1,74 @@
+{
+    "scratch": {
+        "login": {
+            "hint": "Enter Your Authentication",
+            "username": "UserName",
+            "password": "Password",
+            "loginBtn": "Login",
+            "usernameMsg": "Please Enter Your UserName",
+            "passwordMsg": "Please Enter Your Password"
+        },
+        "register": {
+            "hint": "Enter Your Registeration Details",
+            "confirmPassword": "Confirm Your Password",
+            "confirmPasswordMsg": "Two Passwords Not Identical",
+            "gender": "Gender",
+            "male": "Male",
+            "female": "Female",
+            "genderMsg": "Please Define Your Gender",
+            "phone": "Phone",
+            "address": "Address",
+            "register": "Register"
+        },
+        "start": {
+            "sitename": "School System",
+            "languageMenu": {
+                "language": "Language",
+                "arabic": "Arabic",
+                "english": "English"
+            },
+            "login": "Login",
+            "logout": "Logout",
+            "register": "Register",
+            "addMenu": {
+                "addNew": "Add New",
+                "student": "Student",
+                "teacher": "Teacher",
+                "worker": "Worker",
+                "class": "Class",
+                "subject": "Subject"
+            },
+            "statistics": "Statistics"
+        }
+    },
+    "studentContent": {},
+    "teacherContent": {},
+    "workerContent": {},
+    "classContent": {
+        "add": {
+            "hint": "Add New Class",
+            "name": "Insert Class Name",
+            "nameMsg": "Please Insert Class Name",
+            "floor": "Insert Class Floor",
+            "floorMsg": "Please Insert Class Floor",
+            "maxSize": "Insert Class Maximum Size",
+            "maxSizeMsg": "Please Insert Class Maximum Size",
+            "currentSize": "Insert Class Current Size",
+            "currentSizeMsg": "Please Insert Class Current Size",
+            "desc": "Description",
+            "save": "Add Class"
+        }
+    },
+    "subjectContent": {
+        "add": {
+            "hint": "Add New Subject",
+            "name": "Subject Name",
+            "nameMsg": "Please Insert Subject Name",
+            "desc": "Description",
+            "save": "Add Subject"
+        },
+        "subjects": {
+            "subjectList": "Choice Subjects"
+        }
+    }
+}

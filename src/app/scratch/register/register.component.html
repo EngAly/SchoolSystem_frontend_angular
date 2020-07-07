@@ -1,0 +1,71 @@
+<div class="container">
+
+  <div class="center-screen">
+    <div class="school-headers">{{'scratch.register.hint' | translate}}</div>
+    <img id="profile-img" src="assets/images/user-avatar.jpeg" class="profile-img-card" />
+  </div>
+
+  <form [formGroup]="registerDataForm" (submit)="register()">
+    <div class="row">
+      <div class="form-group center-screen">
+
+        <div class="col-sm-5">
+          <label for="username">{{'scratch.login.username' | translate}}</label>
+          <input id="username" type="text" [(ngModel)]="user.username" formControlName="username" class="form-control"
+            required>
+          <div *ngIf="registerControls.username.touched && registerControls.username.errors?.required"
+            class="alert alert-danger">
+            {{'scratch.login.usernameMsg' | translate}}
+          </div>
+        </div>
+
+        <div class="col-sm-5">
+          <label for="password">{{'scratch.login.password' | translate}}</label>
+          <input type="password" [(ngModel)]="user.password" formControlName="password" class="form-control" required>
+          <div *ngIf="registerControls.password.touched && registerControls.password.errors?.required"
+            class="alert alert-danger">
+            {{'scratch.login.passwordMsg' | translate}}
+          </div>
+        </div>
+
+        <div class="col-sm-5">
+          <label for="password">{{'scratch.register.confirmPassword' | translate}}</label>
+          <input type="password" [(ngModel)]="user.confirmPassword" formControlName="confirmPassword"
+            class="form-control" required>
+          <div *ngIf="user.password != user.confirmPassword" class="alert alert-danger">
+            {{'scratch.register.confirmPasswordMsg' | translate}}
+          </div>
+        </div>
+
+        <div class="col-sm-3" (change)="handleGenderChange($event)">
+          <h4>{{'scratch.register.gender' | translate}}</h4>
+          <div class=" btn-group">
+            <label class="btn btn-info">
+              <input type="radio" value="Male" formControlName="gender" checked>
+              <span>{{'scratch.register.male' | translate}} </span>
+            </label>
+            <label class="btn btn-info">
+              <input type="radio" value="Female" formControlName="gender">
+              <span>{{'scratch.register.female' | translate}} </span>
+            </label>
+          </div>
+          <div *ngIf="registerControls.gender.invalid && registerControls.gender.errors?.required"
+            class="alert alert-danger">
+            {{'scratch.register.genderMsg' | translate}}
+          </div>
+        </div>
+
+        <div class="col-sm-5">
+          <label for="address">{{'scratch.register.address' | translate}}</label>
+          <input id="address" type="text" [(ngModel)]="user.address" formControlName="address" class="form-control">
+        </div>
+
+        <div class="col-sm-2 btn-distance">
+          <input type="submit" [disabled]="registerDataForm.invalid" class="form-control btn btn-primary"
+            value="{{'scratch.register.register' | translate}}">
+        </div>
+
+      </div>
+    </div>
+  </form>
+</div>

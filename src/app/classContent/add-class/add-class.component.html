@@ -1,0 +1,67 @@
+<!--Start Container-->
+<div class="container">
+    <div class="center-screen">
+        <div class="school-headers">{{'classContent.add.hint'|translate}}</div>
+        <img id="profile-img" src="assets/images/classroom.jpg" class="profile-img-card" />
+    </div>
+
+    <form [formGroup]="classDataForm" (submit)="save()">
+        <div class="form-group center-screen">
+
+            <div class="col-sm-5">
+                <div>
+                    <label>{{'classContent.add.name'|translate}}</label>
+                    <!-- <input type="text" formControlName="name" [(ngModel)]="class.name" class="form-control" autofocus> -->
+                    <input type="text" formControlName="name" [(ngModel)]="class.name" class="form-control">
+                </div>
+                <div *ngIf="controls.name.touched && controls.name.errors?.required" class="alert alert-danger margin">
+                    {{'classContent.add.nameMsg'|translate}}
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div>
+                    <label>{{'classContent.add.floor'|translate}}</label>
+                    <input min="0" type="number" formControlName="floor" [(ngModel)]="class.floor" class="form-control">
+                </div>
+                <div *ngIf="controls.floor.touched && controls.floor.errors?.required"
+                    class="alert alert-danger margin">
+                    {{'classContent.add.floorMsg'|translate}}
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div>
+                    <label>{{'classContent.add.maxSize'|translate}}</label>
+                    <input min="0" type="number" formControlName="maxSize" [(ngModel)]="class.maxSize"
+                        class="form-control">
+                </div>
+                <div *ngIf="controls.maxSize.touched && controls.maxSize.errors?.required"
+                    class="alert alert-danger margin">
+                    {{'classContent.add.maxSizeMsg'|translate}}</div>
+            </div>
+
+            <div class="col-sm-3">
+                <div>
+                    <label>{{'classContent.add.currentSize'|translate}}</label>
+                    <input type="number" formControlName="currentSize" [(ngModel)]="class.currentSize"
+                        class="form-control">
+                </div>
+                <div *ngIf="controls.currentSize.touched && controls.currentSize.errors?.required"
+                    class="alert alert-danger margin">{{'classContent.add.currentSizeMsg'|translate}}
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <subjects (click)="handleSubjects()"></subjects>
+            </div>
+
+
+            <div class="col-sm-3 btn-distance">
+                <input type="submit" [disabled]="classDataForm.invalid" class="btn btn-primary"
+                    value="{{'classContent.add.save' | translate}}">
+            </div>
+
+        </div>
+    </form>
+</div>
