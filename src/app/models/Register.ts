@@ -1,4 +1,5 @@
 export class UserRegister {
+    id: number
     username: string;
     password: string;
     confirmPassword: string;

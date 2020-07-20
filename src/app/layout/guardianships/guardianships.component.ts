@@ -1,0 +1,35 @@
+import { Component, OnInit } from '@angular/core';
+import { GuardianshipService } from 'src/app/services/guardianship.service';
+import { Guardianship } from 'src/app/models/Guardianship';
+import { ILayout } from 'src/app/interfaces/ILayout';
+
+@Component({
+  selector: 'guardianships',
+  templateUrl: './guardianships.component.html',
+  styleUrls: ['./guardianships.component.scss']
+})
+export class GuardianshipsComponent implements ILayout<Guardianship>{
+
+  items: Guardianship[];
+
+  constructor(private service: GuardianshipService) {
+    this.service.getAll().subscribe(
+      data => {
+        this.items = data;
+        // console.log(data);
+      },
+      error => console.log(error)
+    );
+  }
+
+  public toggleItem(item: Guardianship) {
+    item['isDone'] = item['isDone'] == true ? false : true;
+  }
+
+  getSelectedItems(): Guardianship[] {
+    // alert(JSON.stringify(this.items.filter(item => item['isDone']).filter(item => delete item['isDone'])));
+    return this.items.filter(item => item['isDone']).filter(item => delete item['isDone']);
+  }
+
+
+}

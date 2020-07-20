@@ -1,0 +1,61 @@
+<div class="container">
+    <h1 class="text-center school-headers">{{'class.search.hint' | translate}}</h1>
+
+    <!-- Search Section need to move-->
+    <form [formGroup]="checkName" (submit)="search()">
+        <div class="row center-screen">
+            <div class="col-sm-10 form-group">
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" formControlName="name" [(ngModel)]="name"
+                        placeholder="{{'class.search.input' | translate}}" (keyup)="clearResults()">
+                    <div *ngIf="controls.name.touched && controls.name.errors?.required" class="alert alert-danger">
+                        {{'class.search.nameMsg' | translate}}
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <button type="submit" class="form-control btn btn-primary"
+                        [disabled]="checkName.invalid || inPrograss">{{'class.search.btn' | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div id="classes" [ngClass]="['list-group']" class="center-table-header">
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>{{'class.search.id' | translate}}</th>
+                    <th>{{'class.search.name' | translate}}</th>
+                    <th>{{'class.search.floor' | translate}}</th>
+                    <th>{{'class.search.maxSize' | translate}}</th>
+                    <th>{{'class.search.currentSize' | translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr *ngFor="let item of levels; let i=index" (click)="getPatientDetails(patient)"> -->
+                <tr *ngFor="let item of levels; let i=index">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.floor}}</td>
+                    <td>{{item.maxSize}}</td>
+                    <td>{{item.currentSize}}</td>
+                    <!-- <td>{{patient.dateOfFollowUp | date}}</td> -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <div class="btn-group horizontal-middle" dir="ltr">
+        <button type="button" class="btn btn-primary btn-lg" [disabled]="currentPage==0"
+            (click)="First()">First</button>
+        <button type=" button" class="btn btn-primary btn-lg" [disabled]="currentPage==0"
+            (click)="Previous()">Previous</button>
+        <button type="button" class="btn btn-primary btn-lg" [disabled]="currentPage==totalPages -1 || noData"
+            (click)="Next()">Next</button>
+        <button type="button" class="btn btn-primary btn-lg" [disabled]="currentPage==totalPages -1 || noData"
+            (click)="Last()">Last</button>
+    </div>
+</div>

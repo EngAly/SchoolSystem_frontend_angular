@@ -1,0 +1,45 @@
+<body class="body-background">
+    <div class="container">
+
+        <!-- not useable two field just for congirmation save or not -->
+        <span id="savedMsg" class="hidden">{{'subject.add.savedMsg' | translate}}</span>
+        <span id="unsavedMsg" class="hidden">{{'subject.add.unsavedMsg' | translate}}</span>
+
+
+        <div class="center-screen">
+            <h1 class="school-headers">{{'subject.add.hint' | translate}}</h1>
+            <img id="profile-img" src="assets/images/subject.png" class="profile-img-card" />
+        </div>
+
+        <form [formGroup]="formData" (submit)="save()">
+            <div class="row">
+                <div class="form-group center-screen">
+
+                    <!-- subject name  -->
+                    <div class="col-sm-5">
+                        <h4 for="subject_id">{{'subject.add.name' | translate}}</h4>
+                        <input id="subject_id" type="text" [(ngModel)]="subject.name" formControlName="name"
+                            class="form-control">
+                        <div *ngIf="controls.name.touched && controls.name.errors?.required" class="alert alert-danger">
+                            {{'subject.add.nameMsg' | translate}}
+                        </div>
+                    </div>
+
+                    <!-- subject desc  -->
+                    <div class="col-sm-10">
+                        <h4 for="desc_id">{{'shared.desc' | translate}}</h4>
+                        <textarea [(ngModel)]="subject.desc" formControlName="desc" id="desc_id" rows="7"
+                            class="form-control"></textarea>
+                    </div>
+
+                    <!-- save subject  -->
+                    <div class="col-sm-2 btn-distance">
+                        <input type="submit" [disabled]="formData.invalid || inPrograss"
+                            class="form-control btn btn-primary" value="{{'subject.add.save' | translate}}">
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</body>

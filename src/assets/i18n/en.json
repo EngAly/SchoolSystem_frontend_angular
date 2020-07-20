@@ -12,39 +12,73 @@
             "hint": "Enter Your Registeration Details",
             "confirmPassword": "Confirm Your Password",
             "confirmPasswordMsg": "Two Passwords Not Identical",
-            "gender": "Gender",
-            "male": "Male",
-            "female": "Female",
-            "genderMsg": "Please Define Your Gender",
-            "phone": "Phone",
-            "address": "Address",
             "register": "Register"
         },
         "start": {
-            "sitename": "School System",
+            "sitename": "School Management",
             "languageMenu": {
-                "language": "Language",
+                "name": "Language",
                 "arabic": "Arabic",
                 "english": "English"
             },
-            "login": "Login",
-            "logout": "Logout",
-            "register": "Register",
+            "adminMenu": {
+                "name": "Admin",
+                "login": "Login",
+                "logout": "Logout",
+                "register": "Register"
+            },
             "addMenu": {
-                "addNew": "Add New",
+                "name": "Add New",
                 "student": "Student",
                 "teacher": "Teacher",
                 "worker": "Worker",
                 "class": "Class",
-                "subject": "Subject"
+                "subject": "Subject",
+                "guardianship": "Guardianship"
             },
-            "statistics": "Statistics"
+            "statisticsMenu": {
+                "name": "Statistics"
+            },
+            "searchMenu": {
+                "name": "Search About"
+            }
         }
     },
-    "studentContent": {},
-    "teacherContent": {},
-    "workerContent": {},
-    "classContent": {
+    "layout": {
+        "subjects": {
+            "list": "Choice Subjects"
+        },
+        "guardianships": {
+            "list": "Choice Guardianships"
+        },
+        "class": {
+            "list": "Choice Class"
+        }
+    },
+    "shared": {
+        "desc": "Description",
+        "gender": "Gender",
+        "genderMsg": "Please Define Your Gender",
+        "male": "Male",
+        "female": "Female",
+        "phone": "Phone",
+        "phoneMsg": "Please ُEnter Phone",
+        "address": "Address",
+        "addressMsg": "Please ُEnter Address",
+        "age": "Age",
+        "ageMsg": "Please ُEnter Age"
+    },
+    "subject": {
+        "add": {
+            "hint": "Add New Subject",
+            "name": "Subject Name",
+            "nameMsg": "Please Insert Subject Name",
+            "save": "Add Subject",
+            "savedMsg": "Subject Added successfully",
+            "unsavedMsg": "Subject Not Added successfully Maybe Subject Repeated"
+        }
+    },
+    "class": {
         "add": {
             "hint": "Add New Class",
             "name": "Insert Class Name",
@@ -55,20 +89,42 @@
             "maxSizeMsg": "Please Insert Class Maximum Size",
             "currentSize": "Insert Class Current Size",
             "currentSizeMsg": "Please Insert Class Current Size",
-            "desc": "Description",
-            "save": "Add Class"
+            "save": "Add Class",
+            "savedMsg": "Class Added successfully",
+            "unsavedMsg": "Class Not Added successfully Maybe Class Repeated"
+        },
+        "search": {
+            "hint": "Classes Snippet",
+            "input": "Write Class Name Then Click Search Button",
+            "id": "Id",
+            "name": "Name",
+            "floor": "Floor",
+            "maxSize": "MaxSize",
+            "currentSize": "CurrentSize",
+            "nameMsg": "Please Enter Name That You Want To Search",
+            "btn": "Search"
         }
     },
-    "subjectContent": {
+    "student": {},
+    "teacher": {},
+    "worker": {
         "add": {
-            "hint": "Add New Subject",
-            "name": "Subject Name",
-            "nameMsg": "Please Insert Subject Name",
+            "hint": "Add New Worker",
+            "name": "Worker Name",
+            "save": "Add Worker",
+            "savedMsg": "Worker Added successfully",
+            "unsavedMsg": "Worker Not Added successfully"
+        }
+    },
+    "guardianship": {
+        "add": {
+            "hint": "Add New Guardianship",
+            "name": "Guardianship Name",
+            "nameMsg": "Please Insert Guardianship Name",
             "desc": "Description",
-            "save": "Add Subject"
-        },
-        "subjects": {
-            "subjectList": "Choice Subjects"
+            "save": "Add Guardianship",
+            "savedMsg": "Guardianship Added successfully",
+            "unsavedMsg": "Guardianship not Added successfully May Be it Duplicated"
         }
     }
 }

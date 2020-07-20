@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RegisterComponent } from './scratch/register/register.component';
-import { LoginComponent } from './scratch/login/login.component';
-import { HomeComponent } from './scratch/home/home.component';
-import { AddStudentComponent } from './studentContent/add-student/add-student.component';
-import { AddSubjectComponent } from './subjectContent/add-subject/add-subject.component';
-import { AddClassComponent } from './classContent/add-class/add-class.component';
-
-
+import { HomeComponent } from './siteContent/scratch/home/home.component';
+import { RegisterComponent } from './siteContent/scratch/register/register.component';
+import { LoginComponent } from './siteContent/scratch/login/login.component';
+import { AddSubjectComponent } from './siteContent/subject/add-subject/add-subject.component';
+import { AddClassComponent } from './siteContent/class/add-class/add-class.component';
+import { AddWorkerComponent } from './siteContent/worker/add-worker/add-worker.component';
+import { AddGuardianshipComponent } from './siteContent/guardianship/add-guardianship/add-guardianship.component';
+import { SearchClassComponent } from './siteContent/class/search-class/search-class.component';
+import { SearchSubjectComponent } from './siteContent/subject/search-subject/search-subject.component';
 
 const routes: Routes = [
   /**
@@ -27,10 +28,14 @@ const routes: Routes = [
 
 
   // adds  section
-  // Student
   { path: "subject/add-subject", component: AddSubjectComponent },
-  { path: "class/add-class", component: AddClassComponent }
+  { path: "class/add-class", component: AddClassComponent },
+  { path: "worker/new-worker", component: AddWorkerComponent },
+  { path: "guardianship/new-guardianship", component: AddGuardianshipComponent },
 
+  // search section
+  { path: "class/search", component: SearchClassComponent },
+  { path: "subject/search", component: SearchSubjectComponent },
 
 ];
 
@@ -42,5 +47,6 @@ export class AppRoutingModule { }
 
 
 export const routingComponent = [RegisterComponent, LoginComponent, HomeComponent,
-  AddStudentComponent, AddSubjectComponent, AddClassComponent
+  AddSubjectComponent, AddClassComponent, AddWorkerComponent, AddGuardianshipComponent,
+  SearchClassComponent, SearchSubjectComponent
 ];

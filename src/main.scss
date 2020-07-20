@@ -1,4 +1,13 @@
 $selectText: none;
+
+//  placeholder section
+%center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+ }
+
 body {
   -webkit-touch-callout: $selectText;
   -webkit-user-select: $selectText;
@@ -8,22 +17,43 @@ body {
   user-select: $selectText;
 }
 
+.body-background {
+  background-color: #f8f8f8;
+}
+
 .center-screen {
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   margin-bottom: 7px;
+  @extend %center;
+}
+
+.horizontal-middle {
+  @extend %center;
 }
 
 .school-headers {
   color: indianred;
   margin-top: 1%;
+  margin-bottom: 2%;
   font-size: 2em;
   font-weight: bold;
 }
 
+// fields that is html but hidden to catch lang value and passed to controller
+.hidden {
+  display: none;
+}
+
+.btn-list {
+  width: 40%;
+}
+
 .btn-distance {
   margin-top: 5px;
+}
+
+// -----------------  table styles ------------------
+.center-table-header th,
+td {
+  text-align: center;
 }

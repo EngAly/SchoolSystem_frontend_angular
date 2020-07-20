@@ -8,16 +8,18 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppRoutingModule, routingComponent } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { StartComponent } from './scratch/start/start.component';
+import { StartComponent } from './siteContent/scratch/start/start.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SubjectsComponent } from './subjectContent/subjects/subjects.component';
+import { SubjectsComponent } from './layout/subjects/subjects.component';
+import { GuardianshipsComponent } from './layout/guardianships/guardianships.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StartComponent,
     routingComponent,
-    SubjectsComponent
+    SubjectsComponent,
+    GuardianshipsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,47 @@
+body {
+  /* Whatever the height of your navbar is; the default is 50px */
+  padding-top: 60px;
+}
+.dropdown-menu a:hover {
+  color: rgb(46, 197, 66);
+  background-color: rgb(27, 54, 0);
+}
+
+//  % mean that not used any tag it for shared
+//  this called place holder selector
+%site-title {
+  font-weight: bold;
+  color: rgb(29, 145, 1);
+}
+
+//  mixin is used as a function to call block of code when you want with deferent argument
+@mixin fontSize($size) {
+  font-size: $size; // !important
+}
+#site-title {
+  @include fontSize(23px); // when you need to call dynamic block use @include 
+  @extend %site-title;   // when you need to call static block use @extend 
+}
+
+#small-site-title {
+  @include fontSize(25px);
+  @extend %site-title;
+}
+
+ul li a {
+  @include fontSize(16px);
+  //   margin-left: -10px;
+  //   margin-right: -10px;
+  //   border-right: 20px solid rgba(255, 255, 255, 0);
+}
+
+.dropdown-menu {
+  text-align: center;
+}
+
+// ul {
+//   float: right;
+// }
+// li {
+//   float: right;
+// }

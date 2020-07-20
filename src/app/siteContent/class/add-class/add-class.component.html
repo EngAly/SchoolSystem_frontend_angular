@@ -1,0 +1,71 @@
+<body class="body-background">
+    <!--Start Container-->
+    <div class="container">
+    
+    <!-- not useable two field just for congirmation save or not -->
+    <span id="savedMsg" class="hidden">{{'class.add.savedMsg' | translate}}</span>
+    <span id="unsavedMsg" class="hidden">{{'class.add.unsavedMsg' | translate}}</span>
+    
+        <div class="center-screen">
+            <div class="school-headers">{{'class.add.hint'|translate}}</div>
+            <img id="profile-img" src="assets/images/classroom.jpg" class="profile-img-card" />
+        </div>
+
+        <form [formGroup]="formData" (submit)="save()">
+            <div class="form-group center-screen">
+
+                <div class="col-sm-5">
+                    <div>
+                        <h4>{{'class.add.name'|translate}}</h4>
+                        <!-- <input type="text" formControlName="name" [(ngModel)]="class.name" class="form-control" autofocus> -->
+                        <input type="text" formControlName="name" [(ngModel)]="class.name" class="form-control">
+                    </div>
+                    <div *ngIf="controls.name.touched && controls.name.errors?.required"
+                        class="alert alert-danger margin">
+                        {{'class.add.nameMsg'|translate}}
+                    </div>
+                </div>
+ 
+                <div class="col-sm-3">
+                    <div>
+                        <h4>{{'class.add.floor'|translate}}</h4>
+                        <input min="0" type="number" formControlName="floor" [(ngModel)]="class.floor"
+                            class="form-control">
+                    </div>
+                    <div *ngIf="controls.floor.touched && controls.floor.errors?.required"
+                        class="alert alert-danger margin">
+                        {{'class.add.floorMsg'|translate}}
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div>
+                        <h4>{{'class.add.maxSize'|translate}}</h4>
+                        <input min="0" type="number" formControlName="maxSize" [(ngModel)]="class.maxSize"
+                            class="form-control">
+                    </div>
+                    <div *ngIf="controls.maxSize.touched && controls.maxSize.errors?.required"
+                        class="alert alert-danger margin">
+                        {{'class.add.maxSizeMsg'|translate}}</div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div>
+                        <h4>{{'class.add.currentSize'|translate}}</h4>
+                        <input min="0" type="number" formControlName="currentSize" [(ngModel)]="class.currentSize"
+                            class="form-control">
+                    </div>
+                    <div *ngIf="controls.currentSize.touched && controls.currentSize.errors?.required"
+                        class="alert alert-danger margin">{{'class.add.currentSizeMsg'|translate}}
+                    </div>
+                </div>
+
+                <div class="col-sm-3 btn-distance">
+                    <input type="submit" [disabled]="formData.invalid || inPrograss" class="btn btn-primary"
+                        value="{{'class.add.save' | translate}}">
+                </div>
+
+            </div>
+        </form>
+    </div>
+</body>
