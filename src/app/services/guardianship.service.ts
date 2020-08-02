@@ -29,6 +29,10 @@ export class GuardianshipService implements IServiceMethods<Guardianship> {
     return flag
   }
 
+  public getByName(name: string): Observable<Guardianship[]> {
+    return this.http.get<Guardianship[]>(`${this.url}/byName/${name}`);
+  }
+
   public getAll(): Observable<Guardianship[]> {
     return this.http.get<Guardianship[]>(`${this.url}`);
   }

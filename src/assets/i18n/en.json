@@ -34,7 +34,8 @@
                 "worker": "Worker",
                 "class": "Class",
                 "subject": "Subject",
-                "guardianship": "Guardianship"
+                "guardianship": "Guardianship",
+                "grade": "Add Grade To Student"
             },
             "statisticsMenu": {
                 "name": "Statistics"
@@ -52,11 +53,13 @@
             "list": "Choice Guardianships"
         },
         "class": {
-            "list": "Choice Class"
+            "list": "class"
+        },
+        "status": {
+            "list": "status"
         }
     },
     "shared": {
-        "desc": "Description",
         "gender": "Gender",
         "genderMsg": "Please Define Your Gender",
         "male": "Male",
@@ -66,7 +69,17 @@
         "address": "Address",
         "addressMsg": "Please ُEnter Address",
         "age": "Age",
-        "ageMsg": "Please ُEnter Age"
+        "ageMsg": "Please ُEnter Age",
+        "desc": "Description / Notes",
+        "searchName": "Type Name Then Click Search Button",
+        "searchNameMsg": "Please Enter Name That You Want To Search",
+        "searchBtn": "Search",
+        "joinDate": "Join Date",
+        "save": "Save Data",
+        "savedMsg": "Data Added successfully",
+        "unsavedMsg": "Data Not Added successfully",
+        "email": "Email",
+        "emailMsg": "Please Enter Valid Email"
     },
     "subject": {
         "add": {
@@ -105,7 +118,28 @@
             "btn": "Search"
         }
     },
-    "student": {},
+    "student": {
+        "shared": {
+            "header": "Add / Update Student",
+            "name": "Student Name",
+            "nameMsg": "Please Enter Student Name",
+            "dob": "Date Of Birth",
+            "dobMsg": "Please Enter Date Of Birth",
+            "save": "Add Student",
+            "remainFees": "Remain Fees",
+            "remainFeesMsg ": "Please Enter Remain Fees",
+            "paidFees": "Paid Fees",
+            "paidFeesMsg": "Please Enter Paid Fees"
+        },
+        "search": {
+            "header": "Search About Student",
+            "status": "Status",
+            "level": "Class"
+        },
+        "details": {
+            "header": "Student Details"
+        }
+    },
     "teacher": {},
     "worker": {
         "add": {
@@ -125,6 +159,25 @@
             "save": "Add Guardianship",
             "savedMsg": "Guardianship Added successfully",
             "unsavedMsg": "Guardianship not Added successfully May Be it Duplicated"
+        },
+        "search": {
+            "hint": "Guardianships Snippet",
+            "id": "Id",
+            "name": "Name"
         }
+    },
+    "guardian": {
+        "shared": {
+            "header": "Guardian Details",
+            "name": "Guardian Name",
+            "nameMsg": "Please Insert Guardian Name",
+            "desc": "Description",
+            "job": "Job",
+            "jobMsg": "Please Enter Your Job",
+            "email": "Email",
+            "ssn": "SSN / Personal Identified",
+            "ssnMsg": "Please Enter Your SSN / Personal Identified"
+        },
+        "search": {}
     }
 }

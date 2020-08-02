@@ -22,24 +22,25 @@
                     <li><a *ngIf="!smallSize" id="site-title"
                             routerLink="/home">{{'scratch.start.sitename' | translate}}</a></li>
 
+                    <!-- Add Menu -->
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown">
                             {{'scratch.start.addMenu.name' | translate}}
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a routerLink="/student/new-student"
-                                    routerLinkActive="active">{{'scratch.start.addMenu.student' | translate}}</a></li>
-
-                            <li><a routerLink="/teacher/new-teacher"
+                            <li><a routerLink="/teacher/add-teacher"
                                     routerLinkActive="active">{{'scratch.start.addMenu.teacher' | translate}}</a></li>
+
+                            <li><a routerLink="/student/add-student"
+                                    routerLinkActive="active">{{'scratch.start.addMenu.student' | translate}}</a></li>
 
                             <li role="separator" class="divider"></li>
 
-                            <li><a routerLink="/guardianship/new-guardianship"
+                            <li><a routerLink="/guardianship/add-guardianship"
                                     routerLinkActive="active">{{'scratch.start.addMenu.guardianship' | translate}}</a>
                             </li>
 
-                            <li><a routerLink="/worker/new-worker"
+                            <li><a routerLink="/worker/add-worker"
                                     routerLinkActive="active">{{'scratch.start.addMenu.worker' | translate}}</a></li>
 
                             <li role="separator" class="divider"></li>
@@ -47,22 +48,36 @@
                             <li><a routerLink="/class/add-class"
                                     routerLinkActive="active">{{'scratch.start.addMenu.class' | translate}}</a></li>
 
-                            <li><a routerLink="/subject/add-subject"
-                                    routerLinkActive="active">{{'scratch.start.addMenu.subject' | translate}}</a></li>
+                            <li>
+                                <a routerLink="/subject/add-subject"
+                                    routerLinkActive="active">{{'scratch.start.addMenu.subject' | translate}}
+                                </a>
+                            </li>
+
+                            <li role="separator" class="divider"></li>
+
+                            <li>
+                                <a routerLink="/grade/add-grade"
+                                    routerLinkActive="active">{{'scratch.start.addMenu.grade' | translate}}
+                                </a>
+                            </li>
+
+
                         </ul>
                     </li>
 
+                    <!-- Search Menu -->
                     <li class="dropdown">
                         <a class="dropdown-toggle"
                             data-toggle="dropdown">{{'scratch.start.searchMenu.name' | translate}} <span
                                 class="caret"></span></a>
                         <ul class="dropdown-menu">
-                           
-                            <li><a [routerLink]="['/patient/searchByName']"
-                                    routerLinkActive="active">{{'scratch.start.addMenu.student' | translate}}</a></li>
 
-                            <li><a [routerLink]="['/patient/searchByName']"
+                            <li><a [routerLink]="['/teacher/search']"
                                     routerLinkActive="active">{{'scratch.start.addMenu.teacher' | translate}}</a></li>
+
+                            <li><a [routerLink]="['/student/search']"
+                                    routerLinkActive="active">{{'scratch.start.addMenu.student' | translate}}</a></li>
 
                             <li role="separator" class="divider"></li>
 
@@ -74,11 +89,12 @@
 
                             <li role="separator" class="divider"></li>
 
-                            <li><a [routerLink]="['/patient/searchByName']"
-                                    routerLinkActive="active">{{'scratch.start.addMenu.worker' | translate}}</a></li>
-
-                            <li><a [routerLink]="['/patient/searchByName']"
+                            <li><a [routerLink]="['/guardianship/search']"
                                     routerLinkActive="active">{{'scratch.start.addMenu.guardianship' | translate}}</a>
+                            </li>
+
+                            <li><a [routerLink]="['/worker/search']"
+                                    routerLinkActive="active">{{'scratch.start.addMenu.worker' | translate}}</a>
                             </li>
                         </ul>
                     </li>

@@ -1,9 +1,9 @@
 <div class="dropdown">
-    <h4 [ngClass]="['dropdown-toggle','btn','btn-primary','btn-list']" data-toggle="collapse" data-target="#items">
-        {{'guardianshipContent.guardianships.guardianshipList' | translate}}
+    <h4 [ngClass]="['dropdown-toggle','btn','btn-primary','btn-list']" data-toggle="collapse" data-target="#guardianships">
+        {{'layout.guardianships.list' | translate}}
         <span class="caret"></span>
     </h4>
-    <div id="items" [ngClass]="['collapse','list-group']">
+    <div id="guardianships" [ngClass]="['collapse','list-group']">
         <ul>
              <li *ngFor="let item of items" (click)="toggleItem(item)" [class.is-done]="item.isDone"
                 [ngClass]="['list-group-item']">

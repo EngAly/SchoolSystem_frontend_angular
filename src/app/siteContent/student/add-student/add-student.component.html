@@ -1,1 +1,159 @@
-<p>add-student works!</p>
+<body class="body-background" dir="ltr">
+    <div class="container">
+
+        <!-- not useable two field just for congirmation save or not -->
+        <span id="savedMsg" class="hidden">{{'shared.savedMsg' | translate}}</span>
+        <span id="unsavedMsg" class="hidden">{{'shared.unsavedMsg' | translate}}</span>
+
+        <!--  Form Header -->
+        <div class="center-screen">
+            <h1 class="school-headers">{{'student.shared.header'|translate}}</h1>
+        </div>
+
+        <!--Start Form-->
+        <form [formGroup]="formData" (submit)="save()">
+            <div class="row">
+
+                <!-- Left section -->
+                <div class="col-sm-6 left">
+                    <!-- name-->
+                    <div class="col-sm-10">
+                        <h4 class="control-label">{{'student.shared.name'|translate}}</h4>
+                        <input type="text" formControlName="name" ngModel [(ngModel)]="student.name"
+                            class="form-control">
+                        <div *ngIf="controls.name.touched && controls.name.errors?.required"
+                            class="alert alert-danger  margin" style="text-align: start;">
+                            {{'student.shared.nameMsg'|translate}}
+                        </div>
+                    </div>
+
+                    <!-- address -->
+                    <div class="col-sm-10">
+                        <h4 class="control-label">{{'shared.address'|translate}}</h4>
+                        <input type="text" formControlName="address" [(ngModel)]="student.address" class="form-control">
+                        <div *ngIf="controls.address.touched && controls.address.errors?.required"
+                            class="alert alert-danger">
+                            {{'shared.addressMsg'|translate}}</div>
+                    </div>
+
+                    <!-- email -->
+                    <div class="col-sm-10">
+                        <h4 class="control-label">{{'shared.email'|translate}}</h4>
+                        <input type="text" [(ngModel)]="student.email" formControlName="email" class="form-control">
+                        <!-- <div *ngIf="controls.email.errors && (controls.email.touched || controls.email.dirty)"
+                            class="alert alert-danger">
+                            {{'shared.emailMsg'|translate}}
+                        </div> -->
+                    </div>
+
+                    <!-- age-->
+                    <div class="col-sm-7">
+                        <h4 class="control-label">{{'shared.age'|translate}}</h4>
+                        <input type="number" formControlName="age" ngModel [(ngModel)]="student.age"
+                            class="form-control">
+                        <div *ngIf="controls.age.touched && controls.age.errors?.required" class="alert alert-danger">
+                            {{'shared.ageMsg'|translate}}
+                        </div>
+                    </div>
+
+                    <!-- date of birth -->
+                    <div class="col-sm-7">
+                        <h4 class="control-label ">{{'student.shared.dob'|translate}}</h4>
+                        <input class="form-control" type="date" formControlName="dob" [(ngModel)]="student.dob">
+                        <div *ngIf="controls.dob.touched && controls.dob.errors?.required" class="alert alert-danger">
+                            {{'student.shared.dobMsg'|translate}}</div>
+                    </div>
+
+                    <!--joinDate-->
+                    <div class="col-sm-7" style="text-align: start;">
+                        <h4 class="control-label">{{'shared.joinDate'|translate}}</h4>
+                        <input type="date" formControlName="joinDate" [(ngModel)]="student.joinDate"
+                            class="form-control">
+                        <div *ngIf="controls.joinDate.touched && controls.joinDate.errors?.required"
+                            class="alert alert-danger">
+                            {{'student.shared.joinDateMsg'|translate}}</div>
+                    </div>
+
+                    <!-- worker gender property reusebale lang keywords-->
+                    <div class="col-sm-8" (change)="handleGenderChange($event)">
+                        <h4>{{'shared.gender' | translate}}</h4>
+                        <div class=" btn-group">
+                            <label class="btn btn-success" for="male_id">
+                                <input id="male_id" type="radio" value="Male" formControlName="gender">
+                                <label for="male_id">{{'shared.male' | translate}} </label>
+                            </label>
+                            <label class="btn btn-success" for="female_id">
+                                <input id="female_id" type="radio" value="Female" formControlName="gender">
+                                <label for="female_id">{{'shared.female' | translate}} </label>
+                            </label>
+                        </div>
+                        <div *ngIf="controls.gender.invalid && controls.gender.errors?.required"
+                            class="alert alert-danger">
+                            {{'shared.genderMsg' | translate}}
+                        </div>
+                    </div>
+
+                    <!-- classes -->
+                    <div class="col-sm-10">
+                        <classes></classes>
+                    </div>
+
+                    <!-- student status -->
+                    <div class="col-sm-10">
+                        <student-status></student-status>
+                    </div>
+
+                    <!-- paidFees -->
+                    <div class="col-sm-7">
+                        <h4 class="control-label">{{'student.shared.paidFees'|translate}}</h4>
+                        <input type="number" formControlName="paidFees" [(ngModel)]="student.paidFees"
+                            class="form-control">
+                        <div *ngIf="controls.paidFees.touched && controls.paidFees.errors?.required"
+                            class="alert alert-danger">
+                            {{'student.shared.paidFeesMsg'|translate}}
+                        </div>
+                    </div>
+
+                    <!-- remainFees -->
+                    <div class="col-sm-7">
+                        <h4 class="control-label">{{'student.shared.remainFees'|translate}}</h4>
+                        <input type="number" formControlName="remainFees" [(ngModel)]="student.remainFees"
+                            class="form-control">
+                        <div *ngIf="controls.remainFees.touched && controls.remainFees.errors?.required"
+                            class="alert alert-danger">
+                            {{'student.shared.remainFeesMsg'|translate}}
+                        </div>
+                    </div>
+
+                    <!--  notes  -->
+                    <div class="col-sm-10">
+                        <h4 for="desc_id">{{'shared.desc' | translate}}</h4>
+                        <textarea [(ngModel)]="student.notes" id="desc_id" rows="7" class="form-control"></textarea>
+                    </div>
+
+                </div>
+
+                <!-- Right section -->
+                <div class="col-sm-6 right">
+                    <!-- guardian -->
+                    <div>
+                        <h4 class="school-header-branches center-screen">{{'guardian.shared.header'|translate}}</h4>
+                        <guardian (keydown)="handleValidation($event)" (change)="handleValidation($event)"></guardian>
+                    </div>
+
+                    <!-- Save Details -->
+                    <div class="col-sm-7 btn-distance">
+                        <input [disabled]="formData.invalid || !isGuardianValid || inPrograss" type="submit"
+                            class="form-control btn btn-success" value="{{'shared.save'|translate}}">
+
+                        <!-- <input type="submit"
+                            class="form-control btn btn-success" value="{{'shared.save'|translate}}"> -->
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+
+<br><br><br>

@@ -2,12 +2,12 @@
     <div class="container">
 
         <!-- not useable two field just for congirmation save or not -->
-        <span id="savedMsg" class="hidden">{{'workerContent.add.savedMsg' | translate}}</span>
-        <span id="unsavedMsg" class="hidden">{{'workerContent.add.unsavedMsg' | translate}}</span>
+        <span id="savedMsg" class="hidden">{{'shared.savedMsg' | translate}}</span>
+        <span id="unsavedMsg" class="hidden">{{'shared.unsavedMsg' | translate}}</span>
 
 
         <div class="center-screen">
-            <h1 class="school-headers">{{'workerContent.add.hint' | translate}}</h1>
+            <h1 class="school-headers">{{'worker.add.hint' | translate}}</h1>
             <img id="profile-img" src="assets/images/worker.png" class="profile-img-card" width="250">
         </div>
         <form [formGroup]="formData" (submit)="save()">
@@ -16,11 +16,11 @@
 
                     <!-- worker name property -->
                     <div class="col-sm-5">
-                        <h4 for="name_id">{{'workerContent.add.name' | translate}}</h4>
+                        <h4 for="name_id">{{'worker.add.name' | translate}}</h4>
                         <input id="name_id" type="text" [(ngModel)]="worker.name" formControlName="name"
                             class="form-control" required>
                         <div *ngIf="controls.name.touched && controls.name.errors?.required" class="alert alert-danger">
-                            {{'workerContent.add.nameMsg' | translate}}
+                            {{'worker.add.nameMsg' | translate}}
                         </div>
                     </div>
 
@@ -75,6 +75,7 @@
                         </div>
                     </div>
 
+                    <!--  -->
                     <div class="col-sm-7">
                         <guardianships></guardianships>
                     </div>
@@ -89,7 +90,7 @@
                     <!-- save worker  -->
                     <div class="col-sm-2 btn-distance">
                         <input type="submit" [disabled]="formData.invalid || inPrograss" class="form-control btn btn-primary"
-                            value="{{'workerContent.add.save' | translate}}">
+                            value="{{'worker.add.save' | translate}}">
                     </div>
 
                 </div>

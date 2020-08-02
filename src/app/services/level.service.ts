@@ -29,14 +29,18 @@ export class LevelService implements IServiceMethods<Level> {
         return flag
     }
 
-    public getByName(name: string): Observable<Level[]> {
-        return this.http.get<Level[]>(`${this.url}/byName/${name}`);
+    public getByName(name: string, page = 0, sortBy = 'id', direction = "asc", pagesize = 8): Observable<Level[]> {
+        return this.http.get<Level[]>(`${this.url}/byName/${name}/?pageSize=${pagesize}&page=${page}&sort=${sortBy}&direction=${direction}`);
     }
 
-
-
-    public getAll(): Observable<Level[]> {
-        return this.http.get<Level[]>(`${this.url}`);
+    /**
+     * this methods take three arguments
+     * int page  => define page size for incoming data defualt is 0
+     * String field => sort by this filed default is id
+     * String direction => sort direction default is asc
+     */
+    public getAll(pagesize: number = 8, page?: number, sortBy?: string, direction?: string): Observable<Level[]> {
+        return this.http.get<Level[]>(`${this.url}?pageSize=${pagesize}&page=${page}&sort=${sortBy}&direction=${direction}`);
     }
 
 }

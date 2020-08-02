@@ -4,4 +4,5 @@ export class Level {
     floor: number;
     maxSize: number;
     currentSize: number;
+    desc: string;
 }

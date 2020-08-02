@@ -34,7 +34,8 @@ export class AddClassComponent implements IControllerMethods {
       name: "",
       floor: null,
       maxSize: null,
-      currentSize: null
+      currentSize: null,
+      desc: null
     };
   }
 

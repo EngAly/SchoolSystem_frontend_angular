@@ -6,7 +6,7 @@ $selectText: none;
   justify-content: center;
   align-items: center;
   text-align: center;
- }
+}
 
 body {
   -webkit-touch-callout: $selectText;
@@ -31,12 +31,19 @@ body {
   @extend %center;
 }
 
-.school-headers {
+%headers {
   color: indianred;
   margin-top: 1%;
   margin-bottom: 2%;
-  font-size: 2em;
   font-weight: bold;
+}
+.school-headers {
+  @extend %headers;
+  font-size: 2em;
+}
+.school-header-branches {
+  @extend %headers;
+  font-size: 1.5em;
 }
 
 // fields that is html but hidden to catch lang value and passed to controller
@@ -56,4 +63,15 @@ body {
 .center-table-header th,
 td {
   text-align: center;
+}
+
+//  used when select item(s) from list give it background
+$selected: rgb(16, 167, 96);
+.is-done {
+  background-color: $selected;
+}
+
+// make two list inline
+.list-canvas {
+  width: 300px;
 }

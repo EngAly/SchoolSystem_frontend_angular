@@ -9,6 +9,14 @@ import { AddWorkerComponent } from './siteContent/worker/add-worker/add-worker.c
 import { AddGuardianshipComponent } from './siteContent/guardianship/add-guardianship/add-guardianship.component';
 import { SearchClassComponent } from './siteContent/class/search-class/search-class.component';
 import { SearchSubjectComponent } from './siteContent/subject/search-subject/search-subject.component';
+import { SearchGuardianshipComponent } from './siteContent/guardianship/search-guardianship/search-guardianship.component';
+import { SearchTeacherComponent } from './siteContent/teacher/search-teacher/search-teacher.component';
+import { SearchStudentComponent } from './siteContent/student/search-student/search-student.component';
+import { AddStudentComponent } from './siteContent/student/add-student/add-student.component';
+import { AddTeacherComponent } from './siteContent/teacher/add-teacher/add-teacher.component';
+import { SearchWorkerComponent } from './siteContent/worker/search-worker/search-worker.component';
+import { AddGradeComponent } from './siteContent/grade/add-grade/add-grade.component';
+import { StudentDetailsComponent } from './siteContent/student/student-details/student-details.component';
 
 const routes: Routes = [
   /**
@@ -27,16 +35,34 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
 
 
-  // adds  section
-  { path: "subject/add-subject", component: AddSubjectComponent },
+  // add section
+  { path: "teacher/add-teacher", component: AddTeacherComponent },
+  { path: "student/add-student", component: AddStudentComponent },
+
+
   { path: "class/add-class", component: AddClassComponent },
-  { path: "worker/new-worker", component: AddWorkerComponent },
-  { path: "guardianship/new-guardianship", component: AddGuardianshipComponent },
+  { path: "subject/add-subject", component: AddSubjectComponent },
+
+  { path: "guardianship/add-guardianship", component: AddGuardianshipComponent },
+  { path: "worker/add-worker", component: AddWorkerComponent },
+  { path: "grade/:id", component: AddGradeComponent },
+
+
 
   // search section
+  { path: "teacher/search", component: SearchTeacherComponent },
+  { path: "student/search", component: SearchStudentComponent },
+
   { path: "class/search", component: SearchClassComponent },
   { path: "subject/search", component: SearchSubjectComponent },
 
+  { path: "guardianship/search", component: SearchGuardianshipComponent },
+  { path: "worker/search", component: SearchWorkerComponent },
+
+
+
+  // shows 
+  { path: "student/search/:id", component: StudentDetailsComponent },
 ];
 
 @NgModule({
@@ -47,6 +73,12 @@ export class AppRoutingModule { }
 
 
 export const routingComponent = [RegisterComponent, LoginComponent, HomeComponent,
-  AddSubjectComponent, AddClassComponent, AddWorkerComponent, AddGuardianshipComponent,
-  SearchClassComponent, SearchSubjectComponent
+
+  AddTeacherComponent, AddStudentComponent, AddSubjectComponent, AddClassComponent,
+  AddWorkerComponent, AddGuardianshipComponent, AddGradeComponent,
+
+  SearchTeacherComponent, SearchStudentComponent, SearchClassComponent, SearchSubjectComponent,
+  SearchGuardianshipComponent, SearchWorkerComponent,
+
+  StudentDetailsComponent
 ];
