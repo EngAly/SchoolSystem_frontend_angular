@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { GuardianshipService } from 'src/app/services/guardianship.service';
 import { Guardianship } from 'src/app/models/Guardianship';
-import { ILayout } from 'src/app/interfaces/ILayout';
+ import { LayoutAbstracts } from 'src/app/interfaces/LayoutAbstracts';
 
 @Component({
   selector: 'guardianships',
   templateUrl: './guardianships.component.html',
   styleUrls: ['./guardianships.component.scss']
 })
-export class GuardianshipsComponent implements ILayout<Guardianship>{
+export class GuardianshipsComponent implements LayoutAbstracts<Guardianship>{
 
   items: Guardianship[];
 

@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
-import { IServiceMethods } from '../interfaces/IServiceMethods';
 import { HttpClient } from '@angular/common/http';
 import { SharedService } from './shared.service';
 import { Level } from '../models/Level';
 import { Observable } from 'rxjs';
+import { BusinessAbstracts } from '../interfaces/BusinessAbstracts';
 
 
 @Injectable({
     providedIn: 'root'
 })
-export class LevelService implements IServiceMethods<Level> {
-
+export class LevelService implements BusinessAbstracts<Level> {
     private url: string
 
     constructor(private http: HttpClient, private root: SharedService) {
@@ -43,4 +42,7 @@ export class LevelService implements IServiceMethods<Level> {
         return this.http.get<Level[]>(`${this.url}?pageSize=${pagesize}&page=${page}&sort=${sortBy}&direction=${direction}`);
     }
 
+    getById(id?: number): Observable<Level> {
+        throw new Error("Method not implemented.");
+    }
 }

@@ -47,7 +47,7 @@
     },
     "layout": {
         "subjects": {
-            "list": "Choice Subjects"
+            "list": "subjects"
         },
         "guardianships": {
             "list": "Choice Guardianships"
@@ -75,11 +75,14 @@
         "searchNameMsg": "Please Enter Name That You Want To Search",
         "searchBtn": "Search",
         "joinDate": "Join Date",
+        "joinDateMsg": "Please Enter Join Date",
         "save": "Save Data",
         "savedMsg": "Data Added successfully",
         "unsavedMsg": "Data Not Added successfully",
         "email": "Email",
-        "emailMsg": "Please Enter Valid Email"
+        "emailMsg": "Please Enter Valid Email",
+        "dob": "Date Of Birth",
+        "dobMsg": "Please Enter Date Of Birth"
     },
     "subject": {
         "add": {
@@ -123,8 +126,6 @@
             "header": "Add / Update Student",
             "name": "Student Name",
             "nameMsg": "Please Enter Student Name",
-            "dob": "Date Of Birth",
-            "dobMsg": "Please Enter Date Of Birth",
             "save": "Add Student",
             "remainFees": "Remain Fees",
             "remainFeesMsg ": "Please Enter Remain Fees",
@@ -140,7 +141,26 @@
             "header": "Student Details"
         }
     },
-    "teacher": {},
+    "teacher": {
+        "shared": {
+            "header": "Add / Update Teacher",
+            "name": "Teacher Name",
+            "nameMsg": "Please Enter Teacher Name",
+            "doh": "Date Of Hire",
+            "dohMsg": "Please Enter Date Of Hire",
+            "maritalStatus": "MaritalStatus",
+            "maritalStatusMsg": "Please Select MaritalStatus",
+            "single": "Single",
+            "married": "Married",
+            "divorced": "Divorced",
+            "salary": "Salary",
+            "salaryMsg": "Please Enter Salary",
+            "qualification": "Qualification",
+            "qualificationMsg": "Please Enter Qualification",
+            "ex": "Years Of Experience",
+            "exMsg": "Please Enter Years Of Experience"
+        }
+    },
     "worker": {
         "add": {
             "hint": "Add New Worker",

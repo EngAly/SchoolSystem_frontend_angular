@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
-import { IServiceMethods } from '../interfaces/IServiceMethods';
 import { HttpClient } from '@angular/common/http';
 import { SharedService } from './shared.service';
 import { Guardianship } from '../models/Guardianship';
 import { Observable } from 'rxjs';
-
+import { BusinessAbstracts } from '../interfaces/BusinessAbstracts';
+ 
 
 @Injectable({
   providedIn: 'root'
 })
-export class GuardianshipService implements IServiceMethods<Guardianship> {
-
+export class GuardianshipService implements BusinessAbstracts<Guardianship> {
   private url: string
 
   constructor(private http: HttpClient, private root: SharedService) {
@@ -37,4 +36,7 @@ export class GuardianshipService implements IServiceMethods<Guardianship> {
     return this.http.get<Guardianship[]>(`${this.url}`);
   }
 
+  getById(id?: number): Observable<Guardianship> {
+    throw new Error("Method not implemented.");
+  }
 }

@@ -1,27 +1,24 @@
 import { Injectable } from '@angular/core';
-import { IServiceMethods } from '../interfaces/IServiceMethods';
 import { Student } from '../models/Student';
 import { HttpClient } from '@angular/common/http';
 import { SharedService } from './shared.service';
 import { Observable } from 'rxjs';
+import { BusinessAbstracts } from '../interfaces/BusinessAbstracts';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class StudentService implements IServiceMethods<Student> {
+export class StudentService implements BusinessAbstracts<Student> {
+
+  private url: string
+
   /**
    * Method not implemented
-   * @param pageSize 
-   * @param page 
-   * @param sortBy 
-   * @param direction 
    */
   getAll(pageSize?: number, page?: number, sortBy?: string, direction?: string): Observable<Student[]> {
     throw new Error("Method not implemented.");
   }
-
-  private url: string
 
   constructor(private http: HttpClient, private root: SharedService) {
     this.url = this.root.getRootUrl() + "student";
@@ -44,9 +41,12 @@ export class StudentService implements IServiceMethods<Student> {
   }
 
   public findById(id = 1): Observable<Student> {
-     return this.http.get<Student>(`${this.url}/byId/${id}`);
+    return this.http.get<Student>(`${this.url}/byId/${id}`);
   }
 
+  getById(id?: number): Observable<Student> {
+    throw new Error("Method not implemented.");
+  }
 
 
 }

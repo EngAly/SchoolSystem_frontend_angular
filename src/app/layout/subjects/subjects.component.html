@@ -1,10 +1,10 @@
 <div class="dropdown">
-    <h4 [ngClass]="['dropdown-toggle','btn','btn-primary','patient-diagnostic-btn']" data-toggle="collapse"
-        data-target="#subjects">{{'subjectContent.subjects.subjectList' | translate}}
+    <h4 [ngClass]="['dropdown-toggle','btn','btn-success','btn-list','list-canvas']" data-toggle="collapse"
+        data-target="#subjects">{{'layout.subjects.list' | translate}}
         <span class="caret"></span>
     </h4>
     <div id="subjects" [ngClass]="['collapse','list-group']">
-        <ul>
+        <ul class="list-inline">
             <li *ngFor="let item of items" (click)="toggleItem(item)" [class.is-done]="item.isDone"
                 [ngClass]="['list-group-item']">
                 {{item.name}}</li>

@@ -1,18 +1,18 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Validators, FormControl, FormGroup } from '@angular/forms';
-import { IControllerMethods } from 'src/app/interfaces/IControllerMethods';
 import { Student } from 'src/app/models/Student';
 import { StudentStatusComponent } from 'src/app/layout/student-status/student-status.component';
 import { ClassesComponent } from 'src/app/layout/classes/classes.component';
 import { AddGuardianComponent } from '../../guardian/add-guardian/add-guardian.component';
 import { StudentService } from 'src/app/services/student.service';
+import { EndPointAbstracts } from 'src/app/interfaces/EndPointAbstracts';
 
 @Component({
   selector: 'app-add-student',
   templateUrl: './add-student.component.html',
   styleUrls: ['./add-student.component.scss']
 })
-export class AddStudentComponent implements IControllerMethods {
+export class AddStudentComponent implements EndPointAbstracts {
 
 
   student: Student = new Student();
@@ -49,15 +49,15 @@ export class AddStudentComponent implements IControllerMethods {
     this.student.gender = this.controls.gender.value;
   }
 
-  setStatus() {
+  private setStatus() {
     this.student.status = this.statusChild.getSelected();
   }
 
-  setLevel() {
-    this.student.level = this.classesChild.getSelected();
+  private setLevel() {
+    this.student.level = this.classesChild.getSelectedItems();
   }
 
-  setGuardian() {
+  private setGuardian() {
     this.student.guardian = this.guardianChild.getCurrentObject();
   }
 

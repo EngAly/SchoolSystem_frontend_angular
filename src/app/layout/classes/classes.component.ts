@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { LevelService } from 'src/app/services/level.service';
 import { Level } from 'src/app/models/Level';
+import { LayoutAbstracts } from 'src/app/interfaces/LayoutAbstracts';
 
 @Component({
   selector: 'classes',
   templateUrl: './classes.component.html',
   styleUrls: ['./classes.component.scss']
 })
-export class ClassesComponent {
+export class ClassesComponent implements LayoutAbstracts<Level>{
 
   items: Level[];
 
@@ -23,7 +24,7 @@ export class ClassesComponent {
     item['isDone'] = item['isDone'] == true ? false : true;
   }
 
-  getSelected(): Level {
+  getSelectedItems(): Level {
     let selected: Level;
     if (this.items) {
       this.items.filter(item => {

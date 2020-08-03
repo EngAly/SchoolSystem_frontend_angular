@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { IServiceMethods } from '../interfaces/IServiceMethods';
 import { Subject } from '../models/Subject';
 import { HttpClient } from '@angular/common/http';
 import { SharedService } from './shared.service';
 import { Observable } from 'rxjs';
+import { BusinessAbstracts } from '../interfaces/BusinessAbstracts';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SubjectService implements IServiceMethods<Subject>{
+export class SubjectService implements BusinessAbstracts<Subject>{
 
   private url: string
 
@@ -32,9 +32,12 @@ export class SubjectService implements IServiceMethods<Subject>{
     return this.http.get<Subject[]>(`${this.url}/byName/${name}`);
   }
 
-  public getAll(): Observable<Subject[]> {
-    return this.http.get<Subject[]>(`${this.url}`);
+  public getAll(pageSize = 8, page = 0, sortBy = "name", direction = "desc"): Observable<Subject[]> {
+    return this.http.get<Subject[]>(`${this.url}?pageSize=${pageSize}&page=${page}&sort=${sortBy}&direction=${direction}`);
   }
 
+  getById(id?: number): Observable<Subject> {
+    throw new Error("Method not implemented.");
+  }
 
 }

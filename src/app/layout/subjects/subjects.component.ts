@@ -1,22 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { Names } from 'src/app/models/Names';
-import { ILayout } from 'src/app/interfaces/ILayout';
 import { Subject } from 'src/app/models/Subject';
 import { SubjectService } from 'src/app/services/subject.service';
+import { LayoutAbstracts } from 'src/app/interfaces/LayoutAbstracts';
 
 @Component({
   selector: 'subjects',
   templateUrl: './subjects.component.html',
   styleUrls: ['./subjects.component.scss']
 })
-export class SubjectsComponent implements ILayout<Subject>{
+export class SubjectsComponent implements LayoutAbstracts<Subject>{
 
   items: Subject[];
 
   constructor(private service: SubjectService) {
-    this.service.getAll().subscribe(
+    this.service.getAll(100).subscribe(
       data => {
-        this.items = data;
+        this.items = data['content'];
         // console.log(data);
       },
       error => console.log(error)

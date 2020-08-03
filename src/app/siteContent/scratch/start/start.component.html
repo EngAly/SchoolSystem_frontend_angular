@@ -1,6 +1,4 @@
 <body class="body-background">
-
-
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
 
@@ -19,8 +17,12 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav nav-pills nav-justified">
 
-                    <li><a *ngIf="!smallSize" id="site-title"
-                            routerLink="/home">{{'scratch.start.sitename' | translate}}</a></li>
+                    <!-- in small screens -->
+                    <li>
+                        <a *ngIf="!smallSize" id="site-title"
+                            routerLink="/home">{{'scratch.start.sitename' | translate}}
+                        </a>
+                    </li>
 
                     <!-- Add Menu -->
                     <li class="dropdown">

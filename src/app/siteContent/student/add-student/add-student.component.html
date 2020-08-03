@@ -22,7 +22,7 @@
                         <input type="text" formControlName="name" ngModel [(ngModel)]="student.name"
                             class="form-control">
                         <div *ngIf="controls.name.touched && controls.name.errors?.required"
-                            class="alert alert-danger  margin" style="text-align: start;">
+                            class="alert alert-danger">
                             {{'student.shared.nameMsg'|translate}}
                         </div>
                     </div>
@@ -58,10 +58,10 @@
 
                     <!-- date of birth -->
                     <div class="col-sm-7">
-                        <h4 class="control-label ">{{'student.shared.dob'|translate}}</h4>
+                        <h4 class="control-label ">{{'shared.dob'|translate}}</h4>
                         <input class="form-control" type="date" formControlName="dob" [(ngModel)]="student.dob">
                         <div *ngIf="controls.dob.touched && controls.dob.errors?.required" class="alert alert-danger">
-                            {{'student.shared.dobMsg'|translate}}</div>
+                            {{'shared.dobMsg'|translate}}</div>
                     </div>
 
                     <!--joinDate-->
@@ -71,10 +71,10 @@
                             class="form-control">
                         <div *ngIf="controls.joinDate.touched && controls.joinDate.errors?.required"
                             class="alert alert-danger">
-                            {{'student.shared.joinDateMsg'|translate}}</div>
+                            {{'shared.joinDateMsg'|translate}}</div>
                     </div>
 
-                    <!-- worker gender property reusebale lang keywords-->
+                    <!-- gender -->
                     <div class="col-sm-8" (change)="handleGenderChange($event)">
                         <h4>{{'shared.gender' | translate}}</h4>
                         <div class=" btn-group">
