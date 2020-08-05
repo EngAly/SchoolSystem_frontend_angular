@@ -18,4 +18,7 @@ https://photos.google.com/album/AF1QipMlO_Qv77o9C0QkcQdf9yFByCR1-Nta35uJzFT7
 
 ### References
 **Front**
- https://www.tutorialrepublic.com/css-tutorial/css3-2d-transforms.php
+ * https://www.tutorialrepublic.com/css-tutorial/css3-2d-transforms.php
+ * https://getbootstrap.com/docs/3.3/components/
+ * https://www.tutorialrepublic.com/css-tutorial/css3-flexible-box-layouts.php
+ 
