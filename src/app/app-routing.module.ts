@@ -45,7 +45,7 @@ const routes: Routes = [
 
   { path: "guardianship/add-guardianship", component: AddGuardianshipComponent },
   { path: "worker/add-worker", component: AddWorkerComponent },
-  { path: "grade/:id", component: AddGradeComponent },
+  { path: "student/grade/:id", component: AddGradeComponent },
 
 
 

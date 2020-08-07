@@ -75,3 +75,15 @@ $selected: rgb(16, 167, 96);
 .list-canvas {
   width: 300px;
 }
+
+
+// buttons
+// to cancle border for buttons make more pretty witout border
+.no-border{
+    border-radius: 0;
+}
+
+// input group that contain all glyphicon
+.input-group , .ui-margin{
+  margin-bottom: 10px;
+}

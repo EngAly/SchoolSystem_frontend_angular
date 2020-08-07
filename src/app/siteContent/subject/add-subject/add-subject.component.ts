@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subject } from 'src/app/models/Subject';
-import { IControllerMethods } from 'src/app/interfaces/IControllerMethods';
 import { SubjectService } from 'src/app/services/subject.service';
+import { EndPointAbstracts } from 'src/app/interfaces/EndPointAbstracts';
 
 @Component({
   selector: 'app-add-subject',
   templateUrl: './add-subject.component.html',
   styleUrls: ['./add-subject.component.scss']
 })
-export class AddSubjectComponent implements IControllerMethods {
+export class AddSubjectComponent implements EndPointAbstracts {
 
   subject = new Subject();
   inPrograss: boolean;

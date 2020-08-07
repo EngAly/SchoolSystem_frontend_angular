@@ -114,7 +114,27 @@
             "header": "بيانات الطالب"
         }
     },
-    "teacher": {},
+    "teacher": {
+        "shared": {
+            "header": "إضافه معلم",
+            "name": "Teacher Name",
+            "nameMsg": "Please Enter Teacher Name",
+            "doh": "Date Of Hire",
+            "dohMsg": "Please Enter Date Of Hire",
+            "maritalStatus": "MaritalStatus",
+            "maritalStatusMsg": "Please Select MaritalStatus",
+            "single": "Single",
+            "married": "Married",
+            "divorced": "Divorced",
+            "salary": "Salary",
+            "salaryMsg": "Please Enter Salary",
+            "qualification": "Qualification",
+            "qualificationMsg": "Please Enter Qualification",
+            "ex": "Years Of Experience",
+            "exMsg": "Please Enter Years Of Experience",
+            "graduateDate": "Graduate Date"
+        }
+    },
     "worker": {
         "add": {
             "hint": "إضافه عامل جديد",

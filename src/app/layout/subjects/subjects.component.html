@@ -1,9 +1,11 @@
-<div class="dropdown">
-    <h4 [ngClass]="['dropdown-toggle','btn','btn-success','btn-list','list-canvas']" data-toggle="collapse"
-        data-target="#subjects">{{'layout.subjects.list' | translate}}
-        <span class="caret"></span>
-    </h4>
-    <div id="subjects" [ngClass]="['collapse','list-group']">
+<div class="dropdown ui-margin">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-th-list"></i></span>
+        <button class="dropdown-toggle btn btn-success btn-list list-canvas no-border" data-toggle="collapse"
+            data-target="#subjects"> {{'layout.subjects.list' | translate}} <span class="caret"></span>
+        </button>
+    </div>
+    <div id="subjects" class="collapse list-group">
         <ul class="list-inline">
             <li *ngFor="let item of items" (click)="toggleItem(item)" [class.is-done]="item.isDone"
                 [ngClass]="['list-group-item']">

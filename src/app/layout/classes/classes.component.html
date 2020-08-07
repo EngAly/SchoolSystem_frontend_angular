@@ -1,14 +1,18 @@
 <div class="dropdown">
-    <h4 [ngClass]="['btn-group','dropdown-toggle','btn','btn-success','btn-list','list-canvas']" data-toggle="collapse"
-        data-target="#classes">
-        {{'layout.class.list' | translate}}
-        <span class="caret"></span>
-    </h4>
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-th-list"></i></span>
+        <button data-toggle="tooltip" title="{{'layout.class.hint' | translate}}"
+            class="dropdown-toggle btn btn-success btn-list list-canvas no-border" data-toggle="collapse"
+            data-target="#classes"> {{'layout.class.list' | translate}} <span class="caret"></span>
+        </button>
+    </div>
     <div id="classes" [ngClass]="['collapse','list-group']">
         <ul class="list-inline">
-            <li *ngFor="let item of items" (click)="toggleItem(item)" [class.is-done]="item.isDone"
+            <li *ngFor="let item of items" (click)="toggleItem($event,item)" [class.is-done]="item.isDone"
                 [ngClass]="['list-group-item']">
                 {{item.name}}</li>
         </ul>
     </div>
 </div>
+
+<!-- [ngClass]="['dropdown-toggle','btn','btn-success','btn-list','list-canvas','no-border']" -->

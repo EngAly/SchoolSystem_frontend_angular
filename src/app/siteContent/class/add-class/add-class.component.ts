@@ -1,15 +1,15 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Level } from 'src/app/models/Level';
-import { IControllerMethods } from 'src/app/interfaces/IControllerMethods';
 import { LevelService } from 'src/app/services/level.service';
+import { EndPointAbstracts } from 'src/app/interfaces/EndPointAbstracts';
 
 @Component({
   selector: 'app-add-class',
   templateUrl: './add-class.component.html',
   styleUrls: ['./add-class.component.scss']
 })
-export class AddClassComponent implements IControllerMethods {
+export class AddClassComponent implements EndPointAbstracts {
 
   class = new Level();
   inPrograss: boolean;

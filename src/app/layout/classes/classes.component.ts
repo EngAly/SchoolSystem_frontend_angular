@@ -19,25 +19,26 @@ export class ClassesComponent implements LayoutAbstracts<Level>{
       })
   }
 
-  public toggleItem(item: Level) {
-    this.items.filter(item => item['isDone']).filter(item => delete item['isDone']);
-    item['isDone'] = item['isDone'] == true ? false : true;
+  public toggleItem(event: any, item: Level) {
+    if (event.getModifierState && event.getModifierState('Control')) {
+      item['isDone'] = item['isDone'] == true ? false : true;
+    } else {
+      this.items.filter(item => item['isDone']).filter(item => delete item['isDone']);
+      item['isDone'] = item['isDone'] == true ? false : true;
+    }
   }
 
-  getSelectedItems(): Level {
-    let selected: Level;
+  getSelectedItems(): Level[] {
+    // don't forget to declare new key word  OR get undefined
+    let selected = new Array<Level>();
     if (this.items) {
       this.items.filter(item => {
         if (item['isDone']) {
-          // selected = item;
-          // we get all elements except isDone we don't need it
-          selected = { id: item.id, name: item.name, currentSize: item.currentSize, floor: item.floor, maxSize: item.maxSize, desc: item.desc }
+          selected.push({ id: item.id, name: item.name, currentSize: item.currentSize, floor: item.floor, maxSize: item.maxSize, desc: item.desc })
         }
       })
     }
     return selected;
     // return this.items.filter(item => item['isDone']).filter(item => delete item['isDone'])[0];
   }
-
-
 }

@@ -23,11 +23,19 @@ export class SubjectsComponent implements LayoutAbstracts<Subject>{
   }
 
   public toggleItem(item: Subject) {
+    this.items.filter(item => item['isDone']).filter(item => delete item['isDone']);
     item['isDone'] = item['isDone'] == true ? false : true;
   }
 
   getSelectedItems(): Subject[] {
-    // alert(JSON.stringify(this.items.filter(item => item['isDone']).filter(item => delete item['isDone'])));
-    return this.items.filter(item => item['isDone']).filter(item => delete item['isDone']);
+    let selected = new Array<Subject>();
+    if (this.items) {
+      this.items.filter(item => {
+        if (item['isDone']) {
+          selected.push({ id: item.id, name: item.name, desc: item.desc })
+        }
+      })
+    }
+    return selected;
   }
 }

@@ -15,7 +15,7 @@ export class Teacher {
   dob: Date;   // date of birth
   doh: Date;      // date of hire
   salary: number;
-  // degree: string;
+  graduateDate: string;
   qualification: string;
   notes: string;
   levels: Level[];

@@ -1,16 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Worker } from 'src/app/models/Worker';
-import { IControllerMethods } from 'src/app/interfaces/IControllerMethods';
 import { GuardianshipsComponent } from 'src/app/layout/guardianships/guardianships.component';
 import { WorkerService } from 'src/app/services/worker.service';
+import { EndPointAbstracts } from 'src/app/interfaces/EndPointAbstracts';
 
 @Component({
   selector: 'app-add-worker',
   templateUrl: './add-worker.component.html',
   styleUrls: ['./add-worker.component.scss']
 })
-export class AddWorkerComponent implements IControllerMethods {
+export class AddWorkerComponent implements EndPointAbstracts {
 
   worker = new Worker();
   inPrograss: boolean = false;

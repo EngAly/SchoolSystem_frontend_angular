@@ -50,11 +50,11 @@ export class AddStudentComponent implements EndPointAbstracts {
   }
 
   private setStatus() {
-    this.student.status = this.statusChild.getSelected();
+    this.student.status = this.statusChild.getSelectedItems();
   }
 
   private setLevel() {
-    this.student.level = this.classesChild.getSelectedItems();
+    this.student.level = this.classesChild.getSelectedItems()[0];
   }
 
   private setGuardian() {
@@ -72,6 +72,7 @@ export class AddStudentComponent implements EndPointAbstracts {
   }
 
   save() {
+    alert(33);
     this.getCurrentObject();
     // alert(JSON.stringify(this.student));
     this.inPrograss = true;

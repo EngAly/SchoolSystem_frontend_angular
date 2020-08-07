@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { UserRegister } from 'src/app/models/Register';
-import { IControllerMethods } from 'src/app/interfaces/IControllerMethods';
+import { EndPointAbstracts } from 'src/app/interfaces/EndPointAbstracts';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements IControllerMethods {
+export class RegisterComponent implements EndPointAbstracts {
 
   user = new UserRegister();
 

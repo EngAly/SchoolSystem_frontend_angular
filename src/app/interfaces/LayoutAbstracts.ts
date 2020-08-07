@@ -1,5 +1,5 @@
 export interface LayoutAbstracts<T> {
 
-    toggleItem(item: T): any;
+    toggleItem(event, item: T): any;
     getSelectedItems(): any;
 }

@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { Guardianship } from 'src/app/models/Guardianship';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { IControllerMethods } from 'src/app/interfaces/IControllerMethods';
 import { GuardianshipService } from 'src/app/services/guardianship.service';
+import { EndPointAbstracts } from 'src/app/interfaces/EndPointAbstracts';
 
 @Component({
   selector: 'add-guardianship',
   templateUrl: './add-guardianship.component.html',
   styleUrls: ['./add-guardianship.component.scss']
 })
-export class AddGuardianshipComponent implements IControllerMethods {
+export class AddGuardianshipComponent implements EndPointAbstracts {
   guardianship = new Guardianship();
 
   formData = new FormGroup({

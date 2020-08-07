@@ -11,26 +11,32 @@
         </div>
 
         <!--Start Form-->
-        <form [formGroup]="formData" (submit)="save()">
+        <form [formGroup]="formData">
             <div class="row">
 
                 <!-- Left section -->
                 <div class="col-sm-6 left">
                     <!-- name-->
                     <div class="col-sm-10">
-                        <h4 class="control-label">{{'student.shared.name'|translate}}</h4>
-                        <input type="text" formControlName="name" ngModel [(ngModel)]="student.name"
-                            class="form-control">
-                        <div *ngIf="controls.name.touched && controls.name.errors?.required"
-                            class="alert alert-danger">
+                        <!-- <h4 class="control-label">{{'student.shared.name'|translate}}</h4> -->
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-education"></i></span>
+                            <input type="text" formControlName="name" [(ngModel)]="student.name" class="form-control"
+                                placeholder="{{'student.shared.name'|translate}}">
+                        </div>
+                        <div *ngIf="controls.name.touched && controls.name.errors?.required" class="alert alert-danger">
                             {{'student.shared.nameMsg'|translate}}
                         </div>
                     </div>
 
                     <!-- address -->
                     <div class="col-sm-10">
-                        <h4 class="control-label">{{'shared.address'|translate}}</h4>
-                        <input type="text" formControlName="address" [(ngModel)]="student.address" class="form-control">
+                        <!-- <h4 class="control-label">{{'shared.address'|translate}}</h4> -->
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                            <input type="text" formControlName="address" [(ngModel)]="student.address"
+                                class="form-control" placeholder="{{'shared.address'|translate}}">
+                        </div>
                         <div *ngIf="controls.address.touched && controls.address.errors?.required"
                             class="alert alert-danger">
                             {{'shared.addressMsg'|translate}}</div>
@@ -38,8 +44,12 @@
 
                     <!-- email -->
                     <div class="col-sm-10">
-                        <h4 class="control-label">{{'shared.email'|translate}}</h4>
-                        <input type="text" [(ngModel)]="student.email" formControlName="email" class="form-control">
+                        <!-- <h4 class="control-label">{{'shared.email'|translate}}</h4> -->
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input type="text" [(ngModel)]="student.email" formControlName="email" class="form-control"
+                                placeholder="{{'shared.email'|translate}}">
+                        </div>
                         <!-- <div *ngIf="controls.email.errors && (controls.email.touched || controls.email.dirty)"
                             class="alert alert-danger">
                             {{'shared.emailMsg'|translate}}
@@ -48,9 +58,12 @@
 
                     <!-- age-->
                     <div class="col-sm-7">
-                        <h4 class="control-label">{{'shared.age'|translate}}</h4>
-                        <input type="number" formControlName="age" ngModel [(ngModel)]="student.age"
-                            class="form-control">
+                        <!-- <h4 class="control-label">{{'shared.age'|translate}}</h4> -->
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            <input type="number" formControlName="age" ngModel [(ngModel)]="student.age"
+                                class="form-control" placeholder="{{'shared.age'|translate}}">
+                        </div>
                         <div *ngIf="controls.age.touched && controls.age.errors?.required" class="alert alert-danger">
                             {{'shared.ageMsg'|translate}}
                         </div>
@@ -75,7 +88,7 @@
                     </div>
 
                     <!-- gender -->
-                    <div class="col-sm-8" (change)="handleGenderChange($event)">
+                    <div class="col-sm-8 ui-margin" (change)="handleGenderChange($event)">
                         <h4>{{'shared.gender' | translate}}</h4>
                         <div class=" btn-group">
                             <label class="btn btn-success" for="male_id">
@@ -105,9 +118,12 @@
 
                     <!-- paidFees -->
                     <div class="col-sm-7">
-                        <h4 class="control-label">{{'student.shared.paidFees'|translate}}</h4>
-                        <input type="number" formControlName="paidFees" [(ngModel)]="student.paidFees"
-                            class="form-control">
+                        <!-- <h4 class="control-label">{{'student.shared.paidFees'|translate}}</h4> -->
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-euro"></i></span>
+                            <input type="number" formControlName="paidFees" [(ngModel)]="student.paidFees"
+                                class="form-control" placeholder="{{'student.shared.paidFees'|translate}}">
+                        </div>
                         <div *ngIf="controls.paidFees.touched && controls.paidFees.errors?.required"
                             class="alert alert-danger">
                             {{'student.shared.paidFeesMsg'|translate}}
@@ -116,9 +132,12 @@
 
                     <!-- remainFees -->
                     <div class="col-sm-7">
-                        <h4 class="control-label">{{'student.shared.remainFees'|translate}}</h4>
-                        <input type="number" formControlName="remainFees" [(ngModel)]="student.remainFees"
-                            class="form-control">
+                        <!-- <h4 class="control-label">{{'student.shared.remainFees'|translate}}</h4> -->
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-euro"></i></span>
+                            <input type="number" formControlName="remainFees" [(ngModel)]="student.remainFees"
+                                class="form-control" placeholder="{{'student.shared.remainFees'|translate}}">
+                        </div>
                         <div *ngIf="controls.remainFees.touched && controls.remainFees.errors?.required"
                             class="alert alert-danger">
                             {{'student.shared.remainFeesMsg'|translate}}
@@ -138,13 +157,14 @@
                     <!-- guardian -->
                     <div>
                         <h4 class="school-header-branches center-screen">{{'guardian.shared.header'|translate}}</h4>
-                        <guardian (keydown)="handleValidation($event)" (change)="handleValidation($event)"></guardian>
+                        <guardian (keydown)="handleValidation($event)" (change)="handleValidation($event)">
+                        </guardian>
                     </div>
 
                     <!-- Save Details -->
                     <div class="col-sm-7 btn-distance">
                         <input [disabled]="formData.invalid || !isGuardianValid || inPrograss" type="submit"
-                            class="form-control btn btn-success" value="{{'shared.save'|translate}}">
+                           (click)="save()" class="form-control btn btn-success" value="{{'shared.save'|translate}}">
 
                         <!-- <input type="submit"
                             class="form-control btn btn-success" value="{{'shared.save'|translate}}"> -->
