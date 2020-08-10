@@ -68,7 +68,8 @@ export class SearchStudentComponent {
 
   getDetails(item: Student) {
     this._cache.setObject = item;
-    this.route.navigate([item.id], { relativeTo: this.activeRoute })
+    this.route.navigate(['student/details/', item.id])
+    // this.route.navigate([item.id], { relativeTo: this.activeRoute })
   }
 
   // First() {

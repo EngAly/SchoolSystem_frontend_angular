@@ -1,63 +1,86 @@
-<body class="body-background" dir="ltr">
-  <div class="container">
+<body class="body-background" dir="ltr" *ngIf="hasData;else noData">
+   <div class="container">
 
-    <!-- not useable two field just for congirmation save or not -->
-    <span id="savedMsg" class="hidden">{{'shared.savedMsg' | translate}}</span>
-    <span id="unsavedMsg" class="hidden">{{'shared.unsavedMsg' | translate}}</span>
+      <!-- not useable two field just for congirmation save or not -->
+      <span id="savedMsg" class="hidden">{{'shared.savedMsg' | translate}}</span>
+      <span id="unsavedMsg" class="hidden">{{'shared.unsavedMsg' | translate}}</span>
 
-    <!--  Form Header -->
-    <div class="center-screen">
-      <h1 class="school-headers">{{'grade.shared.header'|translate}}</h1>
-    </div>
-
-    <h2 *ngIf="hasData">{{student.name}}</h2>
-
-    <!--Start Form-->
-    <form [formGroup]="formData" (submit)="save()">
-      <div class="row">
-        <div class="form-group center-screen">
-
-          <!-- year-->
-          <div class="col-sm-6">
-            <!-- <h4 class="control-label">{{'student.shared.name'|translate}}</h4> -->
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-              <input type="number" formControlName="year" [(ngModel)]="grade.year" class="form-control"
-                placeholder="{{'grade.shared.year'|translate}}">
-            </div>
-            <div *ngIf="controls.year.touched && controls.year.errors?.required" class="alert alert-danger">
-              {{'grade.shared.yearMsg' | translate}}
-            </div>
-          </div>
-
-          <!-- month-->
-          <div class="col-sm-6">
-            <!-- <h4 class="control-label">{{'student.shared.name'|translate}}</h4> -->
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-              <input min="1" max="12" type="number" formControlName="month" [(ngModel)]="grade.month"
-                class="form-control" placeholder="{{'grade.shared.month'|translate}}">
-            </div>
-            <div
-              *ngIf="controls.month.touched && (controls.month.errors?.required || controls.month.errors?.validMonth)"
-              class="alert alert-danger">
-              {{'grade.shared.monthMsg' | translate}}
-            </div>
-          </div>
-
-          <ckeditor [(ngModel)]="grade.degree" formControlName="degree"></ckeditor>
-
-          <!-- save worker  -->
-          <div class="col-sm-2 btn-distance">
-            <input type="submit" [disabled]="formData.invalid" class="form-control btn btn-primary"
-              value="{{'shared.save' | translate}}">
-            <!-- <input type="submit" [disabled]="formData.invalid || inPrograss" class="form-control btn btn-primary"
-              value="{{'shared.save' | translate}}"> -->
-          </div>
-
-        </div>
+      <!--  Form Header -->
+      <div class="center-screen">
+         <h1 class="school-headers">{{'grade.shared.header'|translate}}</h1>
       </div>
 
-    </form>
-  </div>
+      <div class="school-header-branches shadow">
+         <table class="table table-striped table-bordered table-hover">
+            <thead>
+               <tr>
+                  <th>{{student.id}}</th>
+                  <th>{{student.name}}</th>
+                  <th>{{student.level.name}}</th>
+                  <th>{{student.status}}</th>
+               </tr>
+            </thead>
+         </table>
+      </div>
+
+
+      <!--Start Form-->
+      <form [formGroup]="formData" (submit)="save()">
+         <div class="row">
+            <div class="form-group center-screen">
+
+               <!-- year-->
+               <div class="col-sm-6">
+                  <!-- <h4 class="control-label">{{'student.shared.name'|translate}}</h4> -->
+                  <div class="input-group">
+                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                     <input type="number" formControlName="year" [(ngModel)]="grade.year" class="form-control"
+                        placeholder="{{'grade.shared.year'|translate}}">
+                  </div>
+                  <div *ngIf="controls.year.touched && controls.year.errors?.required" class="alert alert-danger">
+                     {{'grade.shared.yearMsg' | translate}}
+                  </div>
+               </div>
+
+               <!-- month-->
+               <div class="col-sm-6">
+                  <!-- <h4 class="control-label">{{'student.shared.name'|translate}}</h4> -->
+                  <div class="input-group">
+                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                     <input min="1" max="12" type="number" formControlName="month" [(ngModel)]="grade.month"
+                        class="form-control" placeholder="{{'grade.shared.month'|translate}}">
+                  </div>
+                  <div
+                     *ngIf="controls.month.touched && (controls.month.errors?.required || controls.month.errors?.validMonth)"
+                     class="alert alert-danger">
+                     {{'grade.shared.monthMsg' | translate}}
+                  </div>
+               </div>
+
+               <ckeditor [(ngModel)]="grade.grade" formControlName="grade"></ckeditor>
+
+               <!-- save grade  -->
+               <div class="col-sm-2 btn-distance">
+                  <input type="submit" [disabled]="formData.invalid || inPrograss" class="form-control btn btn-primary"
+                     value="{{'shared.save' | translate}}">
+                  <!-- <input type="submit" [disabled]="formData.invalid || inPrograss" class="form-control btn btn-primary"
+              value="{{'shared.save' | translate}}"> -->
+               </div>
+
+               <div class="col-sm-2 btn-distance">
+                  <button (click)="primaryTable()" class="form-control btn btn-primary">Template</button>
+               </div>
+
+            </div>
+         </div>
+
+      </form>
+   </div>
 </body>
+
+
+<ng-template #noData>
+   <div class="container">
+      <h2 class="alert alert-info">{{'grade.add.noData' | translate}}</h2>
+   </div>
+</ng-template>

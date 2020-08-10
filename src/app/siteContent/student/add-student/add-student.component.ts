@@ -72,7 +72,6 @@ export class AddStudentComponent implements EndPointAbstracts {
   }
 
   save() {
-    alert(33);
     this.getCurrentObject();
     // alert(JSON.stringify(this.student));
     this.inPrograss = true;

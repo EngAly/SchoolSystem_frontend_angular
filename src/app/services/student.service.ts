@@ -40,6 +40,7 @@ export class StudentService implements BusinessAbstracts<Student> {
     return this.http.get<Student[]>(`${this.url}/byName/${name}/?pageSize=${pageSize}&page=${page}&sort=${sortBy}&direction=${direction}`);
   }
 
+  //  there bug here we need to synd this block
   public findById(id = 1): Observable<Student> {
     return this.http.get<Student>(`${this.url}/byId/${id}`);
   }

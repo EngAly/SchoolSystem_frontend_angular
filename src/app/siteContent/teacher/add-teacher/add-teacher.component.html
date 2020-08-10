@@ -36,8 +36,9 @@
           <div class=" col-sm-7">
             <!-- <h4 class="control-label">{{'shared.age'|translate}}</h4> -->
             <div class="input-group">
-              <span class="input-group-addon">{{'shared.age'|translate}}</span>
-              <input type="number" formControlName="age" ngModel [(ngModel)]="teacher.age" class="form-control">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-plus"></i></span>
+              <input type="number" formControlName="age" [(ngModel)]="teacher.age" class="form-control"
+                placeholder="{{'shared.age'|translate}}">
             </div>
             <div *ngIf="controls.age.touched && controls.age.errors?.required" class="alert alert-danger">
               {{'shared.ageMsg'|translate}}

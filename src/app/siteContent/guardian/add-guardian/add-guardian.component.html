@@ -2,9 +2,12 @@
 
     <!-- name  -->
     <div class="col-sm-10">
-        <h4 for="guardian_name_id">{{'guardian.shared.name' | translate}}</h4>
-        <input id="guardian_name_id" type="text" [(ngModel)]="guardian.name" formControlName="name"
-            class="form-control">
+        <!-- <h4 for="guardian_name_id">{{'guardian.shared.name' | translate}}</h4> -->
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input id="guardian_name_id" type="text" [(ngModel)]="guardian.name" formControlName="name"
+                class="form-control" placeholder="{{'guardian.shared.name' | translate}}">
+        </div>
         <div *ngIf="controls.name.touched && controls.name.errors?.required" class="alert alert-danger">
             {{'guardian.shared.nameMsg' | translate}}
         </div>
@@ -12,8 +15,12 @@
 
     <!-- job  -->
     <div class="col-sm-10">
-        <h4 for="guardian_job_id">{{'guardian.shared.job' | translate}}</h4>
-        <input id="guardian_job_id" type="text" [(ngModel)]="guardian.job" formControlName="job" class="form-control">
+        <!-- <h4 for="guardian_job_id">{{'guardian.shared.job' | translate}}</h4> -->
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+            <input id="guardian_job_id" type="text" [(ngModel)]="guardian.job" formControlName="job"
+                class="form-control" placeholder="{{'guardian.shared.job' | translate}}">
+        </div>
         <div *ngIf="controls.job.touched && controls.job.errors?.required" class="alert alert-danger">
             {{'guardian.shared.jobMsg' | translate}}
         </div>
@@ -21,9 +28,12 @@
 
     <!-- email  -->
     <div class="col-sm-10">
-        <h4 for="guardian_email_id">{{'shared.email' | translate}}</h4>
-        <input id="guardian_email_id" type="text" [(ngModel)]="guardian.email" formControlName="email"
-            class="form-control">
+        <!-- <h4 for="guardian_email_id">{{'shared.email' | translate}}</h4> -->
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input id="guardian_email_id" type="text" [(ngModel)]="guardian.email" formControlName="email"
+                class="form-control" placeholder="{{'shared.email' | translate}}">
+        </div>
     </div>
 
     <!-- gender -->
@@ -46,8 +56,12 @@
 
     <!-- ssn  -->
     <div class="col-sm-8">
-        <h4 for="guardian_ssn_id">{{'guardian.shared.ssn' | translate}}</h4>
-        <input id="guardian_ssn_id" type="text" [(ngModel)]="guardian.ssn" formControlName="ssn" class="form-control">
+        <!-- <h4 for="guardian_ssn_id">{{'guardian.shared.ssn' | translate}}</h4> -->
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-plus"></i></span>
+            <input id="guardian_ssn_id" type="text" [(ngModel)]="guardian.ssn" formControlName="ssn"
+                class="form-control" placeholder="{{'guardian.shared.ssn' | translate}}">
+        </div>
         <div *ngIf="controls.ssn.touched && controls.ssn.errors?.required" class="alert alert-danger">
             {{'guardian.shared.ssnMsg' | translate}}
         </div>
@@ -55,9 +69,12 @@
 
     <!-- phone  -->
     <div class="col-sm-8">
-        <h4 for="guardian_phone_id">{{'shared.phone' | translate}}</h4>
-        <input id="guardian_phone_id" type="text" [(ngModel)]="guardian.phone" formControlName="phone"
-            class="form-control">
+        <!-- <h4 for="guardian_phone_id">{{'shared.phone' | translate}}</h4> -->
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+            <input id="guardian_phone_id" type="text" [(ngModel)]="guardian.phone" formControlName="phone"
+                class="form-control" placeholder="{{'shared.phone' | translate}}">
+        </div>
         <div *ngIf="controls.phone.touched && controls.phone.errors?.required" class="alert alert-danger">
             {{'shared.phoneMsg' | translate}}
         </div>
@@ -65,8 +82,12 @@
 
     <!-- age-->
     <div class="col-sm-6">
-        <h4 class="control-label">{{'shared.age'|translate}}</h4>
-        <input min="0" type="number" formControlName="age" [(ngModel)]="guardian.age" class="form-control">
+        <!-- <h4 class="control-label">{{'shared.age'|translate}}</h4> -->
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-plus"></i></span>
+            <input min="0" type="number" formControlName="age" [(ngModel)]="guardian.age" class="form-control"
+                placeholder="{{'shared.age'|translate}}">
+        </div>
         <div *ngIf="controls.age.touched && controls.age.errors?.required" class="alert alert-danger">
             {{'shared.ageMsg'|translate}}
         </div>

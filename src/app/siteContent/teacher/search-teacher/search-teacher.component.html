@@ -1,1 +1,33 @@
-<p>search-teacher works!</p>
+<div class="container">
+   <h1 class="text-center school-headers">{{'student.search.header' | translate}}</h1>
+
+   <!-- Search Section need to move-->
+   <form [formGroup]="checkName" (submit)="search()">
+      <div class="row center-screen">
+
+         <div class="col-sm-10 form-group">
+
+            <!-- search  by name -->
+            <div class="col-sm-7 ltr">
+               <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+                  <input type="text" class="form-control" formControlName="name" [(ngModel)]="name"
+                     placeholder="{{'shared.searchName' | translate}}" (keyup)="clearResults()">
+               </div>
+               <div *ngIf="controls.name.touched && controls.name.errors?.required" class="alert alert-danger">
+                  {{'shared.searchNameMsg' | translate}}
+               </div>
+            </div>
+
+            <!-- start search -->
+            <div class="col-sm-3">
+               <button type="submit" class="form-control btn btn-primary"
+                  [disabled]="checkName.invalid || inPrograss">{{'shared.searchBtn' | translate}}</button>
+            </div>
+
+            <button (click)="pristine()">sdsds</button>
+            
+         </div>
+      </div>
+   </form>
+</div>

@@ -129,7 +129,7 @@
             "nameMsg": "Please Enter Student Name",
             "save": "Add Student",
             "remainFees": "Remain Fees",
-            "remainFeesMsg ": "Please Enter Remain Fees",
+            "remainFeesMsg": "Please Enter Remain Fees",
             "paidFees": "Paid Fees",
             "paidFeesMsg": "Please Enter Paid Fees"
         },
@@ -139,7 +139,10 @@
             "level": "Class"
         },
         "details": {
-            "header": "Student Details"
+            "header": "Student Details",
+            "noData": "Student You Search About Not Found",
+            "getGrade":"Get Grade",
+            "gradeHeader":"Grade Details"
         }
     },
     "teacher": {
@@ -210,6 +213,9 @@
             "month": "Month",
             "monthMsg": "Enter Valid Month",
             "degree": "Degree"
+        },
+        "add": {
+            "noData": "Please Select Student First Then Add Its Grade"
         }
     }
 }

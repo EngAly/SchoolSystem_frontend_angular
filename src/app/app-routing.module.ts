@@ -62,7 +62,7 @@ const routes: Routes = [
 
 
   // shows 
-  { path: "student/search/:id", component: StudentDetailsComponent },
+  { path: "student/details/:id", component: StudentDetailsComponent },
 ];
 
 @NgModule({

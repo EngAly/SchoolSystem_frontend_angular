@@ -60,7 +60,7 @@
                     <div class="col-sm-7">
                         <!-- <h4 class="control-label">{{'shared.age'|translate}}</h4> -->
                         <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-plus"></i></span>
                             <input type="number" formControlName="age" ngModel [(ngModel)]="student.age"
                                 class="form-control" placeholder="{{'shared.age'|translate}}">
                         </div>
@@ -71,17 +71,26 @@
 
                     <!-- date of birth -->
                     <div class="col-sm-7">
-                        <h4 class="control-label ">{{'shared.dob'|translate}}</h4>
-                        <input class="form-control" type="date" formControlName="dob" [(ngModel)]="student.dob">
+                        <!-- <h4 class="control-label ">{{'shared.dob'|translate}}</h4> -->
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            <input type="text" formControlName="dob" [(ngModel)]="student.dob"
+                                onfocus="(this.type='date')" onblur="(this.type='text')"
+                                placeholder="{{'shared.dob'|translate}}" class="form-control">
+                        </div>
                         <div *ngIf="controls.dob.touched && controls.dob.errors?.required" class="alert alert-danger">
                             {{'shared.dobMsg'|translate}}</div>
                     </div>
 
                     <!--joinDate-->
                     <div class="col-sm-7" style="text-align: start;">
-                        <h4 class="control-label">{{'shared.joinDate'|translate}}</h4>
-                        <input type="date" formControlName="joinDate" [(ngModel)]="student.joinDate"
-                            class="form-control">
+                        <!-- <h4 class="control-label">{{'shared.joinDate'|translate}}</h4> -->
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            <input type="text" formControlName="joinDate" [(ngModel)]="student.joinDate"
+                                onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control"
+                                placeholder="{{'shared.joinDate'|translate}}">
+                        </div>
                         <div *ngIf="controls.joinDate.touched && controls.joinDate.errors?.required"
                             class="alert alert-danger">
                             {{'shared.joinDateMsg'|translate}}</div>
@@ -140,7 +149,7 @@
                         </div>
                         <div *ngIf="controls.remainFees.touched && controls.remainFees.errors?.required"
                             class="alert alert-danger">
-                            {{'student.shared.remainFeesMsg'|translate}}
+                            {{'student.shared.remainFeesMsg' | translate}}
                         </div>
                     </div>
 
@@ -164,7 +173,7 @@
                     <!-- Save Details -->
                     <div class="col-sm-7 btn-distance">
                         <input [disabled]="formData.invalid || !isGuardianValid || inPrograss" type="submit"
-                           (click)="save()" class="form-control btn btn-success" value="{{'shared.save'|translate}}">
+                            (click)="save()" class="form-control btn btn-success" value="{{'shared.save'|translate}}">
 
                         <!-- <input type="submit"
                             class="form-control btn btn-success" value="{{'shared.save'|translate}}"> -->

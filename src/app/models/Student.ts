@@ -1,5 +1,6 @@
 import { Level } from './Level';
 import { Guardian } from './Guardian';
+import { Grade } from './Grade';
 
 export class Student {
     id: number;
@@ -16,4 +17,5 @@ export class Student {
     notes: string;
     level: Level;
     guardian: Guardian;
+    grades: Grade[];
 }

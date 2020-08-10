@@ -87,3 +87,14 @@ $selected: rgb(16, 167, 96);
 .input-group , .ui-margin{
   margin-bottom: 10px;
 }
+
+// aligns
+@mixin setDir($dir) {
+   direction: $dir ;
+}
+.rtl{
+   @include setDir(rtl);
+}
+.ltr{
+   @include setDir(ltr);
+}
