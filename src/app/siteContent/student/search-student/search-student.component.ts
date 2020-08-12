@@ -46,11 +46,11 @@ export class SearchStudentComponent {
     }
   }
 
-  search() {
+  searchByName() {
     this.inPrograss = true;
     this.service.getByName(this.name).subscribe(
       data => {
-        console.log(data)
+      //   console.log(data)
         this.items = data['content'];
         this.currentPage = data['pageable']['pageNumber'];
         this.inPrograss = false;

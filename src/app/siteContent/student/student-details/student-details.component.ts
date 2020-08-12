@@ -10,19 +10,34 @@ import { Grade } from 'src/app/models/Grade';
    templateUrl: './student-details.component.html',
    styleUrls: ['./student-details.component.scss']
 })
-export class StudentDetailsComponent implements OnDestroy {
-
+export class StudentDetailsComponent implements OnInit, OnDestroy {
 
    student = new Student();
    grade = new Grade();
 
-   // test if there data
+   // flag to use if there data
    hasData = false;
 
+   /**
+    * inject all services that component dependant about it
+    * @param service 
+    * @param _cache 
+    * @param activeRoute 
+    * @param route 
+    */
    constructor(private service: StudentService, private _cache: CacheObjectService, private activeRoute: ActivatedRoute, private route: Router) {
-      // grap paramter from route snapshot (url)
+   }
+
+   /**
+    * init grade object with ready value to be fast for user to INC And DEC 
+    * grap paramter from route snapshot (url)
+    * test if cache service has data then handle data from cache service
+    * if no cache data from id in url get student by id if id not found
+    * get message student not found
+    */
+   ngOnInit(): void {
+      this.grade = { year: 2010, month: 6, grade: this.grade.grade }
       let id = parseInt(this.activeRoute.snapshot.paramMap.get('id'))
-      //  grab data from cache  service
       if (Object.keys(this._cache.getObject).length > 0) {
          this.student = this._cache.getObject;
          this.hasData = true;
@@ -33,6 +48,10 @@ export class StudentDetailsComponent implements OnDestroy {
       }
    }
 
+   /**
+    * get student from server side by its id
+    * @param id 
+    */
    getById(id: number) {
       this.service.findById(id).subscribe(
          data => {
@@ -45,15 +64,8 @@ export class StudentDetailsComponent implements OnDestroy {
    }
 
    /**
-    * cache object 
-    */
-   persistObject() {
-      this._cache.setObject = this.student;
-   }
-
-   /**
-    * add new grade to student 
-    * go to another gui with saved student data and add grade to it
+    * cache student object to cache service to handle it in add grade component
+    * go to another gui with cached student data and add grade to it
     */
    setGrade() {
       this._cache.setObject = this.student;
@@ -61,29 +73,34 @@ export class StudentDetailsComponent implements OnDestroy {
       // this.route.navigate([this.student.id], { relativeTo: this.activeRoute })
    }
 
-   ngOnDestroy(): void {
-      //   this._cache.setObject = null
-   }
-
    /**
-    * search about grade by year and month
+    * search about grade by year and month and 
+    * inject it to selected it in dom
     */
    getGradeByYearAndMonth() {
       this.student.grades.filter(
          // item refer to grade
          item => {
             if (item.year == this.grade.year && item.month == this.grade.month) {
-               // alert(JSON.stringify(item.grade));
                this.grade.grade = item.grade
+               // append table grade to select id place it best than [innerHtml] property in <div>
+               document.getElementById('grade_id').innerHTML = this.grade.grade;
             }
          }
       )
    }
 
-   /**
-    * not implememt
-    */
-   deletestudentById(){
 
+   update() {
+      //  cache object 
+      // this._cache.setObject = this.student;
+   }
+
+   deleteById() {
+
+   }
+
+   ngOnDestroy(): void {
+      //   this._cache.setObject = null
    }
 }

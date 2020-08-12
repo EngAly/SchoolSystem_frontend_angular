@@ -1,1 +1,8 @@
-<p>search-worker works!</p>
+<div class="container">
+   <h1>no arrange</h1>
+   {{items | json}}
+
+   <button type="button" (click)="btn()">arrange</button>
+   <h1>arranged</h1>
+   {{after | json}}
+</div>

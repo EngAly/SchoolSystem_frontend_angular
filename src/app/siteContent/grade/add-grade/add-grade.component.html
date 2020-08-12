@@ -25,7 +25,7 @@
 
 
       <!--Start Form-->
-      <form [formGroup]="formData" (submit)="save()">
+      <form [formGroup]="formData">
          <div class="row">
             <div class="form-group center-screen">
 
@@ -61,7 +61,7 @@
 
                <!-- save grade  -->
                <div class="col-sm-2 btn-distance">
-                  <input type="submit" [disabled]="formData.invalid || inPrograss" class="form-control btn btn-primary"
+                  <input (click)="save()" [disabled]="formData.invalid || inPrograss" class="form-control btn btn-primary"
                      value="{{'shared.save' | translate}}">
                   <!-- <input type="submit" [disabled]="formData.invalid || inPrograss" class="form-control btn btn-primary"
               value="{{'shared.save' | translate}}"> -->

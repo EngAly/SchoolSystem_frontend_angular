@@ -19,6 +19,7 @@ import { AddGuardianComponent } from './siteContent/guardian/add-guardian/add-gu
 
 // contains all layouts
 import { Layouts } from './layout/layouts';
+import { TeacherDetailsComponent } from './siteContent/teacher/teacher-details/teacher-details.component';
  
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { Layouts } from './layout/layouts';
     routingComponent,
     SearchGuardianComponent,
     AddGuardianComponent,
-    Layouts
+    Layouts,
+    TeacherDetailsComponent
     ],
   imports: [
     BrowserModule,

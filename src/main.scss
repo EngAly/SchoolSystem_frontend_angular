@@ -88,7 +88,7 @@ $selected: rgb(16, 167, 96);
   margin-bottom: 10px;
 }
 
-// aligns
+// aligns left and right
 @mixin setDir($dir) {
    direction: $dir ;
 }

@@ -42,7 +42,7 @@
 
             <!--  TO DO -->
             <div class="list-group-item"><button class="btn btn-primary btn-distance" routerLink="/update-student"
-                  routerLinkActive="active" (click)="persistObject()">Update student </button>
+                  routerLinkActive="active" (click)="update()">Update student </button>
 
                <button class="btn btn-primary btn-distance" routerLinkActive="active" (click)="setGrade()"> Set Grade
                </button>
@@ -93,7 +93,7 @@
             <label class="list-group-item">{{'shared.desc' | translate}} : <span
                   class="details">{{student.guardian.notes}}</span></label>
 
-            <label class="list-group-item"><button class="btn btn-danger" (click)="deletestudentById()">Delete Current
+            <label class="list-group-item"><button class="btn btn-danger" (click)="deleteById()">Delete Current
                   student</button>
             </label>
 
@@ -101,13 +101,13 @@
          </div>
       </div>
    </div>
-
    <hr>
 
    <!-- grade details -->
    <div class="container">
       <h1 class="text-center school-headers">{{'student.details.gradeHeader' | translate}}</h1>
       <div class="row horizontal-middle">
+       
          <!-- year-->
          <div class="col-sm-3 ltr">
             <div class="input-group">
@@ -126,22 +126,20 @@
             </div>
          </div>
 
-         <!-- Get Grade  -->
+         <!-- btn to get grade -->
          <div class="col-sm-2 ">
             <input type="submit" (click)="getGradeByYearAndMonth()" class="form-control btn btn-primary"
                value="{{'student.details.getGrade'|translate}}">
          </div>
       </div>
 
-      <!-- show grade here -->
-      <!-- <ckeditor [(ngModel)]="grade.grade"></ckeditor> -->
-      <div class="horizontal-middle">
-         <div class="col-sm-6" [innerHtml]="grade.grade"></div>
+      <!-- show grade canvas -->
+       <div class="horizontal-middle">
+         <div class="col-sm-6" id="grade_id"></div>
       </div>
 
-
    </div>
-   <br> <br> <br>
+   <br> <br>
 </div>
 
 <!-- if no content -->

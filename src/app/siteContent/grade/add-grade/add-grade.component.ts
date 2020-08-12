@@ -25,7 +25,9 @@ export class AddGradeComponent implements EndPointAbstracts, OnInit {
       grade: new FormControl('', Validators.required),
    })
 
-   constructor(private _cache: CacheObjectService, private service: StudentService) { }
+   constructor(private _cache: CacheObjectService, private service: StudentService) {
+      this.grade = { grade: this.primaryTable(), month: 6, year: 2010 }
+   }
 
    ngOnInit() {
       if (Object.keys(this._cache.getObject).length > 0) {
@@ -56,33 +58,56 @@ export class AddGradeComponent implements EndPointAbstracts, OnInit {
    }
 
    private reset() {
-      this.grade = { grade: this.grade.grade, month: null, year: null }
       // return form data to pristine state
-      this.formData.reset();
+      // this.formData.reset();
    }
 
    /**
-    * read primary template
+    * ready table template
     */
    primaryTable() {
-      this.grade.grade = `
-      <table align="center" border="1" cellpadding="1" cellspacing="1" class="table table-bordered table-hover table-striped" dir="ltr" style="width:500px">
-	   <tbody>
+      return this.grade.grade = `
+      <table align="center" border="1" cellpadding="1" cellspacing="1" class="table table-bordered table-hover table-striped" dir="rtl" style="width:300px">
+	<thead>
 		<tr>
-			<td>subject</td>
-			<td>&nbsp;grade</td>
+			<th scope="col"><span style="font-size:18px">الماده</span></th>
+			<th scope="col"><span style="font-size:18px">الدرجه</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="text-align:center"><span style="font-size:14px">عربي</span></td>
+			<td style="text-align:center">&nbsp;</td>
 		</tr>
 		<tr>
-			<td>1</td>
-			<td>3</td>
+			<td style="text-align:center"><span style="font-size:14px">لغه إنجليزيه</span></td>
+			<td style="text-align:center">&nbsp;</td>
 		</tr>
 		<tr>
-			<td>2</td>
-			<td>3</td>
+			<td style="text-align:center"><span style="font-size:14px">رياضيات</span></td>
+			<td style="text-align:center">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="text-align:center"><span style="font-size:14px">علوم</span></td>
+			<td style="text-align:center">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="text-align:center"><span style="font-size:14px">كيمياء</span></td>
+			<td style="text-align:center">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="text-align:center"><span style="font-size:14px">فيزياء</span></td>
+			<td style="text-align:center">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="text-align:center"><span style="font-size:14px">تاريخ</span></td>
+			<td style="text-align:center">&nbsp;</td>
 		</tr>
 	</tbody>
 </table>
+
 <p>&nbsp;</p>
+
       `
    }
 }

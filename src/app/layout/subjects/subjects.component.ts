@@ -4,38 +4,40 @@ import { SubjectService } from 'src/app/services/subject.service';
 import { LayoutAbstracts } from 'src/app/interfaces/LayoutAbstracts';
 
 @Component({
-  selector: 'subjects',
-  templateUrl: './subjects.component.html',
-  styleUrls: ['./subjects.component.scss']
+   selector: 'subjects',
+   templateUrl: './subjects.component.html',
+   styleUrls: ['./subjects.component.scss']
 })
 export class SubjectsComponent implements LayoutAbstracts<Subject>{
 
-  items: Subject[];
+   items: Subject[];
+   count = 0
 
-  constructor(private service: SubjectService) {
-    this.service.getAll(100).subscribe(
-      data => {
-        this.items = data['content'];
-        // console.log(data);
-      },
-      error => console.log(error)
-    );
-  }
+   constructor(private service: SubjectService) {
+      this.service.getAll(100).subscribe(
+         data => {
+            this.items = data['content'];
+            // console.log(data);
+         },
+         error => console.log(error)
+      );
+   }
 
-  public toggleItem(item: Subject) {
-    this.items.filter(item => item['isDone']).filter(item => delete item['isDone']);
-    item['isDone'] = item['isDone'] == true ? false : true;
-  }
+   public toggleItem(item: Subject) {
+      this.items.filter(item => item['isDone']).filter(item => delete item['isDone']);
+      item['isDone'] = item['isDone'] == true ? false : true;
+      this.count = 1
+   }
 
-  getSelectedItems(): Subject[] {
-    let selected = new Array<Subject>();
-    if (this.items) {
-      this.items.filter(item => {
-        if (item['isDone']) {
-          selected.push({ id: item.id, name: item.name, desc: item.desc })
-        }
-      })
-    }
-    return selected;
-  }
+   getSelectedItems(): Subject[] {
+      let selected = new Array<Subject>();
+      if (this.items) {
+         this.items.filter(item => {
+            if (item['isDone']) {
+               selected.push({ id: item.id, name: item.name, desc: item.desc })
+            }
+         })
+      }
+      return selected;
+   }
 }

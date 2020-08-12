@@ -1,221 +1,226 @@
 {
-    "scratch": {
-        "login": {
-            "hint": "Enter Your Authentication",
-            "username": "UserName",
-            "password": "Password",
-            "loginBtn": "Login",
-            "usernameMsg": "Please Enter Your UserName",
-            "passwordMsg": "Please Enter Your Password"
-        },
-        "register": {
-            "hint": "Enter Your Registeration Details",
-            "confirmPassword": "Confirm Your Password",
-            "confirmPasswordMsg": "Two Passwords Not Identical",
+   "scratch": {
+      "login": {
+         "hint": "Enter Your Authentication",
+         "username": "UserName",
+         "password": "Password",
+         "loginBtn": "Login",
+         "usernameMsg": "Please Enter Your UserName",
+         "passwordMsg": "Please Enter Your Password"
+      },
+      "register": {
+         "hint": "Enter Your Registeration Details",
+         "confirmPassword": "Confirm Your Password",
+         "confirmPasswordMsg": "Two Passwords Not Identical",
+         "register": "Register"
+      },
+      "start": {
+         "sitename": "School Management",
+         "languageMenu": {
+            "name": "Language",
+            "arabic": "Arabic",
+            "english": "English"
+         },
+         "adminMenu": {
+            "name": "Admin",
+            "login": "Login",
+            "logout": "Logout",
             "register": "Register"
-        },
-        "start": {
-            "sitename": "School Management",
-            "languageMenu": {
-                "name": "Language",
-                "arabic": "Arabic",
-                "english": "English"
-            },
-            "adminMenu": {
-                "name": "Admin",
-                "login": "Login",
-                "logout": "Logout",
-                "register": "Register"
-            },
-            "addMenu": {
-                "name": "Add New",
-                "student": "Student",
-                "teacher": "Teacher",
-                "worker": "Worker",
-                "class": "Class",
-                "subject": "Subject",
-                "guardianship": "Guardianship",
-                "grade": "Add Grade To Student"
-            },
-            "statisticsMenu": {
-                "name": "Statistics"
-            },
-            "searchMenu": {
-                "name": "Search About"
-            }
-        }
-    },
-    "layout": {
-        "subjects": {
-            "list": "subjects"
-        },
-        "guardianships": {
-            "list": "Choice Guardianships"
-        },
-        "class": {
-            "list": "class",
-            "hint": "press ctrl key to select multi item"
-        },
-        "status": {
-            "list": "status"
-        }
-    },
-    "shared": {
-        "gender": "Gender",
-        "genderMsg": "Please Define Your Gender",
-        "male": "Male",
-        "female": "Female",
-        "phone": "Phone",
-        "phoneMsg": "Please ُEnter Phone",
-        "address": "Address",
-        "addressMsg": "Please ُEnter Address",
-        "age": "Age",
-        "ageMsg": "Please ُEnter Age",
-        "desc": "Description / Notes",
-        "searchName": "Type Name Then Click Search Button",
-        "searchNameMsg": "Please Enter Name That You Want To Search",
-        "searchBtn": "Search",
-        "joinDate": "Join Date",
-        "joinDateMsg": "Please Enter Join Date",
-        "save": "Save Data",
-        "savedMsg": "Data Added successfully",
-        "unsavedMsg": "Data Not Added successfully",
-        "email": "Email",
-        "emailMsg": "Please Enter Valid Email",
-        "dob": "Date Of Birth",
-        "dobMsg": "Please Enter Date Of Birth"
-    },
-    "subject": {
-        "add": {
-            "hint": "Add New Subject",
-            "name": "Subject Name",
-            "nameMsg": "Please Insert Subject Name",
-            "save": "Add Subject",
-            "savedMsg": "Subject Added successfully",
-            "unsavedMsg": "Subject Not Added successfully Maybe Subject Repeated"
-        }
-    },
-    "class": {
-        "add": {
-            "hint": "Add New Class",
-            "name": "Insert Class Name",
-            "nameMsg": "Please Insert Class Name",
-            "floor": "Insert Class Floor",
-            "floorMsg": "Please Insert Class Floor",
-            "maxSize": "Insert Class Maximum Size",
-            "maxSizeMsg": "Please Insert Class Maximum Size",
-            "currentSize": "Insert Class Current Size",
-            "currentSizeMsg": "Please Insert Class Current Size",
-            "save": "Add Class",
-            "savedMsg": "Class Added successfully",
-            "unsavedMsg": "Class Not Added successfully Maybe Class Repeated"
-        },
-        "search": {
-            "hint": "Classes Snippet",
-            "input": "Write Class Name Then Click Search Button",
-            "id": "Id",
-            "name": "Name",
-            "floor": "Floor",
-            "maxSize": "MaxSize",
-            "currentSize": "CurrentSize",
-            "nameMsg": "Please Enter Name That You Want To Search",
-            "btn": "Search"
-        }
-    },
-    "student": {
-        "shared": {
-            "header": "Add / Update Student",
-            "name": "Name",
-            "nameMsg": "Please Enter Student Name",
-            "save": "Add Student",
-            "remainFees": "Remain Fees",
-            "remainFeesMsg": "Please Enter Remain Fees",
-            "paidFees": "Paid Fees",
-            "paidFeesMsg": "Please Enter Paid Fees"
-        },
-        "search": {
-            "header": "Search About Student",
-            "status": "Status",
-            "level": "Class"
-        },
-        "details": {
-            "header": "Student Details",
-            "noData": "Student You Search About Not Found",
-            "getGrade":"Get Grade",
-            "gradeHeader":"Grade Details"
-        }
-    },
-    "teacher": {
-        "shared": {
-            "header": "Add / Update Teacher",
-            "name": "Name",
-            "nameMsg": "Please Enter Teacher Name",
-            "doh": "Date Of Hire",
-            "dohMsg": "Please Enter Date Of Hire",
-            "maritalStatus": "MaritalStatus",
-            "maritalStatusMsg": "Please Select MaritalStatus",
-            "single": "Single",
-            "married": "Married",
-            "divorced": "Divorced",
-            "salary": "Salary",
-            "salaryMsg": "Please Enter Salary",
-            "qualification": "Qualification",
-            "qualificationMsg": "Please Enter Qualification",
-            "ex": "Years Of Experience",
-            "exMsg": "Please Enter Years Of Experience",
-            "graduateDate": "Graduate Date"
-        }
-    },
-    "worker": {
-        "add": {
-            "hint": "Add New Worker",
-            "name": "Worker Name",
-            "save": "Add Worker",
-            "savedMsg": "Worker Added successfully",
-            "unsavedMsg": "Worker Not Added successfully"
-        }
-    },
-    "guardianship": {
-        "add": {
-            "hint": "Add New Guardianship",
-            "name": "Guardianship Name",
-            "nameMsg": "Please Insert Guardianship Name",
-            "desc": "Description",
-            "save": "Add Guardianship",
-            "savedMsg": "Guardianship Added successfully",
-            "unsavedMsg": "Guardianship not Added successfully May Be it Duplicated"
-        },
-        "search": {
-            "hint": "Guardianships Snippet",
-            "id": "Id",
-            "name": "Name"
-        }
-    },
-    "guardian": {
-        "shared": {
-            "header": "Guardian Details",
-            "name": "Guardian Name",
-            "nameMsg": "Please Insert Guardian Name",
-            "desc": "Description",
-            "job": "Job",
-            "jobMsg": "Please Enter Your Job",
-            "email": "Email",
-            "ssn": "SSN / Id",
-            "ssnMsg": "Please Enter Your SSN / Personal Identified"
-        },
-        "search": {}
-    },
-    "grade": {
-        "shared": {
-            "header": "Add Grade To",
-            "year": "Year",
-            "yearMsg": "Enter Valid Year",
-            "month": "Month",
-            "monthMsg": "Enter Valid Month",
-            "degree": "Degree"
-        },
-        "add": {
-            "noData": "Please Select Student First Then Add Its Grade"
-        }
-    }
+         },
+         "addMenu": {
+            "name": "Add New",
+            "student": "Student",
+            "teacher": "Teacher",
+            "worker": "Worker",
+            "class": "Class",
+            "subject": "Subject",
+            "guardianship": "Guardianship",
+            "grade": "Add Grade To Student"
+         },
+         "statisticsMenu": {
+            "name": "Statistics"
+         },
+         "searchMenu": {
+            "name": "Search About"
+         }
+      }
+   },
+   "layout": {
+      "subjects": {
+         "list": "subjects"
+      },
+      "guardianships": {
+         "list": "Choice Guardianships"
+      },
+      "class": {
+         "list": "class",
+         "hint": "press ctrl key to select multi item"
+      },
+      "status": {
+         "list": "status"
+      }
+   },
+   "shared": {
+      "gender": "Gender",
+      "genderMsg": "Please Define Your Gender",
+      "male": "Male",
+      "female": "Female",
+      "phone": "Phone",
+      "phoneMsg": "Please ُEnter Phone",
+      "address": "Address",
+      "addressMsg": "Please ُEnter Address",
+      "age": "Age",
+      "ageMsg": "Please ُEnter Age",
+      "desc": "Description / Notes",
+      "searchName": "Type Name Then Click Search Button",
+      "searchNameMsg": "Please Enter Name That You Want To Search",
+      "searchBtn": "Search",
+      "joinDate": "Join Date",
+      "joinDateMsg": "Please Enter Join Date",
+      "save": "Save Data",
+      "savedMsg": "Data Added successfully",
+      "unsavedMsg": "Data Not Added successfully",
+      "email": "Email",
+      "emailMsg": "Please Enter Valid Email",
+      "dob": "Date Of Birth",
+      "dobMsg": "Please Enter Date Of Birth"
+   },
+   "subject": {
+      "add": {
+         "hint": "Add New Subject",
+         "name": "Subject Name",
+         "nameMsg": "Please Insert Subject Name",
+         "save": "Add Subject",
+         "savedMsg": "Subject Added successfully",
+         "unsavedMsg": "Subject Not Added successfully Maybe Subject Repeated"
+      }
+   },
+   "class": {
+      "add": {
+         "hint": "Add New Class",
+         "name": "Insert Class Name",
+         "nameMsg": "Please Insert Class Name",
+         "floor": "Insert Class Floor",
+         "floorMsg": "Please Insert Class Floor",
+         "maxSize": "Insert Class Maximum Size",
+         "maxSizeMsg": "Please Insert Class Maximum Size",
+         "currentSize": "Insert Class Current Size",
+         "currentSizeMsg": "Please Insert Class Current Size",
+         "save": "Add Class",
+         "savedMsg": "Class Added successfully",
+         "unsavedMsg": "Class Not Added successfully Maybe Class Repeated"
+      },
+      "search": {
+         "hint": "Classes Snippet",
+         "input": "Write Class Name Then Click Search Button",
+         "id": "Id",
+         "name": "Name",
+         "floor": "Floor",
+         "maxSize": "MaxSize",
+         "currentSize": "CurrentSize",
+         "nameMsg": "Please Enter Name That You Want To Search",
+         "btn": "Search"
+      }
+   },
+   "student": {
+      "shared": {
+         "header": "Add / Update Student",
+         "name": "Name",
+         "nameMsg": "Please Enter Student Name",
+         "save": "Add Student",
+         "remainFees": "Remain Fees",
+         "remainFeesMsg": "Please Enter Remain Fees",
+         "paidFees": "Paid Fees",
+         "paidFeesMsg": "Please Enter Paid Fees"
+      },
+      "search": {
+         "header": "Search About Student",
+         "status": "Status",
+         "level": "Class"
+      },
+      "details": {
+         "header": "Student Details",
+         "noData": "Student You Search About Not Found",
+         "getGrade": "Get Grade",
+         "gradeHeader": "Grade Details"
+      }
+   },
+   "teacher": {
+      "shared": {
+         "header": "Add / Update Teacher",
+         "name": "Name",
+         "nameMsg": "Please Enter Teacher Name",
+         "doh": "Date Of Hire",
+         "dohMsg": "Please Enter Date Of Hire",
+         "maritalStatus": "MaritalStatus",
+         "maritalStatusMsg": "Please Select MaritalStatus",
+         "single": "Single",
+         "married": "Married",
+         "divorced": "Divorced",
+         "salary": "Salary",
+         "salaryMsg": "Please Enter Salary",
+         "qualification": "Qualification",
+         "qualificationMsg": "Please Enter Qualification",
+         "ex": "Years Of Experience",
+         "exMsg": "Please Enter Years Of Experience",
+         "graduateDate": "Graduate Date"
+      },
+      "search": {
+         "header": "Search About Teacher",
+          "level": "Class",
+          "subject":"Subject"
+      }
+   },
+   "worker": {
+      "add": {
+         "hint": "Add New Worker",
+         "name": "Worker Name",
+         "save": "Add Worker",
+         "savedMsg": "Worker Added successfully",
+         "unsavedMsg": "Worker Not Added successfully"
+      }
+   },
+   "guardianship": {
+      "add": {
+         "hint": "Add New Guardianship",
+         "name": "Guardianship Name",
+         "nameMsg": "Please Insert Guardianship Name",
+         "desc": "Description",
+         "save": "Add Guardianship",
+         "savedMsg": "Guardianship Added successfully",
+         "unsavedMsg": "Guardianship not Added successfully May Be it Duplicated"
+      },
+      "search": {
+         "hint": "Guardianships Snippet",
+         "id": "Id",
+         "name": "Name"
+      }
+   },
+   "guardian": {
+      "shared": {
+         "header": "Guardian Details",
+         "name": "Guardian Name",
+         "nameMsg": "Please Insert Guardian Name",
+         "desc": "Description",
+         "job": "Job",
+         "jobMsg": "Please Enter Your Job",
+         "email": "Email",
+         "ssn": "SSN / Id",
+         "ssnMsg": "Please Enter Your SSN / Personal Identified"
+      },
+      "search": {}
+   },
+   "grade": {
+      "shared": {
+         "header": "Add Grade To",
+         "year": "Year",
+         "yearMsg": "Enter Valid Year",
+         "month": "Month",
+         "monthMsg": "Enter Valid Month",
+         "degree": "Degree"
+      },
+      "add": {
+         "noData": "Please Select Student First Then Add Its Grade"
+      }
+   }
 }

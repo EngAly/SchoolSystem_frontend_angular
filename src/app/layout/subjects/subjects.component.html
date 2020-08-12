@@ -1,8 +1,15 @@
+<!--
+   note that:- 
+     A button element with no type attribute specified represents the
+     same thing as a button element with its type attribute set to "submit".
+     so that if you wan to embed another button form must define its type button
+-->
 <div class="dropdown ui-margin">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-th-list"></i></span>
-        <button class="dropdown-toggle btn btn-success btn-list list-canvas no-border" data-toggle="collapse"
+        <button type="button" class="dropdown-toggle btn btn-success btn-list list-canvas no-border" data-toggle="collapse"
             data-target="#subjects"> {{'layout.subjects.list' | translate}} <span class="caret"></span>
+            <span class="gap badge">{{count}}</span>
         </button>
     </div>
     <div id="subjects" class="collapse list-group">

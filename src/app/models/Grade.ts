@@ -2,7 +2,7 @@ import { Student } from './Student';
 
 export class Grade {
   // id: number;
-  month: string;
+  month: number;
   year: number;
   grade: string;
   // student: Student;

@@ -1,8 +1,9 @@
 <div class="dropdown">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-th-list"></i></span>
-        <button class="dropdown-toggle btn btn-success btn-list list-canvas no-border" data-toggle="collapse"
+        <button type="button" class="dropdown-toggle btn btn-success btn-list list-canvas no-border" data-toggle="collapse"
             data-target="#guardianships"> {{'layout.guardianships.list' | translate}} <span class="caret"></span>
+            <span class="gap badge">{{count}}</span>
         </button>
     </div>
     <div id="guardianships" class="collapse list-group">
