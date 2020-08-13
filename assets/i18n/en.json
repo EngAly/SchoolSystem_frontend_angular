@@ -4,7 +4,7 @@
          "hint": "Enter Your Authentication",
          "username": "UserName",
          "password": "Password",
-         "loginBtn": "Login",
+         "loginBtn": "  Login",
          "usernameMsg": "Please Enter Your UserName",
          "passwordMsg": "Please Enter Your Password"
       },
@@ -23,9 +23,9 @@
          },
          "adminMenu": {
             "name": "Admin",
-            "login": "Login",
+            "login": "SignIn",
             "logout": "Logout",
-            "register": "Register"
+            "register": "SignUp"
          },
          "addMenu": {
             "name": "Add New",
@@ -53,8 +53,8 @@
          "list": "Choice Guardianships"
       },
       "class": {
-         "list": "class",
-         "hint": "press ctrl key to select multi item"
+         "list": "Classes",
+         "hint": "Press ctrl key to select multi item"
       },
       "status": {
          "list": "status"
@@ -75,7 +75,7 @@
       "searchName": "Type Name Then Click Search Button",
       "searchNameMsg": "Please Enter Name That You Want To Search",
       "searchBtn": "Search",
-      "joinDate": "Join Date",
+      "joinDate": "Join_date",
       "joinDateMsg": "Please Enter Join Date",
       "save": "Save Data",
       "savedMsg": "Data Added successfully",
@@ -83,22 +83,34 @@
       "email": "Email",
       "emailMsg": "Please Enter Valid Email",
       "dob": "Date Of Birth",
-      "dobMsg": "Please Enter Date Of Birth"
+      "dobMsg": "Please Enter Date Of Birth",
+      "pagination": {
+         "first": "First",
+         "next": "Next",
+         "previous": "Previous",
+         "last": "Last"
+      }
    },
    "subject": {
       "add": {
          "hint": "Add New Subject",
-         "name": "Subject Name",
+         "name": "Subject",
          "nameMsg": "Please Insert Subject Name",
          "save": "Add Subject",
          "savedMsg": "Subject Added successfully",
          "unsavedMsg": "Subject Not Added successfully Maybe Subject Repeated"
+      },
+      "shared": {
+         "name": "Subject"
+      },
+      "search": {
+         "hint": "Search About Subject"
       }
    },
    "class": {
       "add": {
          "hint": "Add New Class",
-         "name": "Insert Class Name",
+         "name": "Class",
          "nameMsg": "Please Insert Class Name",
          "floor": "Insert Class Floor",
          "floorMsg": "Please Insert Class Floor",
@@ -120,6 +132,9 @@
          "currentSize": "CurrentSize",
          "nameMsg": "Please Enter Name That You Want To Search",
          "btn": "Search"
+      },
+      "shared": {
+         "name": "Class"
       }
    },
    "student": {
@@ -167,8 +182,12 @@
       },
       "search": {
          "header": "Search About Teacher",
-          "level": "Class",
-          "subject":"Subject"
+         "level": "Class",
+         "subject": "Subject"
+      },
+      "details": {
+         "header": "Teacher Details",
+         "noData": "Teacher You Search About Not Found"
       }
    },
    "worker": {
@@ -222,5 +241,10 @@
       "add": {
          "noData": "Please Select Student First Then Add Its Grade"
       }
+   },
+   "statistics": {
+      "teachers": "Teacher Staff",
+      "students": "Students",
+      "stat": "Numbers"
    }
 }
