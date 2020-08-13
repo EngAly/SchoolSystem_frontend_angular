@@ -1,0 +1,86 @@
+<div class="container">
+
+   <div class="center-screen">
+      <div class="school-headers">{{'scratch.register.hint' | translate}}</div>
+      <img id="profile-img" src="assets/images/user-avatar.jpeg" class="profile-img-card" width="350px" />
+   </div>
+
+   <form [formGroup]="formData" (submit)="save()">
+      <div class="row">
+         <div class="form-group center-screen">
+
+            <!-- username -->
+            <div class="col-sm-5 ltr">
+               <!-- <label for="username">{{'scratch.login.username' | translate}}</label> -->
+               <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input id="username" type="text" [(ngModel)]="user.username" formControlName="username"
+                     class="form-control" placeholder="{{'scratch.login.username' | translate}}">
+               </div>
+               <div *ngIf="controls.username.touched && controls.username.errors?.required" class="alert alert-danger">
+                  {{'scratch.login.usernameMsg' | translate}}
+               </div>
+            </div>
+
+            <!-- password -->
+            <div class="col-sm-5 ltr">
+               <!-- <label for="password">{{'scratch.login.password' | translate}}</label> -->
+               <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                  <input type="password" [(ngModel)]="user.password" formControlName="password" class="form-control"
+                     placeholder="{{'scratch.login.password' | translate}}">
+               </div>
+               <div *ngIf="controls.password.touched && controls.password.errors?.required" class="alert alert-danger">
+                  {{'scratch.login.passwordMsg' | translate}}
+               </div>
+            </div>
+
+            <!-- confirm password -->
+            <div class="col-sm-5 ltr">
+               <!-- <label for="password">{{'scratch.register.confirmPassword' | translate}}</label> -->
+               <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input type="password" [(ngModel)]="user.confirmPassword" formControlName="confirmPassword"
+                     class="form-control" placeholder="{{'scratch.register.confirmPassword' | translate}}">
+               </div>
+               <div *ngIf="user.password != user.confirmPassword" class="alert alert-danger">
+                  {{'scratch.register.confirmPasswordMsg' | translate}}
+               </div>
+            </div>
+
+            <!-- address -->
+            <div class="col-sm-5 ltr">
+               <!-- <label for="address">{{'shared.address' | translate}}</label> -->
+               <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                  <input id="address" type="text" [(ngModel)]="user.address" formControlName="address"
+                     class="form-control" placeholder="{{'shared.address' | translate}}">
+               </div>
+            </div>
+
+            <!-- gender -->
+            <div class="col-sm-4 ui-margin ltr" (change)="handleGenderChange($event)">
+               <div class="btn-group">
+                  <label class="btn btn-info no-border">
+                     <input type="radio" value="Male" formControlName="gender">
+                     <span>{{'shared.male' | translate}} </span>
+                  </label>
+                  <label class="btn btn-info no-border">
+                     <input type="radio" value="Female" formControlName="gender">
+                     <span>{{'shared.female' | translate}} </span>
+                  </label>
+               </div>
+               <div *ngIf="controls.gender.invalid && controls.gender.errors?.required" class="alert alert-danger">
+                  {{'shared.genderMsg' | translate}}
+               </div>
+            </div>
+
+            <div class="col-sm-4 btn-distance">
+               <input type="submit" [disabled]="formData.invalid" class="form-control btn btn-primary"
+                  value="{{'scratch.register.register' | translate}}">
+            </div>
+
+         </div>
+      </div>
+   </form>
+</div>

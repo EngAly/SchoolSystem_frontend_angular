@@ -1,0 +1,142 @@
+<div *ngIf="hasData;else noData">
+
+   <h1 class="text-center school-headers">{{'student.details.header' | translate}}</h1>
+   <hr />
+
+   <!-- student + guardian details -->
+   <div class="row" style="margin: 3px;">
+
+      <!--left section student details-->
+      <div class="col-sm-4 card">
+         <div class="card-header text-center"> {{'student.details.header' | translate}}</div>
+
+         <div class="list-group">
+            <label class="list-group-item">{{'student.shared.name' | translate}} : <span
+                  class="details">{{student.name}}</span></label>
+
+            <label class="list-group-item">{{'shared.dob' |translate}} : <span
+                  class="details">{{student.dob | date}}</span></label>
+
+            <label class="list-group-item">{{'shared.age' |translate}} : <span
+                  class="details">{{student.age}}</span></label>
+
+            <label class="list-group-item">{{'shared.gender' | translate}} : <span
+                  class="details">{{student.gender}}</span></label>
+
+            <label class="list-group-item">{{'shared.address' | translate}} : <span
+                  class="details">{{student.address}}</span></label>
+
+            <label class="list-group-item"> {{'shared.email' | translate}} : <span
+                  class="details">{{student.email}}</span></label>
+
+            <label class="list-group-item">{{'shared.joinDate' |translate}} : <span
+                  class="details">{{student.joinDate | date}}</span></label>
+
+            <label class="list-group-item">{{'layout.status.list' | translate}} : <span
+                  class="details">{{student.status}}</span></label>
+
+            <label class="list-group-item">{{'student.search.level' | translate}} : <span
+                  class="details">{{student.level.name}}</span></label>
+
+            <label class="list-group-item">{{'shared.desc' | translate}} : <span
+                  class="details">{{student.notes}}</span></label>
+
+
+            <div class="list-group-item horizontal-middle">
+               <div class="btn-group">
+                  <button class="btn btn-color btn-distance" (click)="update()">Update </button>
+                  <!--  TO DO -->
+                  <button class="btn btn-color btn-distance" (click)="setGrade()"> Set Grade </button>
+               </div>
+            </div>
+
+         </div>
+      </div>
+
+      <!-- center section student grade -->
+      <div class="col-sm-4">
+
+         <h1 class="text-center card-header">{{'student.details.gradeHeader' | translate}}</h1>
+
+         <!-- year-->
+         <div class="col-sm-6 ltr">
+            <div class="input-group">
+               <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+               <input type="number" class="form-control" [(ngModel)]="grade.year"
+                  placeholder="{{'grade.shared.year'|translate}}">
+            </div>
+         </div>
+
+         <!-- month-->
+         <div class="col-sm-6 ltr">
+            <div class="input-group">
+               <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+               <input min="1" max="12" type="number" [(ngModel)]="grade.month" class="form-control"
+                  placeholder="{{'grade.shared.month'|translate}}">
+            </div>
+         </div>
+
+         <!-- get grade button -->
+         <div class="col-sm-6 ui-margin">
+            <input type="submit" (click)="getGradeByYearAndMonth()" class="form-control btn btn-color"
+               value="{{'student.details.getGrade'|translate}}">
+         </div>
+
+         <!-- show grade canvas -->
+         <div class="col-sm-12" id="grade_id"></div>
+
+      </div>
+
+      <!--right section guardian details-->
+      <div class="col-sm-4 card">
+         <div class="card-header text-center">{{'guardian.shared.header' | translate}} </div>
+
+         <div class="list-group">
+
+            <label class="list-group-item">{{'guardian.shared.name' | translate}} : <span
+                  class="details">{{student.guardian.name}}</span></label>
+
+            <label class="list-group-item">{{'guardian.shared.ssn' | translate}} : <span
+                  class="details">{{student.guardian.ssn}}</span></label>
+
+            <label class="list-group-item">{{'shared.age' | translate}} : <span
+                  class="details">{{student.guardian.age}}</span></label>
+
+            <label class="list-group-item">{{'shared.gender' | translate}} : <span
+                  class="details">{{student.guardian.gender}}</span></label>
+
+            <label class="list-group-item">{{'guardian.shared.job' | translate}} : <span
+                  class="details">{{student.guardian.job}}</span></label>
+
+            <label class="list-group-item">{{'shared.email' | translate}} : <span
+                  class="details">{{student.guardian.email}}</span></label>
+
+            <label class="list-group-item">{{'shared.phone' | translate}} : <span
+                  class="details">{{student.guardian.phone}}</span></label>
+
+            <label class="list-group-item">{{'student.shared.paidFees' | translate}} : <span
+                  class="details">{{student.paidFees}}</span></label>
+
+            <label class="list-group-item">{{'student.shared.remainFees' | translate}} : <span
+                  class="details">{{student.remainFees}}</span></label>
+
+            <label class="list-group-item">{{'shared.desc' | translate}} : <span
+                  class="details">{{student.guardian.notes}}</span></label>
+
+            <label class="list-group-item horizontal-middle">
+               <button class="btn btn-danger" (click)="deleteById()">Delete Current student</button>
+            </label>
+
+         </div>
+      </div>
+   </div>
+   <br>
+   <br>
+</div>
+
+<!-- if no content -->
+<ng-template #noData>
+   <div class="container">
+      <h2 class="alert alert-info text-center">{{'student.details.noData' | translate}}</h2>
+   </div>
+</ng-template>

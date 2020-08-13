@@ -1,0 +1,91 @@
+<!--Start Container-->
+<div class="container">
+   <h1 class="text-center school-headers">{{'teacher.details.header' | translate}}</h1>
+   <hr />
+
+
+   <!--Start Row-->
+   <div class="row">
+
+      <!--start personal Information-->
+      <div class="col-sm-4 card">
+
+         <div class="card-header text-center"> {{'teacher.details.header'|translate}} </div>
+         <div class="list-group list-group-flush">
+
+            <label class="list-group-item">{{'teacher.shared.name'|translate}} :
+               <span class="details">{{teacher.name}}</span></label>
+
+            <label class="list-group-item">{{'shared.age'|translate}} : <span
+                  class="details">{{teacher.age}}</span></label>
+
+            <label class="list-group-item">{{'shared.gender'|translate}}: <span
+                  class="details">{{teacher.gender}}</span></label>
+
+            <label class="list-group-item">{{'shared.maritalStatus'|translate}}:
+               <span class="details">{{teacher.maritalStatus}}</span></label>
+
+            <label class="list-group-item">{{'shared.dob'|translate}} :
+               <span class="details">{{teacher.dob|date}}</span></label>
+
+            <label class="list-group-item">{{'teacher.shared.doh'|translate}} :
+               <span class="details">{{teacher.doh|date}}</span></label>
+
+            <label class="list-group-item">{{'shared.address'|translate}}: <span
+                  class="details">{{teacher.address}}</span></label>
+
+            <label class="list-group-item">{{'shared.email'|translate}}: <span
+                  class="details">{{teacher.email}}</span></label>
+
+            <label class="list-group-item">{{'teacher.shared.salary'|translate}}:
+               <span class="details">{{teacher.salary}}</span></label>
+
+            <!-- reuse i18n -->
+            <label class="list-group-item">{{'guardian.shared.ssn'|translate}}:
+               <span class="details">{{teacher.ssn}}</span></label>
+         </div>
+      </div>
+
+      <!--start Information-->
+      <div class="col-sm-4 card">
+
+         <div class="card-header text-center">{{'teacherInfo'|translate}} </div>
+         <div class="list-group list-group-flush">
+
+            <label class="list-group-item">{{'subject.title'|translate}}: <span
+                  class="details">{{teacher.subject}}</span></label>
+
+            <label class="list-group-item">{{'teacher.salary'|translate}}:
+               <span class="details">{{teacher.salary}}</span></label>
+
+            <label class="list-group-item">{{'teacher.shared.qualification'|translate}}: <span
+                  class="details">{{teacher.qualification}}</span></label>
+
+            <label class="list-group-item">{{'teacher.ex'|translate}}: <span
+                  class="details">{{teacher.ex}}</span></label>
+
+            <label class="list-group-item">{{'teacher.shared.qualification'|translate}}: <span
+                  class="details">{{teacher.qualification}}</span></label>
+
+            <label class="list-group-item">{{'level.levels'|translate}}:</label>
+
+            <div class="list-group list-group-flush" *ngFor="let level of teacher.levels">
+               <span class="list-group-item" class="details">{{level.name}}</span>
+
+            </div>
+         </div>
+      </div>
+
+      <div style="display:none" class="alert messagesuccess alert-success">{{'teacher.delete.success'|translate}}
+      </div>
+      <div style="display:none" class="alert messageerror alert-danger">{{'teacher.delete.failure'|translate}}</div>
+
+
+   </div>
+
+</div>
+<!-- <div class="operations">
+      <button (click)="updateTeacher(teacher.id)" class="btn btn-primary">{{'shared.update'|translate}}</button>
+      <button (click)="deleteTeacher(teacher.id)" class="btn btn-danger">{{'shared.delete'|translate}}</button>
+
+   </div> -->

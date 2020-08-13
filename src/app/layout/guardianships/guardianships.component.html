@@ -7,7 +7,7 @@
         </button>
     </div>
     <div id="guardianships" class="collapse list-group">
-        <ul>
+        <ul class="list-inline">
             <li *ngFor="let item of items" (click)="toggleItem(item)" [class.is-done]="item.isDone"
                 [ngClass]="['list-group-item']">
                 {{item.name}}</li>

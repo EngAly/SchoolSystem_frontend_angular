@@ -28,16 +28,20 @@ export class TeacherService implements BusinessAbstracts<Teacher>{
       return flag
    }
 
+   //  there bug here we need to sync this block
+   public getById(id = 1): Observable<Teacher> {
+      return this.http.get<Teacher>(`${this.url}/byId/${id}`);
+   }
+   
    public getByName(name: string, page = 0, sortBy = "id", direction = "asc", pageSize = 8): Observable<Teacher[]> {
       return this.http.get<Teacher[]>(`${this.url}/byName/${name}/?pageSize=${pageSize}&page=${page}&sort=${sortBy}&direction=${direction}`);
    }
 
-   getAll(pageSize?: number, page?: number, sortBy?: string, direction?: string):Observable<Teacher[]> {
+   getAll(pageSize?: number, page?: number, sortBy?: string, direction?: string): Observable<Teacher[]> {
       throw new Error("Method not implemented.");
    }
-   getById(id?: number): import("rxjs").Observable<Teacher> {
-      throw new Error("Method not implemented.");
-   }
+
+   
 
 
 }

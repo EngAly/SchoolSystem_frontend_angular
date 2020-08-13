@@ -1,0 +1,146 @@
+<body class="body-background">
+   <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+
+         <!-- nav bar -->
+         <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+               aria-expanded="true" aria-controls="navbar">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+            </button>
+            <a id="small-site-title" class="navbar-brand" *ngIf="smallSize"
+               routerLink="/home">{{'scratch.start.sitename' | translate}}</a>
+         </div>
+
+         <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav nav-pills nav-justified">
+
+               <!-- in small screens -->
+               <li>
+                  <a *ngIf="!smallSize" id="site-title" routerLink="/home">{{'scratch.start.sitename' | translate}}
+                  </a>
+               </li>
+
+               <!-- Add Menu -->
+               <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown">
+                     {{'scratch.start.addMenu.name' | translate}}
+                     <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                     <li><a routerLink="/teacher/add-teacher"
+                           routerLinkActive="active">{{'scratch.start.addMenu.teacher' | translate}}</a></li>
+
+                     <li><a routerLink="/student/add-student"
+                           routerLinkActive="active">{{'scratch.start.addMenu.student' | translate}}</a></li>
+
+                     <li role="separator" class="divider"></li>
+
+                     <li><a routerLink="/guardianship/add-guardianship"
+                           routerLinkActive="active">{{'scratch.start.addMenu.guardianship' | translate}}</a>
+                     </li>
+
+                     <li><a routerLink="/worker/add-worker"
+                           routerLinkActive="active">{{'scratch.start.addMenu.worker' | translate}}</a></li>
+
+                     <li role="separator" class="divider"></li>
+
+                     <li><a routerLink="/class/add-class"
+                           routerLinkActive="active">{{'scratch.start.addMenu.class' | translate}}</a></li>
+
+                     <li>
+                        <a routerLink="/subject/add-subject"
+                           routerLinkActive="active">{{'scratch.start.addMenu.subject' | translate}}
+                        </a>
+                     </li>
+                  </ul>
+               </li>
+
+               <!-- Search Menu -->
+               <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown">{{'scratch.start.searchMenu.name' | translate}}
+                     <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+
+                     <li><a [routerLink]="['/teacher/search']"
+                           routerLinkActive="active">{{'scratch.start.addMenu.teacher' | translate}}</a></li>
+
+                     <li><a [routerLink]="['/student/search']"
+                           routerLinkActive="active">{{'scratch.start.addMenu.student' | translate}}</a></li>
+
+                     <li role="separator" class="divider"></li>
+
+                     <li><a [routerLink]="['/subject/search']"
+                           routerLinkActive="active">{{'scratch.start.addMenu.subject' | translate}}</a></li>
+
+                     <li><a [routerLink]="['/class/search']"
+                           routerLinkActive="active">{{'scratch.start.addMenu.class' | translate}}</a></li>
+
+                     <li role="separator" class="divider"></li>
+
+                     <li><a [routerLink]="['/guardianship/search']"
+                           routerLinkActive="active">{{'scratch.start.addMenu.guardianship' | translate}}</a>
+                     </li>
+
+                     <li><a [routerLink]="['/worker/search']"
+                           routerLinkActive="active">{{'scratch.start.addMenu.worker' | translate}}</a>
+                     </li>
+                  </ul>
+               </li>
+
+               <!-- statistics menu -->
+               <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown">{{'scratch.start.statisticsMenu.name' | translate}}
+                     <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                     <li><a routerLink="/teacher/statistics" routerLinkActive="active" (click)="persistItem($event)">
+                           {{'statistics.teachers' | translate}}</a></li>
+                     <li><a routerLink="/student/statistics" routerLinkActive="active" (click)="persistItem($event)">
+                           {{'statistics.students' | translate}}</a></li>
+                  </ul>
+               </li>
+
+               <!-- language menu  -->
+               <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown">{{'scratch.start.languageMenu.name' | translate}}
+                     <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                     <li (click)="useLanguage('ar')"><a>{{'scratch.start.languageMenu.arabic' | translate}}</a>
+                     </li>
+                     <li (click)="useLanguage('en')"><a>{{'scratch.start.languageMenu.english' | translate}}</a>
+                     </li>
+                  </ul>
+               </li>
+
+               <!-- admin menu  -->
+               <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown">{{'scratch.start.adminMenu.name' | translate}}
+                     <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                     <li><a [routerLink]="['/login']"><span class="glyphicon glyphicon-log-in"></span>
+                           {{'scratch.start.adminMenu.login' | translate}}</a>
+                     </li>
+
+                     <li><a [routerLink]="['/register']"><span class="glyphicon glyphicon-user"></span>
+                           {{'scratch.start.adminMenu.register' | translate}}</a>
+                     </li>
+
+                     <!-- <li><a [routerLink]="['/logout']" routerLinkActive="active"><span
+                                        class="glyphicon glyphicon-log-out"></span>
+                                    {{'scratch.start.adminMenu.logout' | translate}}</a>
+                            </li> -->
+
+
+                  </ul>
+               </li>
+
+            </ul>
+
+         </div>
+      </div>
+   </nav>
+
+
+</body>

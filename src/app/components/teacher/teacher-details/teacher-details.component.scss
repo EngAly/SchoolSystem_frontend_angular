@@ -1,0 +1,25 @@
+$details-color: red;
+.details {
+  color: $details-color;
+  font-size: 15px;
+  overflow-wrap: break-word;
+}
+
+.card-header {
+  font-size: 20px;
+  background-color: rgb(36, 128, 36);
+  color: white;
+}
+
+.btn-distance{
+  margin-left: 10%;
+}
+
+.list-group-item{
+   transition: linear 0.5s;
+}
+
+.list-group-item:hover{
+   background-color: rgb(36, 128, 36);
+}
+ 

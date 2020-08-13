@@ -1,0 +1,255 @@
+<body class="body-background" dir="ltr">
+   <div class="container">
+
+      <!-- not useable two field just for congirmation save or not -->
+      <span id="savedMsg" class="hidden">{{'shared.savedMsg' | translate}}</span>
+      <span id="unsavedMsg" class="hidden">{{'shared.unsavedMsg' | translate}}</span>
+
+      <!--  Form Header -->
+      <div class="center-screen">
+         <h1 class="school-headers">{{'teacher.shared.header' | translate}}</h1>
+      </div>
+
+      <!--Start Form-->
+      <form [formGroup]="formData" (submit)="save()">
+
+         <div class="row">
+            <div class="col-sm-6 left">
+               <!-- <div style="display:none" class="alert messagesuccess alert-success">{{'teacher.add.success'|translate}}</div>
+          <div style="display:none" class="alert messageerror alert-danger">{{'teacher.add.failure'|translate}}</div> -->
+
+               <!--name-->
+               <div class="col-sm-10">
+                  <!-- <h4 class="control-label">{{'teacher.shared.name'|translate}}</h4> -->
+                  <div class="input-group">
+                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                     <input type="text" formControlName="name" [(ngModel)]="teacher.name" class="form-control"
+                        placeholder="{{'teacher.shared.name'|translate}}">
+                  </div>
+                  <div *ngIf="controls.name.touched && controls.name.errors?.required"
+                     class="alert alert-danger  margin">
+                     {{'teacher.shared.nameMsg' | translate}}
+                  </div>
+               </div>
+
+               <!-- Age-->
+               <div class=" col-sm-7">
+                  <!-- <h4 class="control-label">{{'shared.age'|translate}}</h4> -->
+                  <div class="input-group">
+                     <span class="input-group-addon"><i class="glyphicon glyphicon-plus"></i></span>
+                     <input type="number" formControlName="age" [(ngModel)]="teacher.age" class="form-control"
+                        placeholder="{{'shared.age'|translate}}">
+                  </div>
+                  <div *ngIf="controls.age.touched && controls.age.errors?.required" class="alert alert-danger">
+                     {{'shared.ageMsg'|translate}}
+                  </div>
+               </div>
+
+               <!-- Date of Birth-->
+               <div class="col-sm-7">
+                  <!-- <h4 class=" control-label ">{{'shared.dob'|translate}}</h4> -->
+                  <div class="input-group">
+                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                     <input class="form-control" type="text" formControlName="dob" [(ngModel)]="teacher.dob"
+                        onfocus="(this.type='date')" onblur="(this.type='text')"
+                        placeholder="{{'shared.dob'|translate}}">
+                  </div>
+                  <div *ngIf="controls.dob.touched && controls.dob.errors?.required" class="alert alert-danger">
+                     {{'shared.dobMsg'|translate}}
+                  </div>
+               </div>
+
+               <!-- hireDate-->
+               <div class="col-sm-7">
+                  <!-- <h4 class="control-label">{{'teacher.shared.doh'|translate}}</h4> -->
+                  <div class="input-group">
+                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                     <input type="text" formControlName="doh" [(ngModel)]="teacher.doh" class="form-control"
+                        placeholder="{{'teacher.shared.doh'|translate}}" onfocus="(this.type='date')"
+                        onblur="(this.type='text')">
+                  </div>
+                  <div *ngIf=" controls.doh.touched && controls.doh.errors?.required" class="alert alert-danger">
+                     {{'teacher.shared.dohMsg'|translate}}
+                  </div>
+               </div>
+
+               <!-- graduate date-->
+               <div class="col-sm-7">
+                  <!-- <h4 class="control-label">{{'teacher.shared.graduateDate'|translate}}</h4> -->
+                  <div class="input-group">
+                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                     <input type="text" formControlName="graduateDate" [(ngModel)]="teacher.graduateDate"
+                        class="form-control" onfocus="(this.type='date')" onblur="(this.type='text')"
+                        placeholder="{{'teacher.shared.graduateDate'|translate}}">
+                  </div>
+                  <div *ngIf=" controls.graduateDate.touched && controls.graduateDate.errors?.required"
+                     class="alert alert-danger">
+                     {{'teacher.shared.dohMsg'|translate}}
+                  </div>
+               </div>
+
+               <!--  Years Of Experience -->
+               <div class="col-sm-7">
+                  <!-- <h4 class="control-label">{{'teacher.shared.ex'|translate}}</h4> -->
+                  <div class="input-group">
+                     <span class="input-group-addon"><i class="glyphicon glyphicon-plus"></i></span>
+                     <input min="0" type="number" formControlName="ex" [(ngModel)]="teacher.ex" class="form-control"
+                        placeholder="{{'teacher.shared.ex'|translate}}">
+                  </div>
+                  <div *ngIf="controls.ex.touched && controls.ex.errors?.required" class="alert alert-danger">
+                     {{'teacher.shared.exMsg'|translate}}</div>
+               </div>
+
+               <!-- gender -->
+               <div class="col-sm-8" (click)="setGender()">
+                  <h4>{{'shared.gender' | translate}}</h4>
+                  <div class=" btn-group">
+                     <label class="btn btn-success no-border" for="teacher_male_id">
+                        <input id="teacher_male_id" type="radio" value="Male" formControlName="gender">
+                        <label for="teacher_male_id">&nbsp;&nbsp; {{'shared.male' | translate}} </label>
+                     </label>
+                     <label class="btn btn-success no-border" for="st_female_id">
+                        <input id="st_female_id" type="radio" value="Female" formControlName="gender">
+                        <label for="st_female_id">&nbsp;&nbsp;{{'shared.female' | translate}} </label>
+                     </label>
+                  </div>
+                  <div *ngIf="controls.gender.invalid && controls.gender.errors?.required" class="alert alert-danger">
+                     {{'shared.genderMsg' | translate}}
+                  </div>
+               </div>
+
+               <!-- marital status -->
+               <div class="col-sm-12 ui-margin" (click)="setMaritalStatus()">
+                  <h4>{{'teacher.shared.maritalStatus' | translate}}</h4>
+                  <div class="btn-group">
+                     <label class="btn btn-success no-border" for="single">
+                        <input id="single" type="radio" value="Single" formControlName="maritalStatus">
+                        <label for="single">&nbsp;&nbsp;{{'teacher.shared.single' | translate}}</label>
+                     </label>
+                     <label class="btn btn-success no-border" for="married">
+                        <input id="married" type="radio" value="Married" formControlName="maritalStatus">
+                        <label for="married">&nbsp;&nbsp;{{'teacher.shared.married' | translate}}</label>
+                     </label>
+                     <label class="btn btn-success no-border" for="divorced">
+                        <input id="divorced" type="radio" value="Divorced" formControlName="maritalStatus">
+                        <label for="divorced">&nbsp;&nbsp;{{'teacher.shared.divorced' | translate}}</label>
+                     </label>
+                  </div>
+                  <div *ngIf="controls.maritalStatus.invalid && controls.maritalStatus.errors?.required"
+                     class="alert alert-danger">
+                     {{'teacher.shared.maritalStatusMsg' | translate}}
+                  </div>
+               </div>
+
+               <!-- Salary-->
+               <div class="col-sm-7">
+                  <!-- <h4 class="control-label">{{'teacher.shared.salary'|translate}}</h4> -->
+                  <div class="input-group">
+                     <span class="input-group-addon"><i class="glyphicon glyphicon-euro"></i> </span>
+                     <input type="number" min="0" formControlName="salary" [(ngModel)]="teacher.salary"
+                        class="form-control" placeholder="{{'teacher.shared.salary'|translate}}">
+                  </div>
+                  <div *ngIf="controls.salary.touched && controls.salary.errors?.required" class="alert alert-danger">
+                     {{'teacher.shared.salaryMsg' | translate}}</div>
+               </div>
+
+               <!-- Qualification-->
+               <div class="col-sm-8">
+                  <!-- <h4 class="control-label">{{'teacher.shared.qualification' | translate}}</h4> -->
+                  <div class="input-group">
+                     <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
+                     <input type="text" formControlName="qualification" [(ngModel)]="teacher.qualification"
+                        class="form-control" placeholder="{{'teacher.shared.qualification' | translate}}">
+                  </div>
+                  <div *ngIf="controls.qualification.touched && controls.qualification.errors?.required"
+                     class="alert alert-danger  margin">{{'teacher.shared.qualificationMsg'|translate}}
+                  </div>
+               </div>
+
+            </div>
+
+
+            <div class="col-sm-6 right">
+
+               <!--  Address-->
+               <div class="col-sm-10">
+                  <!-- <h4 class="control-label">{{'shared.address'|translate}}</h4> -->
+                  <div class="input-group">
+                     <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                     <input type="text" formControlName="address" [(ngModel)]="teacher.address" class="form-control"
+                        placeholder="{{'shared.address'|translate}}">
+                  </div>
+                  <div *ngIf="controls.address.touched && controls.address.errors?.required" class="alert alert-danger">
+                     {{'shared.addressMsg'|translate}}</div>
+               </div>
+
+               <!-- Email-->
+               <div class="col-sm-10">
+                  <!-- <h4 class="control-label">{{'shared.email'|translate}}</h4> -->
+                  <div class="input-group">
+                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                     <input type="text" [(ngModel)]="teacher.email" formControlName="email" class="form-control"
+                        placeholder="{{'shared.email'|translate}}">
+                  </div>
+
+                  <!-- <div *ngIf="controls.email.errors && (controls.email.touched || controls.email.dirty)"
+              class="alert alert-danger">
+              {{'shared.emailMsg'|translate}}
+          </div> -->
+               </div>
+
+               <!-- Phone Number -->
+               <div class="col-sm-8">
+                  <!-- <h4 for="phone">{{'shared.phone' | translate}}</h4> -->
+                  <div class="input-group">
+                     <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                     <input id="phone" type="text" [(ngModel)]="teacher.phone" formControlName="phone"
+                        class="form-control" placeholder="{{'shared.phone' | translate}}">
+                  </div>
+                  <div *ngIf="controls.phone.touched && controls.phone.errors?.required" class="alert alert-danger">
+                     {{'shared.phoneMsg' | translate}}
+                  </div>
+               </div>
+
+               <!-- Ssn -->
+               <div class="col-sm-8">
+                  <!-- <h4 for="ssn">{{'guardian.shared.ssn' | translate}}</h4> -->
+                  <div class="input-group">
+                     <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
+                     <input id="ssn" type="text" [(ngModel)]="teacher.ssn" formControlName="ssn" class="form-control"
+                        placeholder="{{'guardian.shared.ssn' | translate}}">
+                  </div>
+                  <div *ngIf="controls.ssn.touched && controls.ssn.errors?.required" class="alert alert-danger">
+                     {{'guardian.shared.ssnMsg' | translate}}
+                  </div>
+               </div>
+
+               <!-- classes -->
+               <div class="col-sm-10">
+                  <classes (click)='setLevels()' [selected]="teacher.levels"></classes>
+               </div>
+
+               <!--  Subject  -->
+               <div class="col-sm-10">
+                  <subjects (click)='setSubjects()' [selected]="teacher.subject"></subjects>
+               </div>
+
+               <!--  notes  -->
+               <div class="col-sm-10">
+                  <h4 for="desc">{{'shared.desc' | translate}}</h4>
+                  <textarea (input)="teacher.notes = $event.target.value;" formControlName="notes"
+                     [(ngModel)]="teacher.notes" id="desc" rows="7" class="form-control"></textarea>
+               </div>
+
+               <div class="col-sm-7 btn-distance">
+                  <input [disabled]="formData.invalid || inPrograss" type="submit" class="form-control btn btn-success"
+                     value="{{'shared.save'|translate}}">
+                  <!-- <input type="submit" class="form-control btn btn-success" value="{{'shared.save'|translate}}"> -->
+               </div>
+            </div>
+         </div>
+      </form>
+   </div>
+</body>
+
+<br><br><br>

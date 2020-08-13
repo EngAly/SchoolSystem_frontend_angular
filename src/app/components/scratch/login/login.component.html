@@ -1,0 +1,48 @@
+<div class="container">
+
+    <div class="center-screen">
+        <h1 class="school-headers">{{'scratch.login.hint' | translate}}</h1>
+        <img id="profile-img" src="assets/images/user-avatar.jpeg" class="profile-img-card" width="300px"/>
+    </div>
+
+    <form [formGroup]="loginDataForm" (submit)="login()">
+        <div class="row">
+            <div class="form-group center-screen">
+
+                <!-- username -->
+                <div class="col-sm-5">
+                    <!-- <label for="username">{{'scratch.login.username' | translate}}</label> -->
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="username" type="text" [(ngModel)]="user.username" formControlName="username"
+                            class="form-control" placeholder="{{'scratch.login.username' | translate}}">
+                    </div>
+                    <div *ngIf="loginControls.username.touched && loginControls.username.errors?.required"
+                        class="alert alert-danger">
+                        {{'scratch.login.usernameMsg' | translate}}
+                    </div>
+                </div>
+
+                <!-- password -->
+                <div class="col-sm-5">
+                    <!-- <label for="password">{{'scratch.login.password' | translate}}</label> -->
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input type="password" [(ngModel)]="user.password" formControlName="password"
+                            class="form-control" placeholder="{{'scratch.login.password' | translate}}">
+                    </div>
+                    <div *ngIf="loginControls.password.touched && loginControls.password.errors?.required"
+                        class="alert alert-danger">
+                        {{'scratch.login.passwordMsg' | translate}}
+                    </div>
+                </div>
+
+                <div class="col-sm-3 btn-distance">
+                    <input type="submit" [disabled]="loginDataForm.invalid" class="form-control btn btn-primary"
+                        value="{{'scratch.login.loginBtn' | translate}}">
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>

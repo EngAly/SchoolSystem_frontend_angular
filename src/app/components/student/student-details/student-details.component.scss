@@ -1,0 +1,22 @@
+$details-color: red;
+$headers:rgb(36, 128, 36);
+
+.details {
+  color: $details-color;
+  font-size: 15px;
+  overflow-wrap: break-word;
+}
+
+.card-header {
+  font-size: 20px;
+  background-color: $headers;
+  color: white;
+}
+.btn-distance{
+  margin-left: 10%;
+}
+
+.btn-color{
+   background-color: $headers;
+   color: white;
+}

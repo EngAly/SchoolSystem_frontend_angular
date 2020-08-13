@@ -14,10 +14,9 @@ export class GuardianshipsComponent implements LayoutAbstracts<Guardianship>{
    count = 0;
 
    constructor(private service: GuardianshipService) {
-      this.service.getAll().subscribe(
+      this.service.getAll(100, 0, 'name', 'asc').subscribe(
          data => {
-            this.items = data;
-            // console.log(data);
+            this.items = data['content'];
          },
          error => console.log(error)
       );

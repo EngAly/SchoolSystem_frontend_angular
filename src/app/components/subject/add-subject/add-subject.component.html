@@ -1,0 +1,50 @@
+<body class="body-background">
+   <div class="container">
+
+      <!-- not useable two field just for congirmation save or not -->
+      <span id="savedMsg" class="hidden">{{'shared.savedMsg' | translate}}</span>
+      <span id="unsavedMsg" class="hidden">{{'shared.unsavedMsg' | translate}}</span>
+
+
+      <div class="center-screen">
+         <h1 class="school-headers">{{'subject.add.hint' | translate}}</h1>
+         <img id="profile-img" src="assets/images/subject.png" class="profile-img-card" />
+      </div>
+
+      <form [formGroup]="formData" (submit)="save()">
+         <div class="row">
+            <div class="form-group center-screen">
+
+               <!-- subject name  -->
+               <div class="col-sm-5 ltr">
+                  <div class="input-group">
+                     <span class="input-group-addon"><i class="glyphicon glyphicon-book"></i></span>
+                     <input id="subject_id" type="text" [(ngModel)]="subject.name" formControlName="name"
+                        class="form-control" placeholder="{{'subject.add.name' | translate}}">
+                  </div>
+                  <div *ngIf="controls.name.touched && controls.name.errors?.required" class="alert alert-danger">
+                     {{'subject.add.nameMsg' | translate}}
+                  </div>
+               </div>
+
+               <!-- subject desc  -->
+               <div class="col-sm-10">
+                  <h4 for="desc_id">{{'shared.desc' | translate}}</h4>
+                  <textarea [(ngModel)]="subject.desc" id="desc_id" rows="7" class="form-control"></textarea>
+               </div>
+
+               <!-- save subject  -->
+               <div class="col-sm-2 btn-distance ltr">
+                  <div class="input-group">
+                     <input type="submit" [disabled]="formData.invalid || inPrograss" class="form-control btn btn-primary"
+                     value="{{'shared.save' | translate}}">
+                     <span class="input-group-addon"> <i class="glyphicon glyphicon-floppy-disk"></i> </span>
+                     
+                  </div>
+               </div>
+
+            </div>
+         </div>
+      </form>
+   </div>
+</body>
