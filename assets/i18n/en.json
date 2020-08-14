@@ -61,16 +61,17 @@
       }
    },
    "shared": {
+      "name": "Name",
       "gender": "Gender",
       "genderMsg": "Please Define Your Gender",
       "male": "Male",
       "female": "Female",
       "phone": "Phone",
-      "phoneMsg": "Please ُEnter Phone",
+      "phoneMsg": "Please Enter Phone",
       "address": "Address",
-      "addressMsg": "Please ُEnter Address",
+      "addressMsg": "Please Enter Address",
       "age": "Age",
-      "ageMsg": "Please ُEnter Age",
+      "ageMsg": "Please Enter Age",
       "desc": "Description / Notes",
       "searchName": "Type Name Then Click Search Button",
       "searchNameMsg": "Please Enter Name That You Want To Search",
@@ -112,11 +113,11 @@
          "hint": "Add New Class",
          "name": "Class",
          "nameMsg": "Please Insert Class Name",
-         "floor": "Insert Class Floor",
+         "floor": "Floor Number",
          "floorMsg": "Please Insert Class Floor",
-         "maxSize": "Insert Class Maximum Size",
+         "maxSize": "Maximum Size",
          "maxSizeMsg": "Please Insert Class Maximum Size",
-         "currentSize": "Insert Class Current Size",
+         "currentSize": "Current Size",
          "currentSizeMsg": "Please Insert Class Current Size",
          "save": "Add Class",
          "savedMsg": "Class Added successfully",
@@ -191,12 +192,10 @@
       }
    },
    "worker": {
-      "add": {
-         "hint": "Add New Worker",
-         "name": "Worker Name",
-         "save": "Add Worker",
-         "savedMsg": "Worker Added successfully",
-         "unsavedMsg": "Worker Not Added successfully"
+      "shared": {
+         "hint": "Add / Update Worker",
+         "id": "Id",
+         "nameMsg":"Please Enter Worker Name"
       }
    },
    "guardianship": {
