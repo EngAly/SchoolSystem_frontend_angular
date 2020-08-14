@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { worker, Worker } from 'cluster';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { WorkerService } from 'src/app/services/worker.service';
 
 @Component({
    selector: 'app-search-worker',
@@ -7,21 +10,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchWorkerComponent {
 
-   items = [
-      { id: "7", name: "ali", age: "22" },
-      { id: "2", name: "hossam", age: "66" },
-      { id: "5", name: "nader", age: "55" },
-      { id: "4", name: "hanan", age: "33" },
-      { id: "1", name: "moussa", age: "12" },
-   ]
-   after = [];
+   name: string;
+   items: Array<Worker> = [];
+   inPrograss: boolean;
 
-   constructor() { }
+   checkName = new FormGroup({
+      name: new FormControl('', [Validators.required])
+   });
 
-   btn() {
-      this.after = Object.assign([], this.items)
-      // this.after.sort((a, b) => a.id.localeCompare(b.id))
-      this.after.sort((a, b) => a.name.localeCompare(b.name))
+   constructor(private service: WorkerService) { }
+
+   get controls() {
+      return this.checkName.controls;
    }
 
+   search() {
+      this.inPrograss = true;
+      this.service.getByName(this.name).subscribe(
+         data => {
+            this.items = data['content'];
+            this.inPrograss = false;
+         },
+         error => {
+            console.log(error)
+         });
+   }
+
+   getDetails(item: Worker) {
+      alert(JSON.stringify(item));
+   }
 }

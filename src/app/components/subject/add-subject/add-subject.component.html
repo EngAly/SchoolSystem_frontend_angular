@@ -8,7 +8,7 @@
 
       <div class="center-screen">
          <h1 class="school-headers">{{'subject.add.hint' | translate}}</h1>
-         <img id="profile-img" src="assets/images/subject.png" class="profile-img-card" />
+         <img id="profile-img" src="assets/images/subject.png" class="profile-img-card img-rounded img-responsive">
       </div>
 
       <form [formGroup]="formData" (submit)="save()">
@@ -16,7 +16,7 @@
             <div class="form-group center-screen">
 
                <!-- subject name  -->
-               <div class="col-sm-5 ltr">
+               <div class="col-sm-5 col-xs-12 ltr">
                   <div class="input-group">
                      <span class="input-group-addon"><i class="glyphicon glyphicon-book"></i></span>
                      <input id="subject_id" type="text" [(ngModel)]="subject.name" formControlName="name"
@@ -28,13 +28,13 @@
                </div>
 
                <!-- subject desc  -->
-               <div class="col-sm-10">
+               <div class="col-sm-10 col-xs-12">
                   <h4 for="desc_id">{{'shared.desc' | translate}}</h4>
                   <textarea [(ngModel)]="subject.desc" id="desc_id" rows="7" class="form-control"></textarea>
                </div>
 
                <!-- save subject  -->
-               <div class="col-sm-2 btn-distance ltr">
+               <div class="col-sm-2 col-xs-8 btn-distance ltr">
                   <div class="input-group">
                      <input type="submit" [disabled]="formData.invalid || inPrograss" class="form-control btn btn-primary"
                      value="{{'shared.save' | translate}}">

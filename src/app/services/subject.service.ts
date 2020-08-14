@@ -28,7 +28,7 @@ export class SubjectService implements BusinessAbstracts<Subject>{
       return flag
    }
 
-   public getByName(name: string, page = 0, sortBy = "id", direction = "asc", pageSize = 8): Observable<Subject[]> {
+   public getByName(name: string, pageSize = 8, page = 0, sortBy = "id", direction = "asc"): Observable<Subject[]> {
       return this.http.get<Subject[]>(`${this.url}/byName/${name}/?pageSize=${pageSize}&page=${page}&sort=${sortBy}&direction=${direction}`);
    }
 

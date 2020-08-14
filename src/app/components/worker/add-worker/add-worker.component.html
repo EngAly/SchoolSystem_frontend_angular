@@ -8,27 +8,27 @@
 
       <div class="center-screen">
          <h1 class="school-headers">{{'worker.add.hint' | translate}}</h1>
-         <img id="profile-img" src="assets/images/worker.png" class="profile-img-card" width="250">
+         <img id="profile-img" src="assets/images/worker.png" class="profile-img-card img-rounded img-responsive">
       </div>
       <form [formGroup]="formData" (submit)="save()">
          <div class="row">
-            <div class="col-sm-12 center-screen">
+            <div class="form-group center-screen">
 
                <!-- worker name property -->
-               <div class="col-sm-6 ltr">
+               <div class="col-sm-6  col-xs-12 ltr">
                   <!-- <h4 for="name_id">{{'worker.add.name' | translate}}</h4> -->
                   <div class="input-group">
                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                      <input id="name_id" type="text" [(ngModel)]="worker.name" formControlName="name"
-                        class="form-control" placeholder="{{'worker.add.name' | translate}}">
+                        class="form-control" placeholder="{{'shared.name' | translate}}">
                   </div>
                   <div *ngIf="controls.name.touched && controls.name.errors?.required" class="alert alert-danger">
-                     {{'worker.add.nameMsg' | translate}}
+                     {{'worker.shared.nameMsg' | translate}}
                   </div>
                </div>
 
                <!-- address -->
-               <div class="col-sm-6 ltr">
+               <div class="col-sm-6 col-xs-12 ltr">
                   <!-- <h4 for="address_id">{{'shared.address' | translate}}</h4> -->
                   <div class="input-group">
                      <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
@@ -40,21 +40,8 @@
                   </div>
                </div>
 
-               <!-- Age-->
-               <div class="col-sm-5 ltr">
-                  <!-- <h4 for="age_id">{{'shared.age' | translate}}</h4> -->
-                  <div class="input-group">
-                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                     <input id="age_id" type="number" min="0" [(ngModel)]="worker.age" formControlName="age"
-                        class="form-control" placeholder="{{'shared.age' | translate}}">
-                  </div>
-                  <div *ngIf="controls.age.touched && controls.age.errors?.required" class="alert alert-danger">
-                     {{'shared.ageMsg' | translate}}
-                  </div>
-               </div>
-
-               <!-- worker phone property-->
-               <div class="col-sm-5 ltr">
+                <!-- worker phone property-->
+                <div class="col-sm-5  col-xs-12 ltr">
                   <!-- <h4 for="phone_id">{{'shared.phone' | translate}}</h4> -->
                   <div class="input-group">
                      <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
@@ -66,18 +53,31 @@
                   </div>
                </div>
 
+               <!-- Age-->
+               <div class="col-sm-5 col-xs-12 ltr">
+                  <!-- <h4 for="age_id">{{'shared.age' | translate}}</h4> -->
+                  <div class="input-group">
+                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                     <input id="age_id" type="number" min="0" [(ngModel)]="worker.age" formControlName="age"
+                        class="form-control" placeholder="{{'shared.age' | translate}}">
+                  </div>
+                  <div *ngIf="controls.age.touched && controls.age.errors?.required" class="alert alert-danger">
+                     {{'shared.ageMsg' | translate}}
+                  </div>
+               </div>
+
                <!-- worker gender property reusebale lang keywords-->
                <div class="col-sm-3 ui-margin" (change)="handleGenderChange($event)">
                   <!-- <h4>{{'shared.gender' | translate}}</h4> -->
                   <div class=" btn-group">
-                     <h4 class="btn btn-info no-border">
-                        <input type="radio" value="Male" formControlName="gender" checked>
-                        <span>{{'shared.male' | translate}} </span>
-                     </h4>
-                     <h4 class="btn btn-info no-border">
-                        <input type="radio" value="Female" formControlName="gender">
-                        <span>{{'shared.female' | translate}} </span>
-                     </h4>
+                     <label class="btn btn-info no-border" for="worker_male">
+                        <input id="worker_male" type="radio" value="Male" formControlName="gender" checked>
+                        <label for="worker_male">{{'shared.male' | translate}} </label>
+                     </label>
+                     <label class="btn btn-info no-border" for="worker_female">
+                        <input id="worker_female" type="radio" value="Female" formControlName="gender">
+                        <label for="worker_female">{{'shared.female' | translate}} </label>
+                     </label>
                   </div>
                   <div *ngIf="controls.gender.invalid && controls.gender.errors?.required" class="alert alert-danger">
                      {{'shared.genderMsg' | translate}}
@@ -90,7 +90,7 @@
                </div>
 
                <!-- worker desc property reusebale lang keywords-->
-               <div class="col-sm-12">
+               <div class="col-sm-6 col-xs-12">
                   <h4 for="desc_id">{{'shared.desc' | translate}}</h4>
                   <textarea [(ngModel)]="worker.desc" id="desc_id" rows="7" class="form-control"></textarea>
                </div>
@@ -98,7 +98,7 @@
                <!-- save worker  -->
                <div class="col-sm-2 btn-distance">
                   <input type="submit" [disabled]="formData.invalid || inPrograss" class="form-control btn btn-primary"
-                     value="{{'worker.add.save' | translate}}">
+                     value="{{'shared.save' | translate}}">
                </div>
 
             </div>

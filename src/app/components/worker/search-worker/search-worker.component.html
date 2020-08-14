@@ -1,8 +1,64 @@
 <div class="container">
-   <h1>no arrange</h1>
-   {{items | json}}
+   <h1 class="text-center school-headers">{{'subject.search.hint' | translate}}</h1>
 
-   <button type="button" (click)="btn()">arrange</button>
-   <h1>arranged</h1>
-   {{after | json}}
+   <!-- Search Section need to move-->
+   <form [formGroup]="checkName" (submit)="search()">
+      <div class="row center-screen">
+         <div class="col-sm-10 form-group">
+
+            <!-- name field -->
+            <div class="col-sm-7 ltr">
+               <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                  <input type="text" class="form-control" formControlName="name" [(ngModel)]="name"
+                     placeholder="{{'shared.searchName' | translate}}" (keyup)="clearResults()">
+               </div>
+               <div *ngIf="controls.name.touched && controls.name.errors?.required" class="alert alert-danger">
+                  {{'shared.searchNameMsg' | translate}}
+               </div>
+            </div>
+
+            <div class="col-sm-3">
+               <button type="submit" class="form-control btn btn-primary"
+                  [disabled]="checkName.invalid || inPrograss">{{'shared.searchBtn' | translate}}</button>
+            </div>
+         </div>
+      </div>
+   </form>
+
+   <div id="classes" [ngClass]="['list-group']" class="center-table-header table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+         <thead>
+            <tr>
+               <th>{{'worker.shared.id' | translate}}</th>
+               <th>{{'shared.name' | translate}}</th>
+               <th>{{'shared.gender' | translate}}</th>
+               <th>{{'shared.age' | translate}}</th>
+               <th>{{'shared.phone' | translate}}</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr *ngFor="let item of items; let i=index" (click)="getDetails(item)">
+               <td>{{item.id}}</td>
+               <td>{{item.name}}</td>
+               <td>{{item.gender}}</td>
+               <td>{{item.age}}</td>
+               <td>{{item.phone}}</td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+
+
+
+   <!-- <div class="btn-group horizontal-middle" dir="ltr">
+        <button type="button" class="btn btn-primary btn-lg" [disabled]="currentPage==0"
+            (click)="First()">First</button>
+        <button type=" button" class="btn btn-primary btn-lg" [disabled]="currentPage==0"
+            (click)="Previous()">Previous</button>
+        <button type="button" class="btn btn-primary btn-lg" [disabled]="currentPage==totalPages -1 || noData"
+            (click)="Next()">Next</button>
+        <button type="button" class="btn btn-primary btn-lg" [disabled]="currentPage==totalPages -1 || noData"
+            (click)="Last()">Last</button>
+    </div> -->
 </div>

@@ -8,14 +8,14 @@
 
       <div class="center-screen">
          <div class="school-headers">{{'class.add.hint'|translate}}</div>
-         <img id="profile-img" src="assets/images/classroom.jpg" class="profile-img-card ui-margin" />
+         <img id="profile-img" src="assets/images/classroom.jpg" class="profile-img-card ui-margin img-rounded img-responsive" />
       </div>
 
       <form [formGroup]="formData" (submit)="save()">
          <div class="form-group center-screen">
 
             <!-- name -->
-            <div class="col-sm-6 ltr">
+            <div class="col-sm-6 col-xs-12 ltr">
                <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
                   <input type="text" formControlName="name" [(ngModel)]="class.name" class="form-control"
@@ -27,7 +27,7 @@
             </div>
 
             <!-- floor -->
-            <div class="col-sm-4 ltr">
+            <div class="col-sm-4 col-xs-12 ltr">
                <!-- <h4>{{'class.add.floor'|translate}}</h4> -->
                <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-plus"></i></span>
@@ -40,7 +40,7 @@
             </div>
 
             <!-- max size -->
-            <div class="col-sm-4 ltr">
+            <div class="col-sm-4 col-xs-12 ltr">
                <!-- <h4>{{'class.add.maxSize'|translate}}</h4> -->
                <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-plus"></i></span>
@@ -53,7 +53,7 @@
             </div>
 
             <!-- current size -->
-            <div class="col-sm-4 ltr">
+            <div class="col-sm-4 col-xs-12 ltr">
                <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-plus"></i></span>
                   <input min="0" type="number" formControlName="currentSize" [(ngModel)]="class.currentSize"
@@ -64,7 +64,7 @@
                </div>
             </div>
 
-            <div class="col-sm-4 btn-distance">
+            <div class="col-sm-4 col-xs-8 btn-distance">
                <input type="submit" [disabled]="formData.invalid || inPrograss" class="btn btn-primary"
                   value="{{'shared.save' | translate}}">
             </div>

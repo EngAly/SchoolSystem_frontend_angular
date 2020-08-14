@@ -31,7 +31,6 @@ export class SubjectsComponent implements LayoutAbstracts<Subject>{
          },
          error => {
             console.log(error)
-            alert()
          }
       );
    }

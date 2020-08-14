@@ -36,7 +36,7 @@ export class StudentService implements BusinessAbstracts<Student> {
       return this.http.get<Student>(`${this.url}/byId/${id}`);
    }
 
-   public getByName(name: string, page = 0, sortBy = "id", direction = "asc", pageSize = 8): Observable<Student[]> {
+   public getByName(name: string, pageSize = 8, page = 0, sortBy = "id", direction = "asc"): Observable<Student[]> {
       return this.http.get<Student[]>(`${this.url}/byName/${name}/?pageSize=${pageSize}&page=${page}&sort=${sortBy}&direction=${direction}`);
    }
 

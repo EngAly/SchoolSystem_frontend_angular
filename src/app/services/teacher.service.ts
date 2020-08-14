@@ -32,8 +32,8 @@ export class TeacherService implements BusinessAbstracts<Teacher>{
    public getById(id = 1): Observable<Teacher> {
       return this.http.get<Teacher>(`${this.url}/byId/${id}`);
    }
-   
-   public getByName(name: string, page = 0, sortBy = "id", direction = "asc", pageSize = 8): Observable<Teacher[]> {
+
+   public getByName(name: string, page = 0, pageSize = 8, sortBy = "id", direction = "asc"): Observable<Teacher[]> {
       return this.http.get<Teacher[]>(`${this.url}/byName/${name}/?pageSize=${pageSize}&page=${page}&sort=${sortBy}&direction=${direction}`);
    }
 
@@ -41,7 +41,7 @@ export class TeacherService implements BusinessAbstracts<Teacher>{
       throw new Error("Method not implemented.");
    }
 
-   
+
 
 
 }

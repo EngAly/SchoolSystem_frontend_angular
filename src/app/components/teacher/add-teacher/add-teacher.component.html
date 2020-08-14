@@ -102,7 +102,7 @@
 
                <!-- gender -->
                <div class="col-sm-8" (click)="setGender()">
-                  <h4>{{'shared.gender' | translate}}</h4>
+                  <!-- <h4>{{'shared.gender' | translate}}</h4> -->
                   <div class=" btn-group">
                      <label class="btn btn-success no-border" for="teacher_male_id">
                         <input id="teacher_male_id" type="radio" value="Male" formControlName="gender">
@@ -124,15 +124,15 @@
                   <div class="btn-group">
                      <label class="btn btn-success no-border" for="single">
                         <input id="single" type="radio" value="Single" formControlName="maritalStatus">
-                        <label for="single">&nbsp;&nbsp;{{'teacher.shared.single' | translate}}</label>
+                        <label for="single"> {{'teacher.shared.single' | translate}}</label>
                      </label>
                      <label class="btn btn-success no-border" for="married">
                         <input id="married" type="radio" value="Married" formControlName="maritalStatus">
-                        <label for="married">&nbsp;&nbsp;{{'teacher.shared.married' | translate}}</label>
+                        <label for="married">{{'teacher.shared.married' | translate}}</label>
                      </label>
                      <label class="btn btn-success no-border" for="divorced">
                         <input id="divorced" type="radio" value="Divorced" formControlName="maritalStatus">
-                        <label for="divorced">&nbsp;&nbsp;{{'teacher.shared.divorced' | translate}}</label>
+                        <label for="divorced">{{'teacher.shared.divorced' | translate}}</label>
                      </label>
                   </div>
                   <div *ngIf="controls.maritalStatus.invalid && controls.maritalStatus.errors?.required"

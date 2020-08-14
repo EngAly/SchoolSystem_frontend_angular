@@ -28,7 +28,7 @@ export class GuardianshipService implements BusinessAbstracts<Guardianship> {
       return flag
    }
 
-   public getByName(name: string, page = 0, sortBy = "id", direction = "asc", pageSize = 8): Observable<Guardianship[]> {
+   public getByName(name: string, pageSize = 8, page = 0, sortBy = "id", direction = "asc"): Observable<Guardianship[]> {
       return this.http.get<Guardianship[]>(`${this.url}/byName/${name}/?pageSize=${pageSize}&page=${page}&sort=${sortBy}&direction=${direction}`);
    }
 

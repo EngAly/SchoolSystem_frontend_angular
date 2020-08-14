@@ -6,33 +6,38 @@ import { Worker } from '../models/Worker';
 import { BusinessAbstracts } from '../interfaces/BusinessAbstracts';
 
 @Injectable({
-  providedIn: 'root'
+   providedIn: 'root'
 })
 export class WorkerService implements BusinessAbstracts<Worker> {
 
-  private url: string
 
-  constructor(private http: HttpClient, private root: SharedService) {
-    this.url = this.root.getRootUrl() + "worker";
-  }
+   private url: string
 
-  public async add(worker: Worker): Promise<boolean> {
-    let flag: boolean = false;
-    await this.http.post(`${this.url}/add`, worker, { observe: 'response' }).toPromise()
-      .then((response) => {
-        response.status == 200 ? flag = true : flag;
-      }).catch((err) => {
-        flag = false;
-        console.log(err)
-      })
-    return flag
-  }
+   constructor(private http: HttpClient, private root: SharedService) {
+      this.url = this.root.getRootUrl() + "worker";
+   }
 
-  public getAll(): Observable<Worker[]> {
-    return this.http.get<Worker[]>(`${this.url}`);
-  }
+   public async add(worker: Worker): Promise<boolean> {
+      let flag: boolean = false;
+      await this.http.post(`${this.url}/add`, worker, { observe: 'response' }).toPromise()
+         .then((response) => {
+            response.status == 200 ? flag = true : flag;
+         }).catch((err) => {
+            flag = false;
+            console.log(err)
+         })
+      return flag
+   }
 
-  getById(id?: number): Observable<Worker> {
-    throw new Error("Method not implemented.");
-  }
+   public getAll(): Observable<Worker[]> {
+      return this.http.get<Worker[]>(`${this.url}`);
+   }
+
+   getByName(name: string, pageSize?: number, page?: number, sortBy?: string, direction?: string): Observable<Worker[]> {
+      throw new Error("Method not implemented.");
+   }
+
+   getById(id?: number): Observable<Worker> {
+      throw new Error("Method not implemented.");
+   }
 }

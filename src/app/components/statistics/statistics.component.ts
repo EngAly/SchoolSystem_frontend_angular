@@ -16,7 +16,7 @@ export class StatisticsComponent implements OnInit, OnChanges {
 
    Linechart = [];
    charType: string = 'bar';
-   fontSize = 24;
+   fontSize = 12;
    x_label: string = "";
 
    constructor(private _cache: CacheObjectService, private activeRoute: ActivatedRoute) {
@@ -27,7 +27,8 @@ export class StatisticsComponent implements OnInit, OnChanges {
 
    ngOnInit(): void {
       var url = window.location.href;
-      var content = url.split('/')[3]
+      var segments = url.split('/')
+      var content = segments[segments.length - 2]
       if (content == 'teacher') {
          this.drawChart(["math", "arabic", "english", "history", "logic"], [4, 6, 2, 6, 8])
       } else if (content == 'student') {

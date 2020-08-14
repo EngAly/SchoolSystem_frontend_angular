@@ -5,9 +5,10 @@
       <span id="savedMsg" class="hidden">{{'guardianship.add.savedMsg' | translate}}</span>
       <span id="unsavedMsg" class="hidden">{{'guardianship.add.unsavedMsg' | translate}}</span>
 
-      <div class="center-screen">
+      <div class="center-screen" style="margin-left: 1%;margin-right: 1%;">
          <h1 class="school-headers">{{'guardianship.add.hint' | translate}}</h1>
-         <img id="profile-img" src="assets/images/guardianship.jpg" class="profile-img-card ui-margin" width="500">
+         <img id="profile-img" src="assets/images/guardianship.jpg"
+            class="profile-img-card ui-margin img-rounded img-responsive">
       </div>
 
       <form [formGroup]="formData" (submit)="save()">
@@ -15,28 +16,26 @@
             <div class="form-group center-screen">
 
                <!-- subject name  -->
-               <div class="col-sm-5 ltr">
-                  <!-- <h4 for="guardianship_id">{{'guardianship.add.name' | translate}}</h4> -->
+               <div class="col-sm-6 col-xs-12 ltr">
                   <div class="input-group">
                      <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
                      <input id="guardianship_id" type="text" [(ngModel)]="guardianship.name" formControlName="name"
                         class="form-control" placeholder="{{'guardianship.add.name' | translate}}">
                   </div>
-
                   <div *ngIf="controls.name.touched && controls.name.errors?.required" class="alert alert-danger">
                      {{'guardianship.add.nameMsg' | translate}}
                   </div>
                </div>
-
+        
                <!-- subject desc  -->
-               <div class="col-sm-10">
+               <div class="col-sm-6 col-xs-12">
                   <h4 for="desc_id">{{'shared.desc' | translate}}</h4>
                   <textarea [(ngModel)]="guardianship.description" formControlName="desc" id="desc_id" rows="7"
                      class="form-control"></textarea>
                </div>
 
                <!-- save subject  -->
-               <div class="col-sm-2 btn-distance">
+               <div class="col-sm-2 col-xs-8 btn-distance">
                   <input type="submit" [disabled]="formData.invalid" class="form-control btn btn-primary"
                      value="{{'shared.save' | translate}}">
                </div>
