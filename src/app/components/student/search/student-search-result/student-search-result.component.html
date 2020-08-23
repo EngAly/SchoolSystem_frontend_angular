@@ -1,0 +1,68 @@
+<div class="container">
+   <h1 class="text-center school-headers">{{'student.search.header' | translate}}</h1>
+
+   <router-outlet></router-outlet>
+
+
+   <!-- table show student data -->
+   <div id="classes" [ngClass]="['list-group']" class="center-table-header table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+         <thead>
+            <tr>
+               <!-- id -->
+               <th (click)="sortBy('id')">{{'shared.id' | translate}}
+                  <span class="glyphicon"
+                     [ngClass]="{'glyphicon-triangle-bottom':(direction=='desc' && sort=='id'),'glyphicon-triangle-top':(direction=='asc' && sort=='id')}">
+                  </span>
+               </th>
+
+               <!-- name -->
+               <th (click)="sortBy('name')">
+                  {{'shared.name' | translate}}
+                  <span class="glyphicon"
+                     [ngClass]="{'glyphicon-triangle-bottom':(direction=='desc' && sort=='name'),'glyphicon-triangle-top':(direction=='asc' && sort=='name')}">
+                  </span>
+               </th>
+
+               <th>{{'shared.age' | translate}}</th>
+               <th>{{'shared.gender' | translate}}</th>
+
+               <!-- joinDate -->
+               <th (click)="sortBy('joinDate')">{{'shared.joinDate' | translate}}
+                  <span class="glyphicon"
+                     [ngClass]="{'glyphicon-triangle-bottom':(direction=='desc' && sort=='joinDate'),'glyphicon-triangle-top':(direction=='asc' && sort=='joinDate')}">
+                  </span>
+               </th>
+
+               <th>{{'student.search.status' | translate}}</th>
+               <th>{{'student.search.level' | translate}}</th>
+            </tr>
+         </thead>
+         <tbody>
+            <!-- <tr *ngFor="let item of levels; let i=index" (click)="getPatientDetails(patient)"> -->
+            <tr *ngFor="let item of items; let i=index" (click)="getDetails(item)">
+               <td>{{item.id}}</td>
+               <td>{{item.name}}</td>
+               <td>{{item.age}}</td>
+               <td>{{item.gender}}</td>
+               <td>{{item.joinDate | date }} </td>
+               <td>{{item.status}}</td>
+               <td>{{item.level.name}}</td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+
+
+
+   <!-- <div class="btn-group horizontal-middle" dir="ltr">
+        <button type="button" class="btn btn-primary btn-lg" [disabled]="currentPage==0"
+            (click)="First()">First</button>
+        <button type=" button" class="btn btn-primary btn-lg" [disabled]="currentPage==0"
+            (click)="Previous()">Previous</button>
+        <button type="button" class="btn btn-primary btn-lg" [disabled]="currentPage==totalPages -1 || noData"
+            (click)="Next()">Next</button>
+        <button type="button" class="btn btn-primary btn-lg" [disabled]="currentPage==totalPages -1 || noData"
+            (click)="Last()">Last</button>
+    </div> -->
+</div>

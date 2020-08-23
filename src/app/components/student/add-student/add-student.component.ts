@@ -96,7 +96,7 @@ export class AddStudentComponent implements EndPointAbstracts {
          saved => {
             if (saved) {
                alert(document.getElementById('savedMsg').textContent);
-               // this.reset();
+               this.reset();
             } else {
                alert(document.getElementById('unsavedMsg').textContent)
             }
@@ -104,5 +104,9 @@ export class AddStudentComponent implements EndPointAbstracts {
          }
       );
       console.log(this.student)
+   }
+
+   reset() {
+      this.controls.reset;
    }
 }

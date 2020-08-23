@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule, routingComponent } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DatePipe } from '@angular/common';
 
 // 
 import { CKEditorModule } from 'ng2-ckeditor';
@@ -19,7 +20,12 @@ import { AddGuardianComponent } from './components/guardian/add-guardian/add-gua
 
 // contains all layouts
 import { Layouts } from './layout/layouts';
- 
+import { StudentSearchResultComponent } from './components/student/search/student-search-result/student-search-result.component';
+import { TeacherSearchResultComponent } from './components/teacher/search/teacher-search-result/teacher-search-result.component';
+import { WorkerDetailsComponent } from './components/worker/worker-details/worker-details.component';
+import { ClassDetailsComponent } from './components/class/class-details/class-details.component';
+
+     
 @NgModule({
    declarations: [
       AppComponent,
@@ -28,7 +34,11 @@ import { Layouts } from './layout/layouts';
       SearchGuardianComponent,
       AddGuardianComponent,
       Layouts,
-    ],
+      StudentSearchResultComponent,
+      TeacherSearchResultComponent,
+      WorkerDetailsComponent,
+      ClassDetailsComponent,
+     ],
    imports: [
       BrowserModule,
       AppRoutingModule,
@@ -47,7 +57,7 @@ import { Layouts } from './layout/layouts';
 
    ],
    // to register a service with angular injector using the provider meta data
-   providers: [TranslateService,
+   providers: [TranslateService,DatePipe
       // if you want to remove providedIn: 'root' in service inject it here
       // StudentService
    ],

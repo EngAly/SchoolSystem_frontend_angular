@@ -2,7 +2,7 @@
 
     <div class="center-screen">
         <h1 class="school-headers">{{'scratch.login.hint' | translate}}</h1>
-        <img id="profile-img" src="assets/images/user-avatar.jpeg" class="profile-img-card" width="300px"/>
+        <img id="profile-img" src="assets/images/user-avatar.png" class="profile-img-card" width="300px"/>
     </div>
 
     <form [formGroup]="loginDataForm" (submit)="login()">
@@ -10,7 +10,7 @@
             <div class="form-group center-screen">
 
                 <!-- username -->
-                <div class="col-sm-5">
+                <div class="col-sm-5 ltr">
                     <!-- <label for="username">{{'scratch.login.username' | translate}}</label> -->
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -24,7 +24,7 @@
                 </div>
 
                 <!-- password -->
-                <div class="col-sm-5">
+                <div class="col-sm-5 ltr">
                     <!-- <label for="password">{{'scratch.login.password' | translate}}</label> -->
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>

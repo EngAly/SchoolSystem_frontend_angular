@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Grade } from 'src/app/models/Grade';
 import { EndPointAbstracts } from 'src/app/interfaces/EndPointAbstracts';
-import { ValidateMonth } from 'src/app/CustomValidators';
 import { CacheObjectService } from 'src/app/services/cache-object.service';
 import { Student } from 'src/app/models/Student';
 import { StudentService } from 'src/app/services/student.service';
+import { CustomValidators } from 'src/app/validators/CustomValidators';
 
 @Component({
    selector: 'app-add-grade',
@@ -21,7 +21,7 @@ export class AddGradeComponent implements EndPointAbstracts, OnInit {
 
    formData = new FormGroup({
       year: new FormControl('', [Validators.required]),
-      month: new FormControl('', [Validators.required, ValidateMonth]),
+      month: new FormControl('', [Validators.required, CustomValidators.ValidateMonth]),
       grade: new FormControl('', Validators.required),
    })
 

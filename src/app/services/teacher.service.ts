@@ -37,6 +37,14 @@ export class TeacherService implements BusinessAbstracts<Teacher>{
       return this.http.get<Teacher[]>(`${this.url}/byName/${name}/?pageSize=${pageSize}&page=${page}&sort=${sortBy}&direction=${direction}`);
    }
 
+   public getByAge(start: number, end: number, pageSize = 8, page = 0, sortBy = "id", direction = "asc"): Observable<Teacher[]> {
+      return this.http.get<Teacher[]>(`${this.url}/byAge?start=${start}&end=${end}&pageSize=${pageSize}&page=${page}&sort=${sortBy}&direction=${direction}`);
+   }
+
+   public getByJoinDate(start: string, end: string, pageSize = 8, page = 0, sortBy = "id", direction = "asc"): Observable<Teacher[]> {
+      return this.http.get<Teacher[]>(`${this.url}/byJoinDate?start=${start}&end=${end}&pageSize=${pageSize}&page=${page}&sort=${sortBy}&direction=${direction}`);
+   }
+
    getAll(pageSize?: number, page?: number, sortBy?: string, direction?: string): Observable<Teacher[]> {
       throw new Error("Method not implemented.");
    }

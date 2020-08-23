@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Teacher } from 'src/app/models/Teacher';
 import { CacheObjectService } from 'src/app/services/cache-object.service';
- import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TeacherService } from 'src/app/services/teacher.service';
 
 @Component({
@@ -17,16 +17,16 @@ export class TeacherDetailsComponent implements OnInit {
    hasData: boolean;
 
    constructor(private service: TeacherService, private _cache: CacheObjectService,
-      private activeRoute: ActivatedRoute,private route: Router) { }
+      private activeRoute: ActivatedRoute, private route: Router) { }
 
    ngOnInit(): void {
-      let id = parseInt(this.activeRoute.snapshot.paramMap.get('id'))
+       let id = parseInt(this.activeRoute.snapshot.paramMap.get('id'))
       if (Object.keys(this._cache.getObject).length > 0) {
-         this.teacher = this._cache.getObject;
+          this.teacher = this._cache.getObject;
          this.hasData = true;
       } else {
-         if (id) {
-            this.getById(id);
+          if (id) {
+              this.getById(id);
          }
       }
    }

@@ -7,6 +7,6 @@ export class Worker {
     gender: string;
     phone: string;
     age: string;
-    desc: string;
+    description: string;
     guardianships: Guardianship[]
 }

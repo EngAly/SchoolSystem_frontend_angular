@@ -37,7 +37,19 @@ export class StudentService implements BusinessAbstracts<Student> {
    }
 
    public getByName(name: string, pageSize = 8, page = 0, sortBy = "id", direction = "asc"): Observable<Student[]> {
-      return this.http.get<Student[]>(`${this.url}/byName/${name}/?pageSize=${pageSize}&page=${page}&sort=${sortBy}&direction=${direction}`);
+      return this.http.get<Student[]>(`${this.url}/byName/${name}?pageSize=${pageSize}&page=${page}&sort=${sortBy}&direction=${direction}`);
+   }
+
+   public getByAge(start: number, end: number, pageSize = 8, page = 0, sortBy = "id", direction = "asc"): Observable<Student[]> {
+      return this.http.get<Student[]>(`${this.url}/byAge?start=${start}&end=${end}&pageSize=${pageSize}&page=${page}&sort=${sortBy}&direction=${direction}`);
+   }
+
+   public getByJoinDate(start: string, end: string, pageSize = 8, page = 0, sortBy = "id", direction = "asc"): Observable<Student[]> {
+      return this.http.get<Student[]>(`${this.url}/byJoinDate?start=${start}&end=${end}&pageSize=${pageSize}&page=${page}&sort=${sortBy}&direction=${direction}`);
+   }
+
+   public getByLevel(level: string, pageSize = 8, page = 0, sortBy = "id", direction = "asc"): Observable<Student[]> {
+      return this.http.get<Student[]>(`${this.url}/byLevel/${level}?pageSize=${pageSize}&page=${page}&sort=${sortBy}&direction=${direction}`);
    }
 
    /**

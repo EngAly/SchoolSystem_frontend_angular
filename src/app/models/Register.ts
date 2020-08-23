@@ -1,4 +1,4 @@
-export class UserRegister {
+export class Register {
     id: number
     username: string;
     password: string;
@@ -7,6 +7,6 @@ export class UserRegister {
     phone: string;
     address: string;
     role: string;
-    registerDate: Date;
+    joinDate: Date;
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { GuardianshipService } from 'src/app/services/guardianship.service';
 import { Guardianship } from 'src/app/models/Guardianship';
 import { LayoutAbstracts } from 'src/app/interfaces/LayoutAbstracts';
@@ -8,18 +8,31 @@ import { LayoutAbstracts } from 'src/app/interfaces/LayoutAbstracts';
    templateUrl: './guardianships.component.html',
    styleUrls: ['./guardianships.component.scss']
 })
-export class GuardianshipsComponent implements LayoutAbstracts<Guardianship>{
+export class GuardianshipsComponent implements LayoutAbstracts<Guardianship> {
 
    items: Guardianship[];
    count = 0;
+   @Input() selected: Guardianship[];
 
    constructor(private service: GuardianshipService) {
       this.service.getAll(100, 0, 'name', 'asc').subscribe(
          data => {
             this.items = data['content'];
+            this.whenUpdate();
          },
          error => console.log(error)
-      );
+      )
+   }
+
+   whenUpdate() {
+      if (this.selected.length > 0 && this.items.length > 0) {
+         this.items.filter(raw => {
+            this.selected.filter(selected => {
+               if (raw.name == selected.name) raw['isDone'] = true
+            })
+         });
+         this.count = this.items.filter(item => item['isDone']).length
+      }
    }
 
    public toggleItem(item: Guardianship) {

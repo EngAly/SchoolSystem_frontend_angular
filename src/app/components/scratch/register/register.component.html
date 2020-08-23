@@ -1,8 +1,12 @@
 <div class="container">
 
+   <!-- not useable two field just for congirmation save or not -->
+   <span id="savedMsg" class="hidden">{{'shared.alerts.saved' | translate}}</span>
+   <span id="unsavedMsg" class="hidden">{{'shared.alerts.unsaved' | translate}}</span>
+
    <div class="center-screen">
       <div class="school-headers">{{'scratch.register.hint' | translate}}</div>
-      <img id="profile-img" src="assets/images/user-avatar.jpeg" class="profile-img-card" width="350px" />
+      <img id="profile-img" src="assets/images/user-avatar.png" class="profile-img-card" width="300px" />
    </div>
 
    <form [formGroup]="formData" (submit)="save()">
@@ -10,33 +14,39 @@
          <div class="form-group center-screen">
 
             <!-- username -->
-            <div class="col-sm-5 ltr">
+            <div class="col-sm-4 ltr">
                <!-- <label for="username">{{'scratch.login.username' | translate}}</label> -->
                <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                   <input id="username" type="text" [(ngModel)]="user.username" formControlName="username"
                      class="form-control" placeholder="{{'scratch.login.username' | translate}}">
                </div>
-               <div *ngIf="controls.username.touched && controls.username.errors?.required" class="alert alert-danger">
+               <div
+                  *ngIf="controls.username.touched && (controls.username.errors?.required || controls.username.invalid)"
+                  class="alert alert-danger">
                   {{'scratch.login.usernameMsg' | translate}}
                </div>
             </div>
 
             <!-- password -->
-            <div class="col-sm-5 ltr">
+            <div class="col-sm-4 ltr">
                <!-- <label for="password">{{'scratch.login.password' | translate}}</label> -->
                <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                  <input type="password" [(ngModel)]="user.password" formControlName="password" class="form-control"
-                     placeholder="{{'scratch.login.password' | translate}}">
+                  <input type="password" id="password" [(ngModel)]="user.password" formControlName="password"
+                     class="form-control" placeholder="{{'scratch.login.password' | translate}}">
+                  <span class="input-group-addon" (click)="togglePassword()">
+                     <i [ngClass]="passwordStatus ? 'glyphicon-eye-open':'glyphicon-eye-close'" class="glyphicon"></i></span>
                </div>
-               <div *ngIf="controls.password.touched && controls.password.errors?.required" class="alert alert-danger">
+               <div
+                  *ngIf="controls.password.touched && (controls.password.errors?.required || controls.password.invalid)"
+                  class="alert alert-danger">
                   {{'scratch.login.passwordMsg' | translate}}
                </div>
             </div>
 
             <!-- confirm password -->
-            <div class="col-sm-5 ltr">
+            <div class="col-sm-4 ltr">
                <!-- <label for="password">{{'scratch.register.confirmPassword' | translate}}</label> -->
                <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -48,9 +58,32 @@
                </div>
             </div>
 
+            <!-- phone  -->
+            <div class="col-sm-4 ltr">
+               <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                  <input type="text" [(ngModel)]="user.phone" formControlName="phone" class="form-control"
+                     placeholder="{{'shared.phone' | translate}}">
+               </div>
+               <div *ngIf="controls.phone.touched && (controls.phone.errors?.required || controls.phone.invalid)"
+                  class="alert alert-danger">
+                  {{'shared.alerts.phone' | translate}}
+               </div>
+            </div>
+
+            <!--joinDate-->
+            <div class="col-sm-4 ltr">
+               <div class=" input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                  <input type="text" formControlName="joinDate" [(ngModel)]="user.joinDate" onfocus="(this.type='date')"
+                     onblur="(this.type='text')" class="form-control" placeholder="{{'shared.joinDate'|translate}}">
+               </div>
+               <div *ngIf="controls.joinDate.touched && controls.joinDate.errors?.required" class="alert alert-danger">
+                  {{'shared.alerts.joinDate'|translate}}</div>
+            </div>
+
             <!-- address -->
-            <div class="col-sm-5 ltr">
-               <!-- <label for="address">{{'shared.address' | translate}}</label> -->
+            <div class="col-sm-4 ltr">
                <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
                   <input id="address" type="text" [(ngModel)]="user.address" formControlName="address"
@@ -59,27 +92,57 @@
             </div>
 
             <!-- gender -->
-            <div class="col-sm-4 ui-margin ltr" (change)="handleGenderChange($event)">
+            <div class="col-sm-3 ui-margin ltr" (change)="setGender()">
                <div class="btn-group">
-                  <label class="btn btn-info no-border">
-                     <input type="radio" value="Male" formControlName="gender">
-                     <span>{{'shared.male' | translate}} </span>
-                  </label>
-                  <label class="btn btn-info no-border">
-                     <input type="radio" value="Female" formControlName="gender">
-                     <span>{{'shared.female' | translate}} </span>
-                  </label>
+                  <div class="input-group">
+                     <span class="input-group-addon no-border">{{'shared.gender' | translate}}<i
+                           class="glyphicon"></i></span>
+                     <label class="btn btn-info no-border">
+                        <input type="radio" value="Male" formControlName="gender">
+                        <span>{{'shared.male' | translate}} </span>
+                     </label>
+                     <label class="btn btn-info no-border">
+                        <input type="radio" value="Female" formControlName="gender">
+                        <span>{{'shared.female' | translate}} </span>
+                     </label>
+                  </div>
                </div>
                <div *ngIf="controls.gender.invalid && controls.gender.errors?.required" class="alert alert-danger">
                   {{'shared.genderMsg' | translate}}
                </div>
             </div>
 
-            <div class="col-sm-4 btn-distance">
-               <input type="submit" [disabled]="formData.invalid" class="form-control btn btn-primary"
-                  value="{{'scratch.register.register' | translate}}">
+            <!-- role -->
+            <div class="col-sm-3 ui-margin ltr" (change)="setRole()">
+               <div class="btn-group">
+                  <div class="input-group">
+                     <span class="input-group-addon no-border">{{'scratch.register.account' | translate}}<i
+                           class="glyphicon"></i></span>
+                     <label class="btn btn-info no-border">
+                        <input type="radio" value="User" formControlName="role">
+                        <span>{{'scratch.register.user' | translate}} </span>
+                     </label>
+                     <label class="btn btn-info no-border">
+                        <input type="radio" value="Admin" formControlName="role">
+                        <span>{{'scratch.register.admin' | translate}} </span>
+                     </label>
+                  </div>
+               </div>
+               <div *ngIf="controls.role.invalid && controls.role.errors?.required" class="alert alert-danger">
+                  {{'scratch.register.roleMsg' | translate}}
+               </div>
             </div>
 
+            <!-- save -->
+            <div class="col-sm-4">
+               <div class="btn-group">
+                  <!-- save -->
+                  <button type="submit" [disabled]="formData.invalid"
+                     class="btn btn-primary no-border">{{'scratch.register.register' | translate}}</button>
+                  <!-- reset -->
+                  <button type="reset" class="btn btn-warning no-border">{{'shared.buttons.reset' | translate}}</button>
+               </div>
+            </div>
          </div>
       </div>
    </form>

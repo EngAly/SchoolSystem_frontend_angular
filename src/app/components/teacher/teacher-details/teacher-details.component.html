@@ -9,7 +9,7 @@
             <h1 class="card-title text-danger"> {{teacher.name}} </h1>
 
             <p><label class="list-group-item">{{'shared.desc'|translate}} : <span
-               class="details">{{teacher.notes}}</span></label></p>
+                     class="details">{{teacher.notes}}</span></label></p>
             <!--start personal Information-->
             <div class="list-group list-group-flush">
 
@@ -37,9 +37,6 @@
                <label class="list-group-item">{{'shared.email'|translate}}: <span
                      class="details">{{teacher.email}}</span></label>
 
-               <label class="list-group-item">{{'teacher.shared.salary'|translate}}:
-                  <span class="details">{{teacher.salary}}</span></label>
-
                <!-- reuse i18n -->
                <label class="list-group-item">{{'guardian.shared.ssn'|translate}}:
                   <span class="details">{{teacher.ssn}}</span></label>
@@ -50,9 +47,6 @@
 
                <label class="list-group-item">{{'teacher.shared.salary'|translate}}:
                   <span class="details">{{teacher.salary}}</span></label>
-
-               <label class="list-group-item">{{'teacher.shared.qualification'|translate}}: <span
-                     class="details">{{teacher.qualification}}</span></label>
 
                <label class="list-group-item">{{'teacher.shared.ex'|translate}}: <span
                      class="details">{{teacher.ex}}</span></label>
@@ -68,13 +62,16 @@
                   </ul>
                </label>
 
-                <div class="list-group-item">
+               <div class="list-group-item">
                   <div class="btn-group">
-                     <button type="button" (click)="update()" class="btn btn-primary">Update</button>
-                     <button type="button" (click)="deleteById()" class="btn btn-danger">Delete</button>
+                     <button type="button" (click)="update()"
+                        class="btn btn-primary">{{'shared.buttons.update' | translate}}</button>
+
+                     <button type="button" (click)="deleteById()"
+                        class="btn btn-danger">{{'shared.buttons.delete' | translate}}</button>
                   </div>
                </div>
-             </div>
+            </div>
          </div>
       </div>
    </div>

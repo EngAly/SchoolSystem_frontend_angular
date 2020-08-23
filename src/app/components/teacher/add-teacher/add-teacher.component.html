@@ -2,8 +2,8 @@
    <div class="container">
 
       <!-- not useable two field just for congirmation save or not -->
-      <span id="savedMsg" class="hidden">{{'shared.savedMsg' | translate}}</span>
-      <span id="unsavedMsg" class="hidden">{{'shared.unsavedMsg' | translate}}</span>
+      <span id="saved" class="hidden">{{'shared.alerts.saved' | translate}}</span>
+      <span id="unsaved" class="hidden">{{'shared.alerts.unsaved' | translate}}</span>
 
       <!--  Form Header -->
       <div class="center-screen">
@@ -24,11 +24,11 @@
                   <div class="input-group">
                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                      <input type="text" formControlName="name" [(ngModel)]="teacher.name" class="form-control"
-                        placeholder="{{'teacher.shared.name'|translate}}">
+                        placeholder="{{'shared.name'|translate}}">
                   </div>
                   <div *ngIf="controls.name.touched && controls.name.errors?.required"
                      class="alert alert-danger  margin">
-                     {{'teacher.shared.nameMsg' | translate}}
+                     {{'shared.alerts.name' | translate}}
                   </div>
                </div>
 
@@ -41,7 +41,7 @@
                         placeholder="{{'shared.age'|translate}}">
                   </div>
                   <div *ngIf="controls.age.touched && controls.age.errors?.required" class="alert alert-danger">
-                     {{'shared.ageMsg'|translate}}
+                     {{'shared.alerts.age'|translate}}
                   </div>
                </div>
 
@@ -55,7 +55,7 @@
                         placeholder="{{'shared.dob'|translate}}">
                   </div>
                   <div *ngIf="controls.dob.touched && controls.dob.errors?.required" class="alert alert-danger">
-                     {{'shared.dobMsg'|translate}}
+                     {{'shared.alerts.dob'|translate}}
                   </div>
                </div>
 
@@ -84,7 +84,7 @@
                   </div>
                   <div *ngIf=" controls.graduateDate.touched && controls.graduateDate.errors?.required"
                      class="alert alert-danger">
-                     {{'teacher.shared.dohMsg'|translate}}
+                     {{'teacher.shared.graduateDateMsg'|translate}}
                   </div>
                </div>
 
@@ -114,7 +114,7 @@
                      </label>
                   </div>
                   <div *ngIf="controls.gender.invalid && controls.gender.errors?.required" class="alert alert-danger">
-                     {{'shared.genderMsg' | translate}}
+                     {{'shared.alerts.gender' | translate}}
                   </div>
                </div>
 
@@ -162,10 +162,10 @@
                         class="form-control" placeholder="{{'teacher.shared.qualification' | translate}}">
                   </div>
                   <div *ngIf="controls.qualification.touched && controls.qualification.errors?.required"
-                     class="alert alert-danger  margin">{{'teacher.shared.qualificationMsg'|translate}}
+                     class="alert alert-danger margin">
+                     {{'teacher.shared.qualificationMsg'|translate}}
                   </div>
                </div>
-
             </div>
 
 
@@ -180,39 +180,40 @@
                         placeholder="{{'shared.address'|translate}}">
                   </div>
                   <div *ngIf="controls.address.touched && controls.address.errors?.required" class="alert alert-danger">
-                     {{'shared.addressMsg'|translate}}</div>
+                     {{'shared.alerts.address'|translate}}</div>
                </div>
 
                <!-- Email-->
-               <div class="col-sm-10">
+               <div class="col-sm-10 ltr">
                   <!-- <h4 class="control-label">{{'shared.email'|translate}}</h4> -->
                   <div class="input-group">
                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                      <input type="text" [(ngModel)]="teacher.email" formControlName="email" class="form-control"
                         placeholder="{{'shared.email'|translate}}">
                   </div>
-
+                  <!-- cancel email validation -->
                   <!-- <div *ngIf="controls.email.errors && (controls.email.touched || controls.email.dirty)"
-              class="alert alert-danger">
-              {{'shared.emailMsg'|translate}}
-          </div> -->
+                     class="alert alert-danger">
+                     {{'shared.email'|translate}}
+                  </div> -->
                </div>
 
                <!-- Phone Number -->
-               <div class="col-sm-8">
+               <div class="col-sm-8 ltr">
                   <!-- <h4 for="phone">{{'shared.phone' | translate}}</h4> -->
                   <div class="input-group">
                      <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
                      <input id="phone" type="text" [(ngModel)]="teacher.phone" formControlName="phone"
                         class="form-control" placeholder="{{'shared.phone' | translate}}">
                   </div>
-                  <div *ngIf="controls.phone.touched && controls.phone.errors?.required" class="alert alert-danger">
-                     {{'shared.phoneMsg' | translate}}
+                  <div *ngIf="controls.phone.touched && (controls.phone.errors?.required || controls.phone.invalid)"
+                     class="alert alert-danger">
+                     {{'shared.alerts.phone' | translate}}
                   </div>
                </div>
 
                <!-- Ssn -->
-               <div class="col-sm-8">
+               <div class="col-sm-8 ltr">
                   <!-- <h4 for="ssn">{{'guardian.shared.ssn' | translate}}</h4> -->
                   <div class="input-group">
                      <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
@@ -225,12 +226,12 @@
                </div>
 
                <!-- classes -->
-               <div class="col-sm-10">
+               <div class="col-sm-10 ltr">
                   <classes (click)='setLevels()' [selected]="teacher.levels"></classes>
                </div>
 
                <!--  Subject  -->
-               <div class="col-sm-10">
+               <div class="col-sm-10 ltr">
                   <subjects (click)='setSubjects()' [selected]="teacher.subject"></subjects>
                </div>
 
@@ -238,13 +239,19 @@
                <div class="col-sm-10">
                   <h4 for="desc">{{'shared.desc' | translate}}</h4>
                   <textarea (input)="teacher.notes = $event.target.value;" formControlName="notes"
-                     [(ngModel)]="teacher.notes" id="desc" rows="7" class="form-control"></textarea>
+                     [(ngModel)]="teacher.notes" id="desc" rows="7" class="form-control">{{teacher.notes}}</textarea>
                </div>
 
-               <div class="col-sm-7 btn-distance">
+               <!-- save -->
+               <div class="col-sm-5 btn-distance">
                   <input [disabled]="formData.invalid || inPrograss" type="submit" class="form-control btn btn-success"
-                     value="{{'shared.save'|translate}}">
+                     value="{{'shared.buttons.save'|translate}}">
                   <!-- <input type="submit" class="form-control btn btn-success" value="{{'shared.save'|translate}}"> -->
+               </div>
+
+               <!-- reset -->
+               <div class="col-sm-5 btn-distance">
+                  <input type="reset" class="form-control btn btn-success" value="{{'shared.buttons.reset'|translate}}">
                </div>
             </div>
          </div>

@@ -11,17 +11,17 @@
                <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
                   <input type="text" class="form-control" formControlName="name" [(ngModel)]="name"
-                     placeholder="{{'shared.searchName' | translate}}" (keyup)="clearResults()">
+                     placeholder="{{'shared.alerts.search' | translate}}" (keyup)="clearResults()">
                </div>
                <div *ngIf="controls.name.touched && controls.name.errors?.required" class="alert alert-danger">
-                  {{'shared.searchNameMsg' | translate}}
+                  {{'ed.alerts.searchMsg' | translate}}
                </div>
             </div>
 
             <!-- commit search -->
             <div class="col-sm-3">
-               <button type="submit" class="form-control btn btn-primary"
-                  [disabled]="checkName.invalid || inPrograss">{{'shared.searchBtn' | translate}}</button>
+               <button type="submit" class="form-control btn btn-primary no-border"
+                  [disabled]="checkName.invalid || inPrograss">{{'shared.buttons.search' | translate}}</button>
             </div>
          </div>
       </div>
@@ -33,8 +33,8 @@
          <!-- table head -->
          <thead>
             <tr>
-               <th>{{'class.search.id' | translate}}</th>
-               <th>{{'class.search.name' | translate}}</th>
+               <th>{{'shared.id' | translate}}</th>
+               <th>{{'shared.name' | translate}}</th>
                <th>{{'class.search.floor' | translate}}</th>
                <th>{{'class.search.maxSize' | translate}}</th>
                <th>{{'class.search.currentSize' | translate}}</th>
@@ -45,7 +45,7 @@
          <tbody>
             <!-- <tr *ngFor="let item of levels; let i=index" (click)="getPatientDetails(patient)"> -->
             <!-- table content -->
-            <tr *ngFor="let item of levels; let i=index">
+            <tr *ngFor="let item of levels; let i=index" (click)="getDetails(item.id)">
                <td>{{item.id}}</td>
                <td>{{item.name}}</td>
                <td>{{item.floor}}</td>

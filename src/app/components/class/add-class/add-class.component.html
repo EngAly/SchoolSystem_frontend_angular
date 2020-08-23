@@ -8,14 +8,15 @@
 
       <div class="center-screen">
          <div class="school-headers">{{'class.add.hint'|translate}}</div>
-         <img id="profile-img" src="assets/images/classroom.jpg" class="profile-img-card ui-margin img-rounded img-responsive" />
+         <img id="profile-img" src="assets/images/classroom.jpg"
+            class="profile-img-card ui-margin img-rounded img-responsive" />
       </div>
 
       <form [formGroup]="formData" (submit)="save()">
          <div class="form-group center-screen">
 
             <!-- name -->
-            <div class="col-sm-6 col-xs-12 ltr">
+            <div class="col-sm-5 col-xs-12 ltr">
                <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
                   <input type="text" formControlName="name" [(ngModel)]="class.name" class="form-control"
@@ -64,9 +65,10 @@
                </div>
             </div>
 
+            <!-- save -->
             <div class="col-sm-4 col-xs-8 btn-distance">
                <input type="submit" [disabled]="formData.invalid || inPrograss" class="btn btn-primary"
-                  value="{{'shared.save' | translate}}">
+                  value="{{'shared.buttons.save' | translate}}">
             </div>
 
          </div>

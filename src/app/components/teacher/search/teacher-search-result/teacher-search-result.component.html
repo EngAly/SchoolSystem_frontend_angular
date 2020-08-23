@@ -1,32 +1,8 @@
 <div class="container">
-   <h1 class="text-center school-headers">{{'student.search.header' | translate}}</h1>
+   <h1 class="text-center school-headers">{{'teacher.search.header' | translate}}</h1>
 
-   <!-- Search Section need to move-->
-   <form [formGroup]="checkName" (submit)="searchByName()">
-      <div class="row center-screen">
+   <router-outlet></router-outlet>
 
-         <div class="col-sm-10 form-group">
-
-            <!-- search  by name -->
-            <div class="col-sm-7 ltr">
-               <div class="input-group">
-                  <span class="input-group-addon"><i class="glyphicon glyphicon-education"></i></span>
-                  <input type="text" class="form-control" formControlName="name" [(ngModel)]="name"
-                     placeholder="{{'shared.searchName' | translate}}" (keyup)="clearResults()">
-               </div>
-               <div *ngIf="controls.name.touched && controls.name.errors?.required" class="alert alert-danger">
-                  {{'shared.searchNameMsg' | translate}}
-               </div>
-            </div>
-
-            <!-- start search -->
-            <div class="col-sm-3">
-               <button type="submit" class="form-control btn btn-primary"
-                  [disabled]="checkName.invalid || inPrograss">{{'shared.searchBtn' | translate}}</button>
-            </div>
-         </div>
-      </div>
-   </form>
 
    <!-- table show student data -->
    <div id="classes" [ngClass]="['list-group']" class="center-table-header table-responsive">
@@ -34,44 +10,47 @@
          <thead>
             <tr>
                <!-- id cell -->
-               <th (click)="sortBy('id')">{{'class.search.id' | translate}}
+               <th (click)="sortBy('id')">{{'shared.id' | translate}}
                   <span class="glyphicon"
                      [ngClass]="{'glyphicon-triangle-bottom':(direction=='desc' && sort=='id'),'glyphicon-triangle-top':(direction=='asc' && sort=='id')}">
                   </span>
                </th>
-
                <!-- name cell -->
                <th (click)="sortBy('name')">
-                  {{'class.search.name' | translate}}
+                  {{'shared.name' | translate}}
                   <span class="glyphicon"
                      [ngClass]="{'glyphicon-triangle-bottom':(direction=='desc' && sort=='name'),'glyphicon-triangle-top':(direction=='asc' && sort=='name')}">
                   </span>
                </th>
-
                <th>{{'shared.age' | translate}}</th>
                <th>{{'shared.gender' | translate}}</th>
-
+               <th>{{'shared.phone' | translate}}</th>
                <!-- joinDate cell -->
                <th (click)="sortBy('joinDate')">{{'shared.joinDate' | translate}}
                   <span class="glyphicon"
                      [ngClass]="{'glyphicon-triangle-bottom':(direction=='desc' && sort=='joinDate'),'glyphicon-triangle-top':(direction=='asc' && sort=='joinDate')}">
                   </span>
                </th>
-
-               <th>{{'student.search.status' | translate}}</th>
-               <th>{{'student.search.level' | translate}}</th>
+               <th>{{'subject.shared.name' | translate}}</th>
+               <th>{{'teacher.search.level' | translate}}</th>
+               <th>{{'teacher.shared.ex' | translate}}</th>
             </tr>
          </thead>
          <tbody>
-            <!-- <tr *ngFor="let item of levels; let i=index" (click)="getPatientDetails(patient)"> -->
             <tr *ngFor="let item of items; let i=index" (click)="getDetails(item)">
                <td>{{item.id}}</td>
                <td>{{item.name}}</td>
                <td>{{item.age}}</td>
                <td>{{item.gender}}</td>
-               <td>{{item.joinDate | date }} </td>
-               <td>{{item.status}}</td>
-               <td>{{item.level.name}}</td>
+               <td>{{item.phone}}</td>
+               <td>{{item.doh | date }} </td>
+               <td>{{item.subject }} </td>
+               <td>
+                  <div *ngFor="let level of item.levels;let i=index">
+                   {{level.name}}
+                  </div>
+               </td>
+               <td>{{item.ex }} </td>
             </tr>
          </tbody>
       </table>

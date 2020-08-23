@@ -10,8 +10,6 @@ import { AddGuardianshipComponent } from './components/guardianship/add-guardian
 import { SearchClassComponent } from './components/class/search-class/search-class.component';
 import { SearchSubjectComponent } from './components/subject/search-subject/search-subject.component';
 import { SearchGuardianshipComponent } from './components/guardianship/search-guardianship/search-guardianship.component';
-import { SearchTeacherComponent } from './components/teacher/search-teacher/search-teacher.component';
-import { SearchStudentComponent } from './components/student/search-student/search-student.component';
 import { AddStudentComponent } from './components/student/add-student/add-student.component';
 import { AddTeacherComponent } from './components/teacher/add-teacher/add-teacher.component';
 import { SearchWorkerComponent } from './components/worker/search-worker/search-worker.component';
@@ -19,6 +17,17 @@ import { AddGradeComponent } from './components/grade/add-grade/add-grade.compon
 import { StudentDetailsComponent } from './components/student/student-details/student-details.component';
 import { TeacherDetailsComponent } from './components/teacher/teacher-details/teacher-details.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
+import { StudentByNameComponent } from './components/student/search/student-by-name/student-by-name.component';
+import { StudentSearchResultComponent } from './components/student/search/student-search-result/student-search-result.component';
+import { StudentByAgeComponent } from './components/student/search/student-by-age/student-by-age.component';
+import { StudentByJoinDataComponent } from './components/student/search/student-by-join-data/student-by-join-data.component';
+import { StudentSearchLevelComponent } from './components/student/search/student-search-level/student-search-level.component';
+import { TeacherByNameComponent } from './components/teacher/search/teacher-by-name/teacher-by-name.component';
+import { TeacherByAgeComponent } from './components/teacher/search/teacher-by-age/teacher-by-age.component';
+import { TeacherByJoinDateComponent } from './components/teacher/search/teacher-by-join-date/teacher-by-join-date.component';
+import { TeacherSearchResultComponent } from './components/teacher/search/teacher-search-result/teacher-search-result.component';
+import { WorkerDetailsComponent } from './components/worker/worker-details/worker-details.component';
+import { ClassDetailsComponent } from './components/class/class-details/class-details.component';
 
 const routes: Routes = [
    /**
@@ -37,20 +46,39 @@ const routes: Routes = [
    // student mapping
    { path: "student/add-student", component: AddStudentComponent },
    { path: "student/grade/:id", component: AddGradeComponent },
-   { path: "student/search", component: SearchStudentComponent },
+   {
+      path: 'student/search',
+      component: StudentSearchResultComponent,
+      children: [
+         // { path: '', redirectTo: 'searchByName', pathMatch: 'full' },
+         { path: '', component: StudentByNameComponent },
+         { path: 'by-age', component: StudentByAgeComponent },
+         { path: 'by-join-date', component: StudentByJoinDataComponent },
+         { path: 'by-level', component: StudentSearchLevelComponent }
+      ]
+   },
    { path: "student/details/:id", component: StudentDetailsComponent },
    { path: "student/update/:id", component: AddStudentComponent },
-   { path: "student/statistics", component: StatisticsComponent },
 
    // teacher mapping
    { path: "teacher/add-teacher", component: AddTeacherComponent },
-   { path: "teacher/search", component: SearchTeacherComponent },
+   {
+      path: 'teacher/search',
+      component: TeacherSearchResultComponent,
+      children: [
+         // { path: '', redirectTo: 'searchByName', pathMatch: 'full' },
+         { path: '', component: TeacherByNameComponent },
+         { path: 'by-age', component: TeacherByAgeComponent },
+         { path: 'by-join-date', component: TeacherByJoinDateComponent },
+      ]
+   },
+
    { path: "teacher/details/:id", component: TeacherDetailsComponent },
    { path: "teacher/update/:id", component: AddTeacherComponent },
-   { path: "teacher/statistics", component: StatisticsComponent },
 
    // class mapping
    { path: "class/add-class", component: AddClassComponent },
+   { path: "class/details/:id", component: ClassDetailsComponent },
    { path: "class/search", component: SearchClassComponent },
 
    // subject mapping
@@ -64,7 +92,16 @@ const routes: Routes = [
 
    // worker mapping
    { path: "worker/add-worker", component: AddWorkerComponent },
+   { path: "worker/update/:id", component: AddWorkerComponent },
    { path: "worker/search", component: SearchWorkerComponent },
+   { path: "worker/details/:id", component: WorkerDetailsComponent },
+
+   // statistics
+   { path: "school/statistics", component: StatisticsComponent },
+   { path: "student/statistics", component: StatisticsComponent },
+   { path: "teacher/statistics", component: StatisticsComponent },
+
+
 ];
 
 @NgModule({
@@ -74,13 +111,23 @@ const routes: Routes = [
 export class AppRoutingModule { }
 
 
-export const routingComponent = [RegisterComponent, LoginComponent, HomeComponent,
-
-   AddTeacherComponent, AddStudentComponent, AddSubjectComponent, AddClassComponent,
-   AddWorkerComponent, AddGuardianshipComponent, AddGradeComponent,
-
-   SearchTeacherComponent, SearchStudentComponent, SearchClassComponent, SearchSubjectComponent,
-   SearchGuardianshipComponent, SearchWorkerComponent,
-
-   StudentDetailsComponent, TeacherDetailsComponent,StatisticsComponent
+export const routingComponent = [
+   // scrach
+   RegisterComponent, LoginComponent, HomeComponent,
+   // student
+   AddStudentComponent, StudentByNameComponent, StudentDetailsComponent, StudentByAgeComponent,
+   StudentByJoinDataComponent, StudentSearchLevelComponent, AddGradeComponent,
+   // teacher
+   AddTeacherComponent, TeacherByNameComponent, TeacherByAgeComponent, TeacherByJoinDateComponent,
+   TeacherDetailsComponent,
+   // worker
+   AddWorkerComponent, SearchWorkerComponent, WorkerDetailsComponent,
+   // guardianship
+   AddGuardianshipComponent, SearchGuardianshipComponent,
+   // subject
+   AddSubjectComponent, SearchSubjectComponent,
+   // class
+   AddClassComponent, SearchClassComponent,ClassDetailsComponent,
+   //  stat
+   StatisticsComponent
 ];

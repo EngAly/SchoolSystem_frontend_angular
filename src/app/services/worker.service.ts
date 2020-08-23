@@ -33,11 +33,11 @@ export class WorkerService implements BusinessAbstracts<Worker> {
       return this.http.get<Worker[]>(`${this.url}`);
    }
 
-   getByName(name: string, pageSize?: number, page?: number, sortBy?: string, direction?: string): Observable<Worker[]> {
-      throw new Error("Method not implemented.");
+   public getByName(name: string, page = 0, pageSize = 8, sortBy = "id", direction = "asc"): Observable<Worker[]> {
+      return this.http.get<Worker[]>(`${this.url}/byName/${name}/?pageSize=${pageSize}&page=${page}&sort=${sortBy}&direction=${direction}`);
    }
 
    getById(id?: number): Observable<Worker> {
-      throw new Error("Method not implemented.");
+      return this.http.get<Worker>(`${this.url}/byId/${id}`);
    }
 }

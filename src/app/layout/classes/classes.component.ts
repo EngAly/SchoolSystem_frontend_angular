@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Optional } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { LevelService } from 'src/app/services/level.service';
 import { Level } from 'src/app/models/Level';
 import { LayoutAbstracts } from 'src/app/interfaces/LayoutAbstracts';

@@ -72,5 +72,9 @@ export class StartComponent {
    persistItem(event: Event) {
       this._cache.setObject = (event.target as Element).innerHTML
    }
+
+   clearCachedObejct() {
+      this._cache.setObject = {};
+   }
 }
 

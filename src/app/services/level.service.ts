@@ -29,7 +29,7 @@ export class LevelService implements BusinessAbstracts<Level> {
    }
 
    public getByName(name: string, pagesize = 8, page = 0, sortBy = 'id', direction = "asc"): Observable<Level[]> {
-      return this.http.get<Level[]>(`${this.url}/byName/${name}/?pageSize=${pagesize}&page=${page}&sort=${sortBy}&direction=${direction}`);
+      return this.http.get<Level[]>(`${this.url}/byName/${name}?pageSize=${pagesize}&page=${page}&sort=${sortBy}&direction=${direction}`);
    }
 
    /**

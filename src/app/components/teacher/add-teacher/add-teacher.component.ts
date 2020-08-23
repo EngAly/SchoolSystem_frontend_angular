@@ -32,7 +32,7 @@ export class AddTeacherComponent implements EndPointAbstracts {
       salary: new FormControl('', Validators.required),
       // specialization:new FormControl('',Validators.required),
       ssn: new FormControl('', Validators.required),
-      phone: new FormControl('', Validators.required),
+      phone: new FormControl('', [Validators.required, Validators.pattern("[0-9 ]{11}")]),
       notes: new FormControl('', []),
       address: new FormControl('', Validators.required),
       qualification: new FormControl('', Validators.required),
@@ -40,11 +40,13 @@ export class AddTeacherComponent implements EndPointAbstracts {
    })
 
    constructor(private service: TeacherService, private _cache: CacheObjectService) {
-      if (Object.keys(this._cache.getObject).length > 0) {
+      let teacher = this._cache.getObject as Teacher
+      if (teacher.maritalStatus) {
+         // if (Object.keys(this._cache.getObject).length > 0) {
          this.teacher = this._cache.getObject
          this.controls.gender.setValue(this.teacher.gender);
          this.controls.maritalStatus.setValue(this.teacher.maritalStatus);
-       }
+      }
    }
 
    /**
@@ -112,10 +114,10 @@ export class AddTeacherComponent implements EndPointAbstracts {
       this.service.add(this.teacher).then(
          saved => {
             if (saved) {
-               alert(document.getElementById('savedMsg').textContent);
+               alert(document.getElementById('saved').textContent);
                this.reset();
             } else {
-               alert(document.getElementById('unsavedMsg').textContent)
+               alert(document.getElementById('unsaved').textContent)
             }
             this.inPrograss = false;
          });
@@ -127,6 +129,8 @@ export class AddTeacherComponent implements EndPointAbstracts {
     */
    private reset() {
       this.formData.reset();
+      //  to clear object data make it {} instead of null
+      this._cache.setObject = {}
    }
 }
         // $(document).ready(() => {

@@ -16,7 +16,7 @@ export class AddGuardianComponent implements OnInit {
       job: new FormControl('', [Validators.required]),
       age: new FormControl('', [Validators.required]),
       ssn: new FormControl('', [Validators.required]),
-      phone: new FormControl('', [Validators.required]),
+      phone: new FormControl('', [Validators.required, Validators.pattern("[0-9 ]{11}")]),
       gender: new FormControl('Male', [Validators.required]),
       // email: new FormControl('', Validators.compose([Validators.required, Validators.email]))
       email: new FormControl('', []),

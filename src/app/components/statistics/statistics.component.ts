@@ -2,6 +2,7 @@ import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Chart } from 'src/assets/js/Chart';
 import { CacheObjectService } from 'src/app/services/cache-object.service';
 import { ActivatedRoute } from '@angular/router';
+import { StatService } from 'src/app/services/stat.service';
 
 @Component({
    selector: 'app-statistics',
@@ -17,27 +18,58 @@ export class StatisticsComponent implements OnInit, OnChanges {
    Linechart = [];
    charType: string = 'bar';
    fontSize = 12;
+
+   // handle all labels for x axis
+   labels = []
+   // handle all values for y axis
+   values = []
+
+   //  label for x horizontal
    x_label: string = "";
 
-   constructor(private _cache: CacheObjectService, private activeRoute: ActivatedRoute) {
+   constructor(private service: StatService, private _cache: CacheObjectService, private activeRoute: ActivatedRoute) {
       if (Object.keys(this._cache.getObject).length > 0) {
          this.x_label = this._cache.getObject
       }
    }
 
    ngOnInit(): void {
+      this.getStatProprty();
+   }
+
+   private getStatProprty() {
       var url = window.location.href;
       var segments = url.split('/')
       var content = segments[segments.length - 2]
-      if (content == 'teacher') {
-         this.drawChart(["math", "arabic", "english", "history", "logic"], [4, 6, 2, 6, 8])
+      if (content == 'school') {
+         this.getSchoolStat();
       } else if (content == 'student') {
-         this.drawChart(["male", "female"], [1025, 1050])
+         this.getstudentStat();
       }
-
+      else if (content == 'student') {
+      }
    }
 
+   /**
+    * get stat for all school entities like teachers, students, classes, ...
+    * this is consider snippets for school
+    */
+   getSchoolStat() {
+      this.service.getSchoolStat().subscribe(
+         data => this.drawChart(Object.keys(data), Object.values(data))
+         , error => console.log(error))
+   }
 
+   getstudentStat() {
+      this.service.getStudentStat().subscribe(
+         // data => this.drawChart(Object.keys(data), Object.values(data))
+         data => alert(JSON.stringify(data))
+         , error => console.log(error))
+   }
+
+   getTeacherLevelStat() {
+
+   }
 
    private drawChart(labels: string[], values: number[]) {
       this.Linechart = new Chart('canvas', {
