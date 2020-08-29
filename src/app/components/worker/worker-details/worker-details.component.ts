@@ -52,6 +52,16 @@ export class WorkerDetailsComponent implements OnInit {
    }
 
    deleteById() {
-
+      this.service.deleteById(this.worker.id).subscribe(
+         data => {
+            alert("Data Is Deleted Successfully")
+            this.route.navigate(['worker/search'])
+         }, err => {
+            if (err['status'] == 401 || err['status'] == 403) {
+               alert("You Not Have Permissions")
+            }
+            console.log(err);
+         }
+      )
    }
 }

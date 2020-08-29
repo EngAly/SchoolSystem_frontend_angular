@@ -5,7 +5,7 @@
    <span id="unsavedMsg" class="hidden">{{'shared.alerts.unsaved' | translate}}</span>
 
    <div class="center-screen">
-      <div class="school-headers">{{'scratch.register.hint' | translate}}</div>
+      <div class="school-headers">{{'user.register.header' | translate}}</div>
       <img id="profile-img" src="assets/images/user-avatar.png" class="profile-img-card" width="300px" />
    </div>
 
@@ -19,12 +19,12 @@
                <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                   <input id="username" type="text" [(ngModel)]="user.username" formControlName="username"
-                     class="form-control" placeholder="{{'scratch.login.username' | translate}}">
+                     class="form-control" placeholder="{{'user.shared.username' | translate}}">
                </div>
                <div
                   *ngIf="controls.username.touched && (controls.username.errors?.required || controls.username.invalid)"
                   class="alert alert-danger">
-                  {{'scratch.login.usernameMsg' | translate}}
+                  {{'user.shared.usernameMsg' | translate}}
                </div>
             </div>
 
@@ -34,14 +34,15 @@
                <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                   <input type="password" id="password" [(ngModel)]="user.password" formControlName="password"
-                     class="form-control" placeholder="{{'scratch.login.password' | translate}}">
+                     class="form-control" placeholder="{{'user.shared.password' | translate}}">
                   <span class="input-group-addon" (click)="togglePassword()">
-                     <i [ngClass]="passwordStatus ? 'glyphicon-eye-open':'glyphicon-eye-close'" class="glyphicon"></i></span>
+                     <i [ngClass]="passwordStatus ? 'glyphicon-eye-open':'glyphicon-eye-close'"
+                        class="glyphicon"></i></span>
                </div>
                <div
                   *ngIf="controls.password.touched && (controls.password.errors?.required || controls.password.invalid)"
                   class="alert alert-danger">
-                  {{'scratch.login.passwordMsg' | translate}}
+                  {{'user.shared.passwordMsg' | translate}}
                </div>
             </div>
 
@@ -51,10 +52,10 @@
                <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                   <input type="password" [(ngModel)]="user.confirmPassword" formControlName="confirmPassword"
-                     class="form-control" placeholder="{{'scratch.register.confirmPassword' | translate}}">
+                     class="form-control" placeholder="{{'user.shared.confirmPassword' | translate}}">
                </div>
                <div *ngIf="user.password != user.confirmPassword" class="alert alert-danger">
-                  {{'scratch.register.confirmPasswordMsg' | translate}}
+                  {{'user.shared.confirmPasswordMsg' | translate}}
                </div>
             </div>
 
@@ -89,6 +90,9 @@
                   <input id="address" type="text" [(ngModel)]="user.address" formControlName="address"
                      class="form-control" placeholder="{{'shared.address' | translate}}">
                </div>
+               <div *ngIf="controls.address.touched && controls.address.errors?.required" class="alert alert-danger">
+                  {{'shared.alerts.address'|translate}}
+               </div>
             </div>
 
             <!-- gender -->
@@ -108,7 +112,7 @@
                   </div>
                </div>
                <div *ngIf="controls.gender.invalid && controls.gender.errors?.required" class="alert alert-danger">
-                  {{'shared.genderMsg' | translate}}
+                  {{'shared.alerts.gender' | translate}}
                </div>
             </div>
 
@@ -116,20 +120,20 @@
             <div class="col-sm-3 ui-margin ltr" (change)="setRole()">
                <div class="btn-group">
                   <div class="input-group">
-                     <span class="input-group-addon no-border">{{'scratch.register.account' | translate}}<i
+                     <span class="input-group-addon no-border">{{'user.shared.account' | translate}}<i
                            class="glyphicon"></i></span>
                      <label class="btn btn-info no-border">
-                        <input type="radio" value="User" formControlName="role">
-                        <span>{{'scratch.register.user' | translate}} </span>
+                        <input type="radio" value="ROLE_USER" formControlName="role">
+                        <span>{{'user.shared.userRole' | translate}} </span>
                      </label>
                      <label class="btn btn-info no-border">
-                        <input type="radio" value="Admin" formControlName="role">
-                        <span>{{'scratch.register.admin' | translate}} </span>
+                        <input type="radio" value="ROLE_ADMIN" formControlName="role">
+                        <span>{{'user.shared.adminRole' | translate}} </span>
                      </label>
                   </div>
                </div>
                <div *ngIf="controls.role.invalid && controls.role.errors?.required" class="alert alert-danger">
-                  {{'scratch.register.roleMsg' | translate}}
+                  {{'user.shared.roleMsg' | translate}}
                </div>
             </div>
 
@@ -138,11 +142,12 @@
                <div class="btn-group">
                   <!-- save -->
                   <button type="submit" [disabled]="formData.invalid"
-                     class="btn btn-primary no-border">{{'scratch.register.register' | translate}}</button>
+                     class="btn btn-primary no-border">{{'user.register.registerBtn' | translate}}</button>
                   <!-- reset -->
                   <button type="reset" class="btn btn-warning no-border">{{'shared.buttons.reset' | translate}}</button>
                </div>
             </div>
+
          </div>
       </div>
    </form>

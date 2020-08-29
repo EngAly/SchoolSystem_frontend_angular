@@ -21,6 +21,9 @@ export class RegisterService {
          .then((response) => {
             response.status == 200 ? flag = true : flag;
          }).catch((err) => {
+            // if (err.status == 401) {
+               alert(err.status)
+            // }
             flag = false;
             console.log(err)
          })

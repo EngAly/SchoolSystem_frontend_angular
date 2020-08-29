@@ -1,23 +1,5 @@
 {
   "scratch": {
-    "login": {
-      "hint": "Enter Your Authentication",
-      "username": "UserName",
-      "password": "Password",
-      "loginBtn": "  Login",
-      "usernameMsg": "Please Enter Your Name Note That Permited letters is [A-Z], [a-z], [0-9] and [._]",
-      "passwordMsg": "Password Must Be Mixed Of Capital Letters, Lower Letters and Special letters"
-    },
-    "register": {
-      "hint": "Enter Your Registeration Details",
-      "confirmPassword": "Confirm Your Password",
-      "confirmPasswordMsg": "Two Passwords Not Identical",
-      "register": "Register",
-      "user": "User",
-      "admin": "Admin",
-      "account": "Account Type",
-      "roleMsg": "Please Select Acoount Type"
-    },
     "start": {
       "sitename": "School Management",
       "languageMenu": {
@@ -50,6 +32,34 @@
         "student": "Student By",
         "teacher": "Teacher By"
       }
+    }
+  },
+  "user": {
+    "shared": {
+      "username": "UserName",
+      "password": "Password",
+      "usernameMsg": "Please Enter Your Name Permited letters is [A-Z], [a-z], [0-9] and [._]",
+      "passwordMsg": "Password Must Be Mixed Of Capital Letters, Lower Letters and Special letters",
+      "confirmPassword": "Confirm Your Password",
+      "confirmPasswordMsg": "Two Passwords Not Identical",
+      "account": "Account Type",
+      "userRole": "User",
+      "adminRole": "Admin",
+      "roleMsg": "Please Select Acoount Type"
+    },
+    "login": {
+      "header": "Enter Your Authentication",
+      "loginBtn": "  Login",
+      "usernameMsg": "Please Enter Your UserName",
+      "passwordMsg": "Please Enter Your Password"
+    },
+    "register": {
+      "header": "Enter Your Registeration Details",
+      "registerBtn": "Register"
+    },
+    "details": {
+      "header": "User Details",
+      "role": "Role"
     }
   },
   "layout": {
@@ -92,7 +102,9 @@
       "email": "Please Enter Valid Email",
       "dob": "Please Enter Date Of Birth",
       "saved": "Data Added successfully",
-      "unsaved": "Data Not Added successfully"
+      "unsaved": "Data Not Added successfully",
+      "notPermit": "Don't Have Permission",
+      "noData": "Not Data Available"
     },
     "buttons": {
       "save": "Save Data",
@@ -160,7 +172,6 @@
     },
     "details": {
       "header": "Student Details",
-      "noData": "Student You Search About Not Found",
       "setGrade": "Add Grade",
       "getGrade": "Get Grade",
       "gradeHeader": "Grade Details"
@@ -195,8 +206,7 @@
       "toMsg": "Please Enter Search To"
     },
     "details": {
-      "header": "Teacher Details",
-      "noData": "Teacher You Search About Not Found"
+      "header": "Teacher Details"
     }
   },
   "worker": {
@@ -207,8 +217,7 @@
     "search": {
       "hint": "Search About Worker",
       "details": {
-        "header": "Worker Details",
-        "noData": "Worker You Search About Not Found"
+        "header": "Worker Details"
       }
     }
   },

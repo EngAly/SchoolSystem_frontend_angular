@@ -9,7 +9,7 @@ import { CKEditorModule } from 'ng2-ckeditor';
 
 // ngx translate modules
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 // added component
@@ -24,8 +24,9 @@ import { StudentSearchResultComponent } from './components/student/search/studen
 import { TeacherSearchResultComponent } from './components/teacher/search/teacher-search-result/teacher-search-result.component';
 import { WorkerDetailsComponent } from './components/worker/worker-details/worker-details.component';
 import { ClassDetailsComponent } from './components/class/class-details/class-details.component';
+import { JWTAuthInterceptorService } from './services/jwtauth-interceptor.service';
 
-     
+
 @NgModule({
    declarations: [
       AppComponent,
@@ -38,7 +39,7 @@ import { ClassDetailsComponent } from './components/class/class-details/class-de
       TeacherSearchResultComponent,
       WorkerDetailsComponent,
       ClassDetailsComponent,
-     ],
+   ],
    imports: [
       BrowserModule,
       AppRoutingModule,
@@ -57,7 +58,16 @@ import { ClassDetailsComponent } from './components/class/class-details/class-de
 
    ],
    // to register a service with angular injector using the provider meta data
-   providers: [TranslateService,DatePipe
+   providers: [
+      TranslateService,
+      
+      // can add multi (more one) interceptors and will execute in sort
+      {
+         provide: HTTP_INTERCEPTORS,
+         useClass: JWTAuthInterceptorService,
+         multi: true
+      },
+      DatePipe
       // if you want to remove providedIn: 'root' in service inject it here
       // StudentService
    ],

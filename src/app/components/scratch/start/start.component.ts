@@ -1,6 +1,9 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { CacheObjectService } from 'src/app/services/cache-object.service';
+import { JWTAuthInterceptorService } from 'src/app/services/jwtauth-interceptor.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
    selector: 'app-start',
@@ -8,18 +11,41 @@ import { CacheObjectService } from 'src/app/services/cache-object.service';
    templateUrl: './start.component.html',
    styleUrls: ['./start.component.scss']
 })
-export class StartComponent {
+export class StartComponent implements OnInit {
 
    dir: string
    isRight: boolean
    smallSize: boolean
 
-   constructor(private translate: TranslateService, private _cache: CacheObjectService) {
+   isLogin: boolean;
+
+   // handle username and store it to show it in navbar for all login time
+   username: string
+
+   constructor(private translate: TranslateService, private _cache: CacheObjectService,
+      private auth: AuthenticationService, private route: Router) {
+
       // check screen size when user open site on its device
       this.checkWidth()
 
       // call lang settings from session 
       this.useLanguage(localStorage.getItem('currentLang'))
+   }
+
+   ngOnInit(): void {
+
+      // if user is logged in show its name in navbar (refresh)
+      this.username = localStorage.getItem("username");
+
+      // if there username in local storage then user isLogin (refresh)
+      this.isLogin = localStorage.getItem('username') != null ? true : false
+
+      // get username to show in navbar (instantaneous)
+      this._cache.getUserName.subscribe(user => this.username = user, err => console.log(err))
+
+      // to switch between login and logout (instantaneous)
+      this._cache.getLogin.subscribe(isLogged => this.isLogin = isLogged, err => console.log(err))
+
    }
 
    useLanguage(lang: string) {
@@ -75,6 +101,31 @@ export class StartComponent {
 
    clearCachedObejct() {
       this._cache.setObject = {};
+   }
+
+   /**
+    * destroy all session keys (username + token)
+    * to destory login mode
+    */
+   logOut() {
+      // remove username key from local storage
+      this.auth.logOut();
+
+      // delete username from navbar (instantaneous)
+      this._cache.setUserName = ""
+
+      // switch to logout status (instantaneous)
+      this._cache.setLogin = false;
+
+      // redirect to login page 
+      this.route.navigate(['login'])
+   }
+
+   /**
+    * get login user details
+    */
+   getDetails() {
+      this.route.navigate(['users/', this.username])
    }
 }
 

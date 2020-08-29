@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/scratch/home/home.component';
-import { RegisterComponent } from './components/scratch/register/register.component';
-import { LoginComponent } from './components/scratch/login/login.component';
+import { RegisterComponent } from './components/user/register/register.component';
+import { LoginComponent } from './components/user/login/login.component';
 import { AddSubjectComponent } from './components/subject/add-subject/add-subject.component';
 import { AddClassComponent } from './components/class/add-class/add-class.component';
 import { AddWorkerComponent } from './components/worker/add-worker/add-worker.component';
@@ -28,6 +28,7 @@ import { TeacherByJoinDateComponent } from './components/teacher/search/teacher-
 import { TeacherSearchResultComponent } from './components/teacher/search/teacher-search-result/teacher-search-result.component';
 import { WorkerDetailsComponent } from './components/worker/worker-details/worker-details.component';
 import { ClassDetailsComponent } from './components/class/class-details/class-details.component';
+import { UserDetailsComponent } from './components/user/user-details/user-details.component';
 
 const routes: Routes = [
    /**
@@ -40,8 +41,11 @@ const routes: Routes = [
       */
    { path: "", redirectTo: "/home", pathMatch: "full" },
    { path: "home", component: HomeComponent },
+
+   // user mapping
    { path: "register", component: RegisterComponent },
    { path: "login", component: LoginComponent },
+   { path: "users/:username", component: UserDetailsComponent },
 
    // student mapping
    { path: "student/add-student", component: AddStudentComponent },
@@ -113,7 +117,7 @@ export class AppRoutingModule { }
 
 export const routingComponent = [
    // scrach
-   RegisterComponent, LoginComponent, HomeComponent,
+   RegisterComponent, LoginComponent, HomeComponent, UserDetailsComponent,
    // student
    AddStudentComponent, StudentByNameComponent, StudentDetailsComponent, StudentByAgeComponent,
    StudentByJoinDataComponent, StudentSearchLevelComponent, AddGradeComponent,
@@ -127,7 +131,7 @@ export const routingComponent = [
    // subject
    AddSubjectComponent, SearchSubjectComponent,
    // class
-   AddClassComponent, SearchClassComponent,ClassDetailsComponent,
+   AddClassComponent, SearchClassComponent, ClassDetailsComponent,
    //  stat
    StatisticsComponent
 ];

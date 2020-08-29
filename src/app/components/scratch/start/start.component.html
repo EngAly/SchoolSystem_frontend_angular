@@ -197,21 +197,31 @@
                   <a class="dropdown-toggle" data-toggle="dropdown">{{ "scratch.start.adminMenu.name" | translate }}
                      <span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                     <li>
+
+                     <li *ngIf="!isLogin">
                         <a [routerLink]="['/login']"><span class="glyphicon glyphicon-log-in"></span>
-                           &nbsp;{{ "scratch.start.adminMenu.login" | translate }}</a>
+                           &nbsp;{{ "scratch.start.adminMenu.login" | translate }}
+                        </a>
                      </li>
 
                      <li>
                         <a [routerLink]="['/register']"><span class="glyphicon glyphicon-user"></span>
-                           &nbsp;{{ "scratch.start.adminMenu.register" | translate }}</a>
+                           &nbsp;{{ "scratch.start.adminMenu.register" | translate }}
+                        </a>
                      </li>
 
-                     <!-- <li><a [routerLink]="['/logout']" routerLinkActive="active"><span
-                                        class="glyphicon glyphicon-log-out"></span>
-                                    {{'scratch.start.adminMenu.logout' | translate}}</a>
-                            </li> -->
+                     <li *ngIf="isLogin">
+                        <a (click)="logOut()"><span class="glyphicon glyphicon-log-out"></span>
+                           {{'scratch.start.adminMenu.logout' | translate}}
+                        </a>
+                     </li>
                   </ul>
+
+
+               </li>
+
+               <li *ngIf="username">
+                  <a class="hello-messgae" (click)="getDetails()">{{username}}</a>
                </li>
             </ul>
          </div>

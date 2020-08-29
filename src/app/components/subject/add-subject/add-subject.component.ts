@@ -32,14 +32,21 @@ export class AddSubjectComponent implements EndPointAbstracts {
 
    save() {
       this.inPrograss = true;
-      this.service.add(this.subject).then(
-         saved => {
-            if (saved) {
+      this.service.add(this.subject).subscribe(
+         data => {
+            if (data) {
                alert(document.getElementById('savedMsg').textContent);
                this.reset();
-            } else {
-               alert(document.getElementById('unsavedMsg').textContent)
+               this.inPrograss = false;
             }
+         }, err => {
+            // 401 unauthorized
+            // 403 forbidden
+            if (err['status'] == 401 || err['status'] == 403) {
+               alert(document.getElementById('notPermitMsg').textContent)
+            }
+            else
+               alert(document.getElementById('unsavedMsg').textContent)
             this.inPrograss = false;
          }
       );

@@ -7,7 +7,7 @@
 
 
       <div class="center-screen">
-         <h1 class="school-headers">{{'worker.add.hint' | translate}}</h1>
+         <h1 class="school-headers">{{'worker.shared.hint' | translate}}</h1>
          <img id="profile-img" src="assets/images/worker.png" class="profile-img-card img-rounded img-responsive">
       </div>
       <form [formGroup]="formData" (submit)="save()">
@@ -68,7 +68,7 @@
                </div>
 
                <!-- worker gender property reusebale lang keywords-->
-               <div class="col-sm-3 ui-margin" (change)="handleGenderChange($event)">
+               <div class="col-sm-3 ui-margin" (change)="setGender()">
                   <!-- <h4>{{'shared.gender' | translate}}</h4> -->
                   <div class=" btn-group">
                      <label class="btn btn-info no-border" for="worker_male">

@@ -1,3 +1,5 @@
+$siteColor: rgb(29, 145, 1);
+
 body {
   /* Whatever the height of your navbar is; the default is 50px */
   padding-top: 60px;
@@ -17,11 +19,11 @@ body {
 //  this called place holder selector
 %site-title {
   font-weight: bold;
-  color: rgb(29, 145, 1);
+  color: $siteColor;
 }
 
 #site-title {
-  @include fontSize(23px); // when you need to call dynamic block use @include
+  @include fontSize(19px); // when you need to call dynamic block use @include
   @extend %site-title; // when you need to call static block use @extend
 }
 
@@ -36,11 +38,26 @@ body {
 
 .stat {
   margin: 10px;
-   a {
+  a {
     padding: 5px 5px 5px 5px;
     text-decoration: none;
     border-radius: 2px;
     font-weight: bold;
     @include fontSize(15px);
   }
+}
+
+// when user login and logout styles
+.hello-messgae {
+  color: $siteColor;
+  @include fontSize(17px);
+  font-weight: bold;
+}
+.hello-messgae:hover {
+  // as remove background color
+  background-color: transparent;
+}
+
+.nav-pills li {
+  @include fontSize(15px);
 }

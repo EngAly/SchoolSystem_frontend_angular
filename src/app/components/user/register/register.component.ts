@@ -27,10 +27,10 @@ export class RegisterComponent implements EndPointAbstracts {
       password: new FormControl('', [Validators.required, CustomValidators.ValidatePassword]),
       confirmPassword: new FormControl('', [Validators.required]),
       gender: new FormControl('Male', [Validators.required]),
-      role: new FormControl('User', [Validators.required]),
+      role: new FormControl('ROLE_USER', [Validators.required]),
       phone: new FormControl('', [Validators.required, Validators.pattern("[0-9]{11}")]),
       joinDate: new FormControl('', [Validators.required]),
-      address: new FormControl('', [])
+      address: new FormControl('', [Validators.required])
    });
 
    constructor(private service: RegisterService) { }
@@ -64,6 +64,7 @@ export class RegisterComponent implements EndPointAbstracts {
 
    save() {
       this.getAllSetter();
+      // delete it from original object to send it to backend without confirmPassword
       delete this.user.confirmPassword;
       // alert(JSON.stringify(this.user));
       this.service.add(this.user).then(
@@ -84,7 +85,6 @@ export class RegisterComponent implements EndPointAbstracts {
       this.controls.reset;
    }
 
-   
    togglePassword() {
       this.passwordStatus = !this.passwordStatus;
       this.passwordStatus ? document.getElementById('password').setAttribute('type', 'text') :

@@ -1,4 +1,4 @@
-export class UserLogin {
+export class JwtRequest {
     username: string;
     password: string;
 }

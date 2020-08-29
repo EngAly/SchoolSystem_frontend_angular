@@ -24,7 +24,7 @@ export class CustomValidators {
       let hasSymbol = /[$@!%*?&]/.test(control.value)
       // test if value length less that 5 letters then force len min=5 and max=<?
       // let len = (control.value as string).length < 5
-      let len = (control.value as string).length < 5
+      let len = (control.value < 5)
       // test if all previous status is valid
       let valid = hasDigit && hasLower && hasUpper && hasSymbol;
       if (!valid || len) {

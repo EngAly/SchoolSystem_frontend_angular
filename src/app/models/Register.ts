@@ -8,5 +8,4 @@ export class Register {
     address: string;
     role: string;
     joinDate: Date;
-
 }

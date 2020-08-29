@@ -29,6 +29,18 @@ export class WorkerService implements BusinessAbstracts<Worker> {
       return flag
    }
 
+   public async update(worker: Worker): Promise<number> {
+      let flag: number;
+      await this.http.put(`${this.url}/update`, worker, { observe: 'response' }).toPromise()
+         .then((response) => {
+            flag = response.status;
+         }).catch((err) => {
+            flag = err.status;
+            console.log(err)
+         })
+      return flag
+   }
+
    public getAll(): Observable<Worker[]> {
       return this.http.get<Worker[]>(`${this.url}`);
    }
@@ -37,7 +49,11 @@ export class WorkerService implements BusinessAbstracts<Worker> {
       return this.http.get<Worker[]>(`${this.url}/byName/${name}/?pageSize=${pageSize}&page=${page}&sort=${sortBy}&direction=${direction}`);
    }
 
-   getById(id?: number): Observable<Worker> {
+   getById(id: number): Observable<Worker> {
       return this.http.get<Worker>(`${this.url}/byId/${id}`);
+   }
+
+   public deleteById(id: number) {
+      return this.http.delete(`${this.url}/delete/${id}`);
    }
 }

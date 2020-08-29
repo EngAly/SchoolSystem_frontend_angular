@@ -1,0 +1,60 @@
+<div *ngIf="hasData;else noData">
+   <div class="container">
+      <h1 class="text-center school-headers">{{'user.details.header' | translate}}</h1>
+      <hr />
+
+      <div class="horizontal-middle">
+         <div class="card" style="width:500px">
+            <img class="card-img-top" src="assets/images/user-avatar.png" alt="Card image">
+            <div class="card-body">
+               <h1 class="card-title text-danger"> {{user.username}} </h1>
+               <!--start personal Information-->
+               <div class="list-group list-group-flush">
+
+                  <label class="list-group-item">{{'shared.phone'|translate}}: <span
+                        class="details">{{user.phone}}</span></label>
+
+                  <label class="list-group-item">{{'shared.address'|translate}}: <span
+                        class="details">{{user.address}}</span></label>
+
+                  <label class="list-group-item">{{'shared.joinDate'|translate}} : <span
+                        class="details">{{user.joinDate}}</span></label>
+
+                  <label class="list-group-item">{{'shared.gender'|translate}}: <span
+                        class="details">{{user.gender}}</span></label>
+
+                        <label class="list-group-item">{{'user.details.role' | translate}}: <span
+                           class="details">{{user.role}}</span></label>
+
+                  <!-- <label class="list-group-item">{{'layout.guardianships.list'|translate}}:
+                     <ul class="details list-inline">
+                        <div *ngFor="let g of worker.guardianships">
+                           <li>{{g.name}}</li>
+                        </div>
+                     </ul>
+                  </label> -->
+
+                  <!-- update + delete -->
+                  <div class="list-group-item">
+                     <div class="btn-group">
+                        <button type="button" (click)="update()"
+                           class="btn btn-primary">{{'shared.buttons.update' | translate}}</button>
+                        <button type="button" (click)="deleteById()"
+                           class="btn btn-danger">{{'shared.buttons.delete' | translate}}</button>
+                     </div>
+                  </div>
+
+               </div>
+
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- if no content -->
+<ng-template #noData>
+   <div class="container">
+      <h2 class="alert alert-info text-center">{{'shared.alerts.noData' | translate}}</h2>
+   </div>
+</ng-template>
