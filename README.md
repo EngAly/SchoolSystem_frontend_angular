@@ -36,4 +36,7 @@ https://engaly.github.io/SchoolSystem_frontend_angular/
  * https://getbootstrap.com/docs/3.3/components/
  * https://www.tutorialrepublic.com/css-tutorial/css3-flexible-box-layouts.php
  * https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX
+
+#### Problems
+ * https://stackoverflow.com/questions/42123170/input-value-is-always-undefined/42123223
  
