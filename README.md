@@ -39,4 +39,6 @@ https://engaly.github.io/SchoolSystem_frontend_angular/
 
 #### Problems
  * https://stackoverflow.com/questions/42123170/input-value-is-always-undefined/42123223
- 
+ * https://stackoverflow.com/questions/47077605/how-to-restrict-access-to-login-route-if-user-is-already-logged-in-in-angular-4/47091045
+ * https://stackoverflow.com/questions/2435525/best-practice-access-form-elements-by-html-id-or-name-attribute
+
