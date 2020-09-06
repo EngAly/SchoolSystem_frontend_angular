@@ -20,7 +20,7 @@ export class StartComponent implements OnInit {
    isLogin: boolean;
 
    // handle username and store it to show it in navbar for all login time
-   username: string
+   showname: string
 
    constructor(private translate: TranslateService, private _cache: CacheObjectService,
       private auth: AuthenticationService, private route: Router) {
@@ -35,13 +35,13 @@ export class StartComponent implements OnInit {
    ngOnInit(): void {
 
       // if user is logged in show its name in navbar (refresh)
-      this.username = localStorage.getItem("username");
+      this.showname = localStorage.getItem("showname");
 
       // if there username in local storage then user isLogin (refresh)
       this.isLogin = localStorage.getItem('username') != null ? true : false
 
       // get username to show in navbar (instantaneous)
-      this._cache.getUserName.subscribe(user => this.username = user, err => console.log(err))
+      this._cache.getUserName.subscribe(user => this.showname = user, err => console.log(err))
 
       // to switch between login and logout (instantaneous)
       this._cache.getLogin.subscribe(isLogged => this.isLogin = isLogged, err => console.log(err))
@@ -125,7 +125,7 @@ export class StartComponent implements OnInit {
     * get login user details
     */
    getDetails() {
-      this.route.navigate(['users/', this.username])
+      this.route.navigate(['users/', localStorage.getItem('username')])
    }
 }
 

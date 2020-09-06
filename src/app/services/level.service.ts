@@ -5,10 +5,10 @@ import { Level } from '../models/Level';
 import { Observable } from 'rxjs';
 import { BusinessAbstracts } from '../interfaces/BusinessAbstracts';
 
-
 @Injectable({
    providedIn: 'root'
 })
+
 export class LevelService implements BusinessAbstracts<Level> {
    private url: string
 
@@ -16,16 +16,30 @@ export class LevelService implements BusinessAbstracts<Level> {
       this.url = this.root.getRootUrl() + "level";
    }
 
-   public async add(level: Level): Promise<boolean> {
-      let flag: boolean = false;
+   public async add(level: Level): Promise<number> {
+      let flag: number
       await this.http.post(`${this.url}/add`, level, { observe: 'response' }).toPromise()
          .then((response) => {
-            response.status == 200 ? flag = true : flag;
+            flag = response.status
          }).catch((err) => {
-            flag = false;
+            flag = err.status
             console.log(err)
          })
       return flag
+   }
+
+   public async update(level: Level): Promise<number> {
+      let flag: number;
+      await this.http.put(`${this.url}/update`, level, { observe: 'response' }).toPromise()
+         .then((response) => flag = response.status).catch((err) => {
+            flag = err.status;
+            console.log(err)
+         })
+      return flag
+   }
+
+   getById(id: number): Observable<Level> {
+      return this.http.get<Level>(`${this.url}/byId/${id}`);
    }
 
    public getByName(name: string, pagesize = 8, page = 0, sortBy = 'id', direction = "asc"): Observable<Level[]> {
@@ -42,7 +56,8 @@ export class LevelService implements BusinessAbstracts<Level> {
       return this.http.get<Level[]>(`${this.url}?pageSize=${pagesize}&page=${page}&sort=${sortBy}&direction=${direction}`);
    }
 
-   getById(id?: number): Observable<Level> {
-      throw new Error("Method not implemented.");
+   public deleteById(id: number) {
+      return this.http.delete(`${this.url}/delete/${id}`);
    }
+
 }

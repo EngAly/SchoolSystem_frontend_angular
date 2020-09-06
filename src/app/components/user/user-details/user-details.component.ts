@@ -13,14 +13,15 @@ export class UserDetailsComponent implements OnInit {
 
    user = new Register();
    // flag to use if there data
-   hasData: boolean;
+   hasData = true;
 
    constructor(private service: UserService, private _cache: CacheObjectService,
       private activeRoute: ActivatedRoute, private route: Router) { }
 
    ngOnInit(): void {
-      let username = this.activeRoute.snapshot.paramMap.get('username')
-      this.getByName(username);
+      // let username = this.activeRoute.snapshot.paramMap.get('username') // risk
+      // get username from local Storage not from url to prevent user to get another username details
+      this.getByName(localStorage.getItem('username'));
    }
 
    /**
@@ -31,8 +32,9 @@ export class UserDetailsComponent implements OnInit {
       this.service.getDetailsByName(username).subscribe(
          data => {
             this.user = data;
-            console.log(this.user);
             this.hasData = this.user ? true : false;
+            // redirect to username details
+            this.route.navigate(['users/', this.user.username])
          }, err => {
             this.hasData = false;
             console.log(err)
@@ -41,8 +43,8 @@ export class UserDetailsComponent implements OnInit {
    }
 
    update() {
-      // this._cache.setObject = this.user;
-      // this.route.navigate(['worker/update/', this.user.id])
+      this._cache.setObject = this.user;
+      this.route.navigate(['users/update/', this.user.id])
    }
 
    deleteById() {

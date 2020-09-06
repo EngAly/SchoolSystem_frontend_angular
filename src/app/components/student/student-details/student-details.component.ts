@@ -16,14 +16,11 @@ export class StudentDetailsComponent implements OnInit, OnDestroy {
    grade = new Grade();
 
    // flag to use if there data
-   hasData: boolean;
+   hasData = true;
+   id: any
 
    /**
     * inject all services that component dependant about it
-    * @param service 
-    * @param _cache 
-    * @param activeRoute 
-    * @param route 
     */
    constructor(private service: StudentService, private _cache: CacheObjectService,
       private activeRoute: ActivatedRoute, private route: Router) {
@@ -38,14 +35,13 @@ export class StudentDetailsComponent implements OnInit, OnDestroy {
     */
    ngOnInit(): void {
       this.grade = { year: 2010, month: 6, grade: this.grade.grade }
-      let id = parseInt(this.activeRoute.snapshot.paramMap.get('id'))
-      if (Object.keys(this._cache.getObject).length > 0) {
-         this.student = this._cache.getObject;
-         this.hasData = true;
-      } else {
-         if (id) {
-            this.getById(id);
-         }
+      this.id = this.activeRoute.snapshot.paramMap.get('id')
+      if (this.id) {
+         if (Object.keys(this._cache.getObject).length > 0) {
+            this.student = this._cache.getObject;
+            this.hasData = true;
+         } else
+            parseInt(this.id) ? this.getById(this.id) : this.hasData = false;
       }
    }
 
@@ -57,7 +53,7 @@ export class StudentDetailsComponent implements OnInit, OnDestroy {
       this.service.getById(id).subscribe(
          data => {
             this.student = data;
-            this.hasData = this.student.name.length > 0 ? true : false;
+            this.hasData = true;
          }, error => {
             this.hasData = false;
             console.log(error)
@@ -95,19 +91,12 @@ export class StudentDetailsComponent implements OnInit, OnDestroy {
       )
    }
 
-
    update() {
       this._cache.setObject = this.student;
       this.route.navigate(['student/update/', this.student.id])
-
-
    }
 
-   deleteById() {
+   deleteById() { }
 
-   }
-
-   ngOnDestroy(): void {
-      //   this._cache.setObject = null
-   }
+   ngOnDestroy(): void { }
 }

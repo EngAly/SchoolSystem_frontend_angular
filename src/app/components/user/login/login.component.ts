@@ -58,13 +58,18 @@ export class LoginComponent implements OnInit {
       this.service.authenticate(this.user).subscribe(
          data => {
             localStorage.setItem('username', this.user.username)
-            localStorage.setItem('token', data['token']);
+            // return shown name + token + role(to stop some feature for user role)
+            // from server when login step
+            localStorage.setItem('showname', data['showname'])
+            localStorage.setItem('token', data['jwttoken']);
+            localStorage.setItem('role', data['role']);
 
             this.route.navigate([''])
             this.inPrograss = false;
-            this._cache.setUserName = localStorage.getItem('username');
+
+            this._cache.setUserName = localStorage.getItem('showname');
             this._cache.setLogin = localStorage.getItem('username') != null ? true : false
- 
+
          }, err => {
             // test if unautorized
             if (err['status'] == 401) {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, AfterContentInit } from '@angular/core';
 import { LayoutAbstracts } from 'src/app/interfaces/LayoutAbstracts';
 
 @Component({
@@ -6,28 +6,24 @@ import { LayoutAbstracts } from 'src/app/interfaces/LayoutAbstracts';
    templateUrl: './student-status.component.html',
    styleUrls: ['./student-status.component.scss']
 })
-export class StudentStatusComponent implements LayoutAbstracts<string>, OnInit {
-
+export class StudentStatusComponent implements LayoutAbstracts<string>, OnChanges {
 
    items = [{ "name": "Pending" }, { "name": "Excellent" },
    { "name": "Very Good" }, { "name": "Good" },
-   { "name": "Mediam" }, { "name": "تحت الفشيخ" }];
+   { "name": "Mediam" }, { "name": "Accepted" },
+   { "name": "failure" }];
 
    // count of selected classes
    count = 0
 
    @Input() selected: string;
 
-   /**
-    * when component in construct statue will go to SubjectService
-    * and call getAllSubjects API to get all available subjects in school
-    * and show them to user
-    * @param service: it injected automatically
-    */
    constructor() { }
 
-   ngOnInit(): void {
+   ngOnChanges(): void {
+      // setTimeout(() => {
       this.whenUpdate()
+      // });
    }
 
    /**
@@ -36,7 +32,7 @@ export class StudentStatusComponent implements LayoutAbstracts<string>, OnInit {
     * if there previous selected levels then select them automatically
     */
    whenUpdate() {
-      if (this.selected.length > 0 && this.items.length > 0) {
+      if (this.selected && this.items.length > 0) {
          this.items.filter(raw => {
             if (raw.name == this.selected) raw['isDone'] = true
          });

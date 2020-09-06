@@ -6,18 +6,24 @@ import { TeacherService } from 'src/app/services/teacher.service';
 import { ClassesComponent } from 'src/app/layout/classes/classes.component';
 import { SubjectsComponent } from 'src/app/layout/subjects/subjects.component';
 import { CacheObjectService } from 'src/app/services/cache-object.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
    selector: 'app-add-teacher',
    templateUrl: './add-teacher.component.html',
    styleUrls: ['./add-teacher.component.scss']
 })
-export class AddTeacherComponent implements EndPointAbstracts {
+export class AddTeacherComponent implements EndPointAbstracts, OnInit {
 
    teacher = new Teacher();
    inPrograss: boolean = false;
    @ViewChild(ClassesComponent) classesChild: any;
    @ViewChild(SubjectsComponent) subjectsChild: any;
+   id: any;
+   hasData = true;
+
+   // test if component is ready
+   isLoaded = false;
 
    formData = new FormGroup({
       name: new FormControl('', Validators.required),
@@ -39,22 +45,48 @@ export class AddTeacherComponent implements EndPointAbstracts {
       ex: new FormControl('', Validators.required)
    })
 
-   constructor(private service: TeacherService, private _cache: CacheObjectService) {
-      let teacher = this._cache.getObject as Teacher
-      if (teacher.maritalStatus) {
-         // if (Object.keys(this._cache.getObject).length > 0) {
-         this.teacher = this._cache.getObject
-         this.controls.gender.setValue(this.teacher.gender);
-         this.controls.maritalStatus.setValue(this.teacher.maritalStatus);
-      }
-   }
-
    /**
-    * api to get all controls in formData
-    * to use them in View
-    */
+       * api to get all controls in formData
+       * to use them in View
+       */
    get controls() {
       return this.formData.controls;
+   }
+
+   constructor(private service: TeacherService, private _cache: CacheObjectService, private activeRoute: ActivatedRoute) {
+   }
+
+   ngOnInit(): void {
+      this.ready2update();
+   }
+
+   private ready2update() {
+      this.id = this.activeRoute.snapshot.paramMap.get('id');
+      // if url has id so dataflow intented to update statue
+      if (this.id) {
+         let teacher = this._cache.getObject as Teacher
+         if (teacher.maritalStatus) {
+            // if (Object.keys(this._cache.getObject).length > 0) {
+            this.teacher = this._cache.getObject
+            this.controls.gender.setValue(this.teacher.gender);
+            this.controls.maritalStatus.setValue(this.teacher.maritalStatus);
+         } else {
+            parseInt(this.id) ? this.getById(this.id) : this.hasData = false;
+         }
+      } else
+         this.isLoaded = true
+   }
+
+   private getById(id: number) {
+      return this.service.getById(id).subscribe(
+         data => {
+            this.teacher = data
+            this.controls.gender.setValue(this.teacher.gender)
+            this.hasData = this.teacher ? true : false
+         }, err => {
+            this.hasData = false;
+            console.log(err)
+         });
    }
 
    /**
@@ -63,7 +95,8 @@ export class AddTeacherComponent implements EndPointAbstracts {
     * study in them
     */
    setLevels() {
-      this.teacher.levels = this.classesChild.getSelectedItems();
+      if (this.classesChild.getSelectedItems())
+         this.teacher.levels = this.classesChild.getSelectedItems();
    }
 
    /**
@@ -72,7 +105,9 @@ export class AddTeacherComponent implements EndPointAbstracts {
     * study them to student
     */
    setSubjects() {
-      this.teacher.subject = this.subjectsChild.getSelectedItems()[0]['name'];
+      if (this.subjectsChild.getSelectedItems()[0] != null) {
+         this.teacher.subject = this.subjectsChild.getSelectedItems()[0]['name'];
+      }
    }
 
    /**
@@ -110,18 +145,41 @@ export class AddTeacherComponent implements EndPointAbstracts {
    save() {
       this.inPrograss = true;
       this.preparedObject();
-      // alert(JSON.stringify(this.teacher))
+      this.inPrograss = true;
+      // if id has value dataflow inten intented to update statue
+      // if id not has value dataflow intented to save statue
+      this.id ? this.update() : this.add()
+   }
+
+   private add() {
       this.service.add(this.teacher).then(
-         saved => {
-            if (saved) {
+         (status: number) => {
+            if (status == 200) {
                alert(document.getElementById('saved').textContent);
                this.reset();
+            } else if (status == 401 || status == 403) {
+               alert(document.getElementById('notPermitMsg').textContent)
+            }
+            else { alert(document.getElementById('unsavedMsg').textContent) }
+            this.inPrograss = false;
+         }
+      );
+   }
+
+   private update() {
+      this.service.update(this.teacher).then(
+         (status: number) => {
+            if (status == 200) {
+               alert(document.getElementById('saved').textContent);
+               this.reset();
+            } else if (status === 401 || status === 403) {
+               alert(document.getElementById('notPermitMsg').textContent)
             } else {
                alert(document.getElementById('unsaved').textContent)
             }
             this.inPrograss = false;
-         });
-      // console.log(this.teacher)
+         }
+      );
    }
 
    /**

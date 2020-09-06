@@ -1,8 +1,9 @@
-<body class="body-background" dir="ltr">
+<body class="body-background" dir="ltr" *ngIf="hasData;else noData">
    <div class="container">
 
       <!-- not useable two field just for congirmation save or not -->
       <span id="saved" class="hidden">{{'shared.alerts.saved' | translate}}</span>
+      <span id="notPermitMsg" class="hidden">{{'shared.alerts.notPermit' | translate}}</span>
       <span id="unsaved" class="hidden">{{'shared.alerts.unsaved' | translate}}</span>
 
       <!--  Form Header -->
@@ -227,13 +228,17 @@
                </div>
 
                <!-- classes -->
-               <div class="col-sm-10 ltr">
-                  <classes (click)='setLevels()' [selected]="teacher.levels"></classes>
+               <div *ngIf="teacher.levels || isLoaded">
+                  <div class="col-sm-10 ltr">
+                     <classes (click)='setLevels()' [selected]="teacher.levels"></classes>
+                  </div>
                </div>
 
                <!--  Subject  -->
-               <div class="col-sm-10 ltr">
-                  <subjects (click)='setSubjects()' [selected]="teacher.subject"></subjects>
+               <div *ngIf="teacher.subject || isLoaded">
+                  <div class="col-sm-10 ltr">
+                     <subjects (click)='setSubjects()' [selected]="teacher.subject"></subjects>
+                  </div>
                </div>
 
                <!--  notes  -->
@@ -252,12 +257,19 @@
 
                <!-- reset -->
                <div class="col-sm-5 btn-distance">
-                  <input type="reset" class="form-control btn btn-success" value="{{'shared.buttons.reset'|translate}}">
+                  <input [disabled]="inPrograss" type="reset" class="form-control btn btn-success"
+                     value="{{'shared.buttons.reset'|translate}}">
                </div>
             </div>
          </div>
       </form>
    </div>
+   <br><br>
 </body>
 
-<br><br><br>
+<br>
+<ng-template #noData>
+   <div class="container">
+      <h2 class="alert alert-info text-center">{{'shared.alerts.noData' | translate}}</h2>
+   </div>
+</ng-template>

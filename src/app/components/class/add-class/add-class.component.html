@@ -1,13 +1,14 @@
-<body class="body-background">
+<body class="body-background" *ngIf="hasData;else noData">
    <!--Start Container-->
    <div class="container">
 
       <!-- not useable two field just for congirmation save or not -->
-      <span id="savedMsg" class="hidden">{{'class.add.savedMsg' | translate}}</span>
-      <span id="unsavedMsg" class="hidden">{{'class.add.unsavedMsg' | translate}}</span>
+      <span id="saved" class="hidden">{{'shared.alerts.saved' | translate}}</span>
+      <span id="notPermitMsg" class="hidden">{{'shared.alerts.notPermit' | translate}}</span>
+      <span id="unsaved" class="hidden">{{'shared.alerts.unsaved' | translate}}</span>
 
       <div class="center-screen">
-         <div class="school-headers">{{'class.add.hint'|translate}}</div>
+         <div class="school-headers">{{'class.shared.header'|translate}}</div>
          <img id="profile-img" src="assets/images/classroom.jpg"
             class="profile-img-card ui-margin img-rounded img-responsive" />
       </div>
@@ -16,14 +17,14 @@
          <div class="form-group center-screen">
 
             <!-- name -->
-            <div class="col-sm-5 col-xs-12 ltr">
+            <div class="col-sm-4 col-xs-12 ltr">
                <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
                   <input type="text" formControlName="name" [(ngModel)]="class.name" class="form-control"
-                     placeholder="{{'class.add.name'|translate}}">
+                     placeholder="{{'shared.name'|translate}}">
                </div>
                <div *ngIf="controls.name.touched && controls.name.errors?.required" class="alert alert-danger margin">
-                  {{'class.add.nameMsg'|translate}}
+                  {{'shared.alerts.name'|translate}}
                </div>
             </div>
 
@@ -31,12 +32,12 @@
             <div class="col-sm-4 col-xs-12 ltr">
                <!-- <h4>{{'class.add.floor'|translate}}</h4> -->
                <div class="input-group">
-                  <span class="input-group-addon"><i class="glyphicon glyphicon-plus"></i></span>
+                  <span class="input-group-addon"><i class="glyphicon">{{'class.shared.floor'|translate}}</i></span>
                   <input min="0" type="number" formControlName="floor" [(ngModel)]="class.floor" class="form-control"
-                     placeholder="{{'class.add.floor'|translate}}">
+                     placeholder="{{'class.shared.floor'|translate}}">
                </div>
                <div *ngIf="controls.floor.touched && controls.floor.errors?.required" class="alert alert-danger margin">
-                  {{'class.add.floorMsg'|translate}}
+                  {{'class.shared.floorMsg'|translate}}
                </div>
             </div>
 
@@ -44,34 +45,68 @@
             <div class="col-sm-4 col-xs-12 ltr">
                <!-- <h4>{{'class.add.maxSize'|translate}}</h4> -->
                <div class="input-group">
-                  <span class="input-group-addon"><i class="glyphicon glyphicon-plus"></i></span>
+                  <span class="input-group-addon"><i class="glyphicon">{{'class.shared.maxSize'|translate}}</i></span>
                   <input min="0" type="number" formControlName="maxSize" [(ngModel)]="class.maxSize"
-                     class="form-control" placeholder="{{'class.add.maxSize'|translate}}">
+                     class="form-control" placeholder="{{'class.shared.maxSize'|translate}}">
                </div>
                <div *ngIf="controls.maxSize.touched && controls.maxSize.errors?.required"
                   class="alert alert-danger margin">
-                  {{'class.add.maxSizeMsg'|translate}}</div>
+                  {{'class.shared.maxSizeMsg'|translate}}</div>
             </div>
 
             <!-- current size -->
             <div class="col-sm-4 col-xs-12 ltr">
                <div class="input-group">
-                  <span class="input-group-addon"><i class="glyphicon glyphicon-plus"></i></span>
+                  <span class="input-group-addon"><i
+                        class="glyphicon">{{'class.shared.currentSize'|translate}}</i></span>
                   <input min="0" type="number" formControlName="currentSize" [(ngModel)]="class.currentSize"
-                     class="form-control" placeholder="{{'class.add.currentSize'|translate}}">
+                     class="form-control" placeholder="{{'class.shared.currentSize'|translate}}">
                </div>
                <div *ngIf="controls.currentSize.touched && controls.currentSize.errors?.required"
-                  class="alert alert-danger margin">{{'class.add.currentSizeMsg'|translate}}
+                  class="alert alert-danger margin">{{'class.shared.currentSizeMsg'|translate}}
                </div>
             </div>
 
+            <!--  notes  -->
+            <!-- (input)="class.description = $event.target.value;" -->
+            <div class="col-sm-10">
+               <h4 for="desc_id">{{'shared.desc' | translate}}</h4>
+               <textarea [ngModelOptions]="{standalone: true}" [(ngModel)]="class.description" id="desc_id" rows="7"
+                  class="form-control"></textarea>
+            </div>
+
             <!-- save -->
-            <div class="col-sm-4 col-xs-8 btn-distance">
-               <input type="submit" [disabled]="formData.invalid || inPrograss" class="btn btn-primary"
-                  value="{{'shared.buttons.save' | translate}}">
+            <!-- <div class="col-sm-2 btn-distance">
+                  <input type="submit" [disabled]="formData.invalid || inPrograss" class="form-control btn btn-primary"
+                     value="{{'shared.buttons.save' | translate}}"> -->
+            <!-- </div> -->
+
+            <!-- reset -->
+            <!-- <div class="col-sm-2 btn-distance">
+                  <input [disabled]="inPrograss" type="reset" class="form-control btn btn-success"
+                     value="{{'shared.buttons.reset' | translate}}">
+               </div> -->
+
+            <div class="btn-group">
+               <button type="submit" [disabled]="formData.invalid || inPrograss"
+                  class="btn btn-color btn-distance">{{'shared.buttons.save' | translate}}
+               </button>
+               <!--  TO DO -->
+               <button [disabled]="inPrograss" type="reset" class="btn btn-danger btn-distance">
+                  {{'shared.buttons.reset' | translate}}
+               </button>
             </div>
 
          </div>
       </form>
    </div>
+   <br><br>
 </body>
+
+<br>
+<!-- if no content -->
+<ng-template #noData>
+   <div class="container">
+      <h2 class="alert alert-info text-center">{{'shared.alerts.noData' | translate}}</h2>
+   </div>
+</ng-template>

@@ -12,21 +12,21 @@ export class WorkerService implements BusinessAbstracts<Worker> {
 
 
    private url: string
+   private flag: number;
 
    constructor(private http: HttpClient, private root: SharedService) {
       this.url = this.root.getRootUrl() + "worker";
    }
 
-   public async add(worker: Worker): Promise<boolean> {
-      let flag: boolean = false;
+   public async add(worker: Worker): Promise<number> {
       await this.http.post(`${this.url}/add`, worker, { observe: 'response' }).toPromise()
          .then((response) => {
-            response.status == 200 ? flag = true : flag;
+            this.flag = response.status;
          }).catch((err) => {
-            flag = false;
+            this.flag = err.status;
             console.log(err)
          })
-      return flag
+      return this.flag;
    }
 
    public async update(worker: Worker): Promise<number> {

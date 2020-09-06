@@ -61,3 +61,10 @@ body {
 .nav-pills li {
   @include fontSize(15px);
 }
+
+.text{
+   white-space: nowrap;
+   width: 100px;
+   text-overflow: ellipsis;
+   // overflow: hidden;
+}

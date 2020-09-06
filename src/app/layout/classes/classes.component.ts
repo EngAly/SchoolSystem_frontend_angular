@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { LevelService } from 'src/app/services/level.service';
 import { Level } from 'src/app/models/Level';
 import { LayoutAbstracts } from 'src/app/interfaces/LayoutAbstracts';
@@ -8,8 +8,7 @@ import { LayoutAbstracts } from 'src/app/interfaces/LayoutAbstracts';
    templateUrl: './classes.component.html',
    styleUrls: ['./classes.component.scss']
 })
-export class ClassesComponent implements LayoutAbstracts<Level> {
-
+export class ClassesComponent implements LayoutAbstracts<Level>, OnChanges {
 
    items: Level[];
    // count of selected classes
@@ -23,9 +22,11 @@ export class ClassesComponent implements LayoutAbstracts<Level> {
     * and show them to user
     * @param service: it injected automatically
     */
-   constructor(private service: LevelService) {
+   constructor(private service: LevelService) { }
+
+   ngOnChanges(): void {
       this.service.getAll(100, 0, 'name', 'asc').subscribe(
-         (data: Level[]) => {
+         (data) => {
             this.items = data['content'];
             this.whenUpdate()
          })
@@ -38,9 +39,9 @@ export class ClassesComponent implements LayoutAbstracts<Level> {
     */
    whenUpdate() {
       if (this.selected.length > 0 && this.items.length > 0) {
-         this.items.filter(raw => {
+         this.items.filter(whole => {
             this.selected.filter(selected => {
-               if (raw.name == selected.name) raw['isDone'] = true
+               if (whole.name == selected.name) whole['isDone'] = true
             })
          });
          this.count = this.items.filter(item => item['isDone']).length
@@ -76,7 +77,7 @@ export class ClassesComponent implements LayoutAbstracts<Level> {
       if (this.items) {
          this.items.filter(item => {
             if (item['isDone']) {
-               selected.push({ id: item.id, name: item.name, currentSize: item.currentSize, floor: item.floor, maxSize: item.maxSize, desc: item.desc })
+               selected.push({ id: item.id, name: item.name, currentSize: item.currentSize, floor: item.floor, maxSize: item.maxSize, description: item.description })
             }
          })
       }

@@ -29,6 +29,7 @@ import { TeacherSearchResultComponent } from './components/teacher/search/teache
 import { WorkerDetailsComponent } from './components/worker/worker-details/worker-details.component';
 import { ClassDetailsComponent } from './components/class/class-details/class-details.component';
 import { UserDetailsComponent } from './components/user/user-details/user-details.component';
+import { StudentAbsenceComponent } from './components/student/student-absence/student-absence.component';
 
 const routes: Routes = [
    /**
@@ -46,6 +47,7 @@ const routes: Routes = [
    { path: "register", component: RegisterComponent },
    { path: "login", component: LoginComponent },
    { path: "users/:username", component: UserDetailsComponent },
+   { path: "users/update/:id", component: RegisterComponent },
 
    // student mapping
    { path: "student/add-student", component: AddStudentComponent },
@@ -63,6 +65,7 @@ const routes: Routes = [
    },
    { path: "student/details/:id", component: StudentDetailsComponent },
    { path: "student/update/:id", component: AddStudentComponent },
+   { path: "student/absence", component: StudentAbsenceComponent },
 
    // teacher mapping
    { path: "teacher/add-teacher", component: AddTeacherComponent },
@@ -84,6 +87,7 @@ const routes: Routes = [
    { path: "class/add-class", component: AddClassComponent },
    { path: "class/details/:id", component: ClassDetailsComponent },
    { path: "class/search", component: SearchClassComponent },
+   { path: "class/update/:id", component: AddClassComponent },
 
    // subject mapping
    { path: "subject/add-subject", component: AddSubjectComponent },
@@ -120,18 +124,24 @@ export const routingComponent = [
    RegisterComponent, LoginComponent, HomeComponent, UserDetailsComponent,
    // student
    AddStudentComponent, StudentByNameComponent, StudentDetailsComponent, StudentByAgeComponent,
-   StudentByJoinDataComponent, StudentSearchLevelComponent, AddGradeComponent,
+   StudentByJoinDataComponent, StudentSearchLevelComponent, AddGradeComponent, StudentAbsenceComponent,
+
    // teacher
    AddTeacherComponent, TeacherByNameComponent, TeacherByAgeComponent, TeacherByJoinDateComponent,
    TeacherDetailsComponent,
+  
    // worker
    AddWorkerComponent, SearchWorkerComponent, WorkerDetailsComponent,
+  
    // guardianship
    AddGuardianshipComponent, SearchGuardianshipComponent,
+  
    // subject
    AddSubjectComponent, SearchSubjectComponent,
+  
    // class
    AddClassComponent, SearchClassComponent, ClassDetailsComponent,
+ 
    //  stat
    StatisticsComponent
 ];

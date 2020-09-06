@@ -22,8 +22,6 @@ import { AddGuardianComponent } from './components/guardian/add-guardian/add-gua
 import { Layouts } from './layout/layouts';
 import { StudentSearchResultComponent } from './components/student/search/student-search-result/student-search-result.component';
 import { TeacherSearchResultComponent } from './components/teacher/search/teacher-search-result/teacher-search-result.component';
-import { WorkerDetailsComponent } from './components/worker/worker-details/worker-details.component';
-import { ClassDetailsComponent } from './components/class/class-details/class-details.component';
 import { JWTAuthInterceptorService } from './services/jwtauth-interceptor.service';
 
 
@@ -37,8 +35,6 @@ import { JWTAuthInterceptorService } from './services/jwtauth-interceptor.servic
       Layouts,
       StudentSearchResultComponent,
       TeacherSearchResultComponent,
-      WorkerDetailsComponent,
-      ClassDetailsComponent,
    ],
    imports: [
       BrowserModule,
@@ -60,7 +56,7 @@ import { JWTAuthInterceptorService } from './services/jwtauth-interceptor.servic
    // to register a service with angular injector using the provider meta data
    providers: [
       TranslateService,
-      
+
       // can add multi (more one) interceptors and will execute in sort
       {
          provide: HTTP_INTERCEPTORS,

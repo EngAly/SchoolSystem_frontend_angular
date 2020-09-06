@@ -23,6 +23,9 @@
         "guardianship": "Guardianship",
         "grade": "Add Grade To Student"
       },
+      "absenceMenu": {
+        "name": "Absence"
+      },
       "statisticsMenu": {
         "name": "Statistics",
         "school": "School"
@@ -36,9 +39,11 @@
   },
   "user": {
     "shared": {
-      "username": "UserName",
+      "username": "Username",
+      "showname": "Showname",
       "password": "Password",
       "usernameMsg": "Please Enter Your Name Permited letters is [A-Z], [a-z], [0-9] and [._]",
+      "shownameMsg": "Please Enter Show Name",
       "passwordMsg": "Password Must Be Mixed Of Capital Letters, Lower Letters and Special letters",
       "confirmPassword": "Confirm Your Password",
       "confirmPasswordMsg": "Two Passwords Not Identical",
@@ -133,19 +138,15 @@
     }
   },
   "class": {
-    "add": {
-      "hint": "Add New Class",
-      "name": "Class",
+    "shared": {
+      "header": "Add / Update New Class",
       "nameMsg": "Please Insert Class Name",
-      "floor": "Floor Number",
+      "floor": "floor",
       "floorMsg": "Please Insert Class Floor",
-      "maxSize": "Maximum Size",
+      "maxSize": "max",
       "maxSizeMsg": "Please Insert Class Maximum Size",
-      "currentSize": "Current Size",
-      "currentSizeMsg": "Please Insert Class Current Size",
-      "save": "Add Class",
-      "savedMsg": "Class Added successfully",
-      "unsavedMsg": "Class Not Added successfully Maybe Class Repeated"
+      "currentSize": "current",
+      "currentSizeMsg": "Please Insert Class Current Size"
     },
     "search": {
       "hint": "Search About Class",
@@ -153,8 +154,8 @@
       "maxSize": "MaxSize",
       "currentSize": "CurrentSize"
     },
-    "shared": {
-      "name": "Class"
+    "details": {
+      "header": "Class Details"
     }
   },
   "student": {
@@ -215,10 +216,10 @@
       "nameMsg": "Please Enter Worker Name"
     },
     "search": {
-      "hint": "Search About Worker",
-      "details": {
-        "header": "Worker Details"
-      }
+      "hint": "Search About Worker"
+    },
+    "details": {
+      "header": "Worker Details"
     }
   },
   "guardianship": {
@@ -228,7 +229,7 @@
       "nameMsg": "Please Insert Guardianship Name"
     },
     "search": {
-      "hint": "Search About Guardianships"
+      "header": "Search About Guardianships"
     }
   },
   "guardian": {

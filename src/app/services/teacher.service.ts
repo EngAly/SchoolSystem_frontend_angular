@@ -9,6 +9,9 @@ import { Observable } from 'rxjs';
    providedIn: 'root'
 })
 export class TeacherService implements BusinessAbstracts<Teacher>{
+   deleteById(id: number) {
+      throw new Error("Method not implemented.");
+   }
 
    private url: string
 
@@ -16,13 +19,25 @@ export class TeacherService implements BusinessAbstracts<Teacher>{
       this.url = this.root.getRootUrl() + "teacher";
    }
 
-   public async add(teacher: Teacher): Promise<boolean> {
-      let flag: boolean = false;
+   public async add(teacher: Teacher): Promise<number> {
+      let flag: number;
       await this.http.post(`${this.url}/add`, teacher, { observe: 'response' }).toPromise()
          .then((response) => {
-            response.status == 200 ? flag = true : flag;
+            flag = response.status;
          }).catch((err) => {
-            flag = false;
+            flag = err.status;
+            console.log(err)
+         })
+      return flag
+   }
+
+   public async update(teacher: Teacher): Promise<number> {
+      let flag: number;
+      await this.http.put(`${this.url}/update`, teacher, { observe: 'response' }).toPromise()
+         .then((response) => {
+            flag = response.status;
+         }).catch((err) => {
+            flag = err.status;
             console.log(err)
          })
       return flag

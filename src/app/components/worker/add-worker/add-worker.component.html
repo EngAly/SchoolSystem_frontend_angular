@@ -1,8 +1,9 @@
-<body class="body-background">
+<body class="body-background" *ngIf="hasData;else noData">
    <div class="container">
 
       <!-- not useable two field just for congirmation save or not -->
       <span id="saved" class="hidden">{{'shared.alerts.saved' | translate}}</span>
+      <span id="notPermitMsg" class="hidden">{{'shared.alerts.notPermit' | translate}}</span>
       <span id="unsaved" class="hidden">{{'shared.alerts.unsaved' | translate}}</span>
 
 
@@ -86,15 +87,21 @@
                </div>
 
                <!-- guardianships -->
-               <div class="ltr">
-                  <guardianships [selected]="worker.guardianships"></guardianships>
+               <div *ngIf="worker.guardianships || isLoaded">
+                  <div class="ltr">
+                     <guardianships [selected]="worker.guardianships"></guardianships>
+                  </div>
                </div>
 
-               <!-- worker desc property reusebale lang keywords-->
+               <!-- desc-->
+               <!-- 
+                   [ngModelOptions]="{standalone: true}" it used when [(ngModel)] and
+                   absent of formControlName
+                -->
                <div class="col-sm-6 col-xs-12">
                   <h4 for="desc_id">{{'shared.desc' | translate}}</h4>
-                  <textarea maxlength="500" [(ngModel)]="worker.description" id="desc_id" rows="7"
-                     class="form-control" (input)="worker.description = $event.target.value;">{{worker.description}}</textarea>
+                  <textarea maxlength="500" id="desc_id" rows="7" class="form-control"
+                     (input)="worker.description = $event.target.value;">{{worker.description}}</textarea>
                </div>
 
                <!-- save worker  -->
@@ -108,3 +115,9 @@
       </form>
    </div>
 </body>
+
+<ng-template #noData>
+   <div class="container">
+      <h2 class="alert alert-info text-center">{{'shared.alerts.noData' | translate}}</h2>
+   </div>
+</ng-template>

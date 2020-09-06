@@ -1,9 +1,10 @@
-<body class="body-background" dir="ltr">
+<body class="body-background" dir="ltr" *ngIf="hasData;else noData">
    <div class="container">
 
       <!-- not useable two field just for congirmation save or not -->
-      <span id="savedMsg" class="hidden">{{'shared.alerts.saved' | translate}}</span>
-      <span id="unsavedMsg" class="hidden">{{'shared.alerts.unsaved' | translate}}</span>
+      <span id="saved" class="hidden">{{'shared.alerts.saved' | translate}}</span>
+      <span id="notPermitMsg" class="hidden">{{'shared.alerts.notPermit' | translate}}</span>
+      <span id="unsaved" class="hidden">{{'shared.alerts.unsaved' | translate}}</span>
 
       <!--  Form Header -->
       <div class="center-screen">
@@ -95,7 +96,7 @@
                </div>
 
                <!-- gender -->
-               <div class="col-sm-8 ui-margin" (change)="handleGenderChange($event)">
+               <div class="col-sm-8 ui-margin" (change)="setGender()">
                   <!-- <h4>{{'shared.gender' | translate}}</h4> -->
                   <div class=" btn-group">
                      <label class="btn btn-success no-border" for="male_id">
@@ -113,13 +114,17 @@
                </div>
 
                <!-- classes -->
-               <div class="col-sm-10">
-                  <classes [selected]="levels"></classes>
+               <div *ngIf="levels || isLoaded">
+                  <div class="col-sm-10">
+                     <classes [selected]="levels"></classes>
+                  </div>
                </div>
 
                <!-- status -->
-               <div class="col-sm-10">
-                  <student-status [selected]="student.status"></student-status>
+               <div *ngIf="student.status || isLoaded">
+                  <div class="col-sm-10">
+                     <student-status [selected]="student.status"></student-status>
+                  </div>
                </div>
 
                <!-- paidFees -->
@@ -153,18 +158,19 @@
                <!--  notes  -->
                <div class="col-sm-10">
                   <h4 for="desc_id">{{'shared.desc' | translate}}</h4>
-                  <textarea (input)="student.notes = $event.target.value;" [(ngModel)]="student.notes" id="desc_id"
-                     rows="7" class="form-control">{{student.notes}}</textarea>
+                  <textarea [ngModelOptions]="{standalone: true}" (input)="student.notes = $event.target.value;"
+                     [(ngModel)]="student.notes" id="desc_id" rows="7" class="form-control">{{student.notes}}</textarea>
                </div>
 
             </div>
 
             <!-- Right section guardian + save button-->
             <div class="col-sm-6 right">
-               <div>
+
+               <div *ngIf="student.guardian || isLoaded">
                   <h4 class="school-header-branches center-screen">{{'guardian.shared.header'|translate}}</h4>
-                  <guardian [updatedObject]="student.guardian" (keydown)="handleValidation($event)"
-                     (change)="handleValidation($event)">
+                  <guardian  [updatedObject]="student.guardian"
+                     (keydown)="handleValidation($event)" (change)="handleValidation($event)">
                   </guardian>
                </div>
 
@@ -175,15 +181,20 @@
                </div>
 
                <!-- reset -->
-               <div class="col-sm-6 btn-distance">
-                  <input type="reset" class="form-control btn btn-success" value="{{'shared.buttons.reset'|translate}}">
+               <div  class="col-sm-6 btn-distance">
+                  <input [disabled]="inPrograss" type="reset" class="form-control btn btn-success" value="{{'shared.buttons.reset'|translate}}">
                </div>
 
             </div>
          </div>
       </form>
    </div>
+   <br><br><br>
 </body>
 
-
-<br><br><br>
+<br>
+<ng-template #noData>
+   <div class="container">
+      <h2 class="alert alert-info text-center">{{'shared.alerts.noData' | translate}}</h2>
+   </div>
+</ng-template>

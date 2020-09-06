@@ -10,22 +10,34 @@ import { BusinessAbstracts } from '../interfaces/BusinessAbstracts';
    providedIn: 'root'
 })
 export class GuardianshipService implements BusinessAbstracts<Guardianship> {
+   deleteById(id: number) {
+      throw new Error("Method not implemented.");
+   }
+  
    private url: string
 
    constructor(private http: HttpClient, private root: SharedService) {
       this.url = this.root.getRootUrl() + "guardianship";
    }
 
-   public async add(guardianship: Guardianship): Promise<boolean> {
-      let flag: boolean = false;
+   public async add(guardianship: Guardianship): Promise<number> {
+      let flag: number
       await this.http.post(`${this.url}/add`, guardianship, { observe: 'response' }).toPromise()
          .then((response) => {
-            response.status == 200 ? flag = true : flag;
+            flag = response.status
          }).catch((err) => {
-            flag = false;
+            flag = err.status;
             console.log(err)
          })
       return flag
+   }
+
+   /**
+    * Method not implemented
+    * @param t 
+    */
+   update(t: Guardianship): Promise<number> {
+      throw new Error(".");
    }
 
    public getByName(name: string, pageSize = 8, page = 0, sortBy = "id", direction = "asc"): Observable<Guardianship[]> {
@@ -36,7 +48,11 @@ export class GuardianshipService implements BusinessAbstracts<Guardianship> {
       return this.http.get<Guardianship[]>(`${this.url}?pageSize=${pageSize}&page=${page}&sort=${sortBy}&direction=${direction}`);
    }
 
+   /**
+    * Method not implemented
+    * @param id 
+    */
    getById(id?: number): Observable<Guardianship> {
-      throw new Error("Method not implemented.");
+      throw new Error(".");
    }
 }

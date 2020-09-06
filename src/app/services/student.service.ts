@@ -10,6 +10,10 @@ import { BusinessAbstracts } from '../interfaces/BusinessAbstracts';
 })
 
 export class StudentService implements BusinessAbstracts<Student> {
+   deleteById(id: number) {
+      throw new Error("Method not implemented.");
+   }
+   // export class StudentService {
 
    private url: string
 
@@ -19,13 +23,25 @@ export class StudentService implements BusinessAbstracts<Student> {
       this.url = this.root.getRootUrl() + "student";
    }
 
-   public async add(student: Student): Promise<boolean> {
-      let flag: boolean = false;
+   public async add(student: Student): Promise<number> {
+      let flag: number;
       await this.http.post(`${this.url}/add`, student, { observe: 'response' }).toPromise()
          .then((response) => {
-            response.status == 200 ? flag = true : flag;
+            flag = response.status;
          }).catch((err) => {
-            flag = false;
+            flag = err.status;
+            console.log(err)
+         })
+      return flag
+   }
+
+   public async update(student: Student): Promise<number> {
+      let flag: number;
+      await this.http.put(`${this.url}/update`, student, { observe: 'response' }).toPromise()
+         .then((response) => {
+            flag = response.status;
+          }).catch((err) => {
+            flag = err.status;
             console.log(err)
          })
       return flag

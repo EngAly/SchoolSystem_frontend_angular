@@ -16,9 +16,12 @@ export class AddWorkerComponent implements EndPointAbstracts, OnInit {
 
    worker = new Worker();
    inPrograss: boolean = false;
-
+   hasData = true;
    // if url has id store it in id so process in update statue
-   id: number;
+   id: any;
+   // test if component is ready
+   isLoaded = false;
+
 
    @ViewChild(GuardianshipsComponent) guardianshipChild;
 
@@ -37,21 +40,30 @@ export class AddWorkerComponent implements EndPointAbstracts, OnInit {
    }
 
    constructor(private service: WorkerService, private _cache: CacheObjectService, private activeRoute: ActivatedRoute) {
-   } Boolean
+   }
 
    ngOnInit(): void {
-      this.id = parseInt(this.activeRoute.snapshot.paramMap.get('id'));
+      this.ready2update();
+   }
+
+   /**
+    * file add component with object passed from details when 
+    * user intend to update current object so distribute object 
+    * data to add DOM.
+    */
+   private ready2update() {
+      // this.id = parseInt(this.activeRoute.snapshot.paramMap.get('id'));
+      this.id = this.activeRoute.snapshot.paramMap.get('id');
       // if url has id so dataflow intented to update statue
       if (this.id) {
          if (Object.keys(this._cache.getObject).length > 0) {
             this.worker = this._cache.getObject
             this.controls.gender.setValue(this.worker.gender);
          } else {
-            this.getById(this.id);
-            ;
-
+            parseInt(this.id) ? this.getById(this.id) : this.hasData = false;
          }
-      }
+      } else
+         this.isLoaded = true
    }
 
    private getById(id: number) {
@@ -59,7 +71,11 @@ export class AddWorkerComponent implements EndPointAbstracts, OnInit {
          data => {
             this.worker = data
             this.controls.gender.setValue(this.worker.gender)
-         }, err => console.log(err))
+            this.hasData = this.worker ? true : false
+         }, err => {
+            this.hasData = false;
+            console.log(err)
+         });
    }
 
    public setGender() {
@@ -81,13 +97,15 @@ export class AddWorkerComponent implements EndPointAbstracts, OnInit {
 
    private add() {
       this.service.add(this.worker).then(
-         (saved: Boolean) => {
-            if (saved) {
+         (status: number) => {
+            if (status == 200) {
                alert(document.getElementById('saved').textContent);
                this.reset();
-            } else {
-               alert(document.getElementById('unsaved').textContent)
+            } if (status == 401 || status == 403) {
+               alert(document.getElementById('notPermitMsg').textContent)
             }
+            else
+               alert(document.getElementById('unsavedMsg').textContent)
             this.inPrograss = false;
          }
       );
@@ -100,7 +118,7 @@ export class AddWorkerComponent implements EndPointAbstracts, OnInit {
                alert(document.getElementById('saved').textContent);
                this.reset();
             } else if (status === 401 || status === 403) {
-               alert("don't have permissions")
+               alert(document.getElementById('notPermitMsg').textContent)
             } else {
                alert(document.getElementById('unsaved').textContent)
             }

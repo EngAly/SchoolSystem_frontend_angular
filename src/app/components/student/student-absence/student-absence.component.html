@@ -1,0 +1,94 @@
+<div class="container">
+   <h1 class="text-center school-headers">{{'student.search.header' | translate}}</h1>
+
+    <!-- not useable two field just for congirmation save or not -->
+    <span id="saved" class="hidden">{{'shared.alerts.saved' | translate}}</span>
+    <span id="notPermitMsg" class="hidden">{{'shared.alerts.notPermit' | translate}}</span>
+    <span id="unsaved" class="hidden">{{'shared.alerts.unsaved' | translate}}</span>
+    
+   <!-- Name Search Section is nested in parent (result component)-->
+   <form [formGroup]="searchForm" (submit)="searchByName()">
+      <div class="row center-screen">
+
+         <div class="col-sm-10 form-group">
+
+            <!-- search  by name -->
+            <div class="col-sm-7 ltr">
+               <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-modal-window"></i></span>
+                  <input type="text" class="form-control" formControlName="name" [(ngModel)]="name"
+                     placeholder="{{'shared.alerts.search' | translate}}" (keyup)="clearResults()">
+               </div>
+               <div *ngIf="controls.name.touched && controls.name.errors?.required" class="alert alert-danger">
+                  {{'shared.alerts.searchMsg' | translate}}
+               </div>
+            </div>
+
+            <!-- start search -->
+            <div class="col-sm-3">
+               <button type="submit" class="form-control btn btn-primary"
+                  [disabled]="searchForm.invalid || inPrograss">{{'shared.buttons.search' | translate}}</button>
+            </div>
+         </div>
+      </div>
+   </form>
+
+
+   <!-- table show student data -->
+   <div id="classes" [ngClass]="['list-group']" class="center-table-header table-responsive">
+      <table class="table table-bordered table-hover">
+         <thead>
+            <tr>
+               <!-- id -->
+               <!-- <th (click)="sortBy('id')">{{'shared.id' | translate}}
+                  <span class="glyphicon"
+                     [ngClass]="{'glyphicon-triangle-bottom':(direction=='desc' && sort=='id'),'glyphicon-triangle-top':(direction=='asc' && sort=='id')}">
+                  </span>
+               </th> -->
+
+               <!-- name -->
+               <!-- <th (click)="sortBy('name')">
+                  {{'shared.name' | translate}}
+                  <span class="glyphicon"
+                     [ngClass]="{'glyphicon-triangle-bottom':(direction=='desc' && sort=='name'),'glyphicon-triangle-top':(direction=='asc' && sort=='name')}">
+                  </span>
+               </th> -->
+
+               <th>{{'shared.age' | translate}}</th>
+               <th>{{'shared.gender' | translate}}</th>
+
+               <!-- joinDate -->
+               <!-- <th (click)="sortBy('joinDate')">{{'shared.joinDate' | translate}}
+                  <span class="glyphicon"
+                     [ngClass]="{'glyphicon-triangle-bottom':(direction=='desc' && sort=='joinDate'),'glyphicon-triangle-top':(direction=='asc' && sort=='joinDate')}">
+                  </span>
+               </th> -->
+
+               <th>{{'student.search.status' | translate}}</th>
+               <th>{{'student.search.level' | translate}}</th>
+               <th>{{'student.search.level' | translate}}</th>
+            </tr>
+         </thead>
+         <tbody>
+            <!-- <tr *ngFor="let item of levels; let i=index" (click)="getPatientDetails(patient)"> -->
+            <tr *ngFor="let item of students; let i=index" (click)="toggleSelected(item)" [class.is-done]="item.isDone">
+               <td>{{item.id}}</td>
+               <td>{{item.name}}</td>
+               <td>{{item.age}}</td>
+               <td>{{item.gender}}</td>
+               <td>{{item.joinDate | date }} </td>
+               <td>{{item.status}}</td>
+               <td>{{item.level.name}}</td>
+               <td>{{item.isDone}}</td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+
+   <!-- save subject  -->
+   <div class="col-sm-2 col-xs-8 btn-distance">
+      <input (click)="save()"  class="form-control btn btn-primary"
+         value="{{'shared.buttons.save' | translate}}">
+   </div>
+
+</div>

@@ -12,7 +12,7 @@ import { TeacherService } from 'src/app/services/teacher.service';
 export class TeacherDetailsComponent implements OnInit {
 
    teacher = new Teacher();
-
+   id: any
    // flag to use if there data
    hasData: boolean;
 
@@ -20,14 +20,14 @@ export class TeacherDetailsComponent implements OnInit {
       private activeRoute: ActivatedRoute, private route: Router) { }
 
    ngOnInit(): void {
-       let id = parseInt(this.activeRoute.snapshot.paramMap.get('id'))
-      if (Object.keys(this._cache.getObject).length > 0) {
-          this.teacher = this._cache.getObject;
-         this.hasData = true;
-      } else {
-          if (id) {
-              this.getById(id);
-         }
+      this.id = this.activeRoute.snapshot.paramMap.get('id');
+      // if url has id so dataflow intented to update statue
+      if (this.id) {
+         if (Object.keys(this._cache.getObject).length > 0) {
+            this.teacher = this._cache.getObject;
+            this.hasData = true;
+         } else
+            parseInt(this.id) ? this.getById(this.id) : this.hasData = false;
       }
    }
 
@@ -39,7 +39,7 @@ export class TeacherDetailsComponent implements OnInit {
       this.service.getById(id).subscribe(
          data => {
             this.teacher = data;
-            this.hasData = this.teacher.name.length > 0 ? true : false;
+            this.hasData = true;
          }, error => {
             this.hasData = false;
             console.log(error)

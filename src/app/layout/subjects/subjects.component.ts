@@ -8,7 +8,8 @@ import { LayoutAbstracts } from 'src/app/interfaces/LayoutAbstracts';
    templateUrl: './subjects.component.html',
    styleUrls: ['./subjects.component.scss']
 })
-export class SubjectsComponent implements LayoutAbstracts<Subject>{
+export class SubjectsComponent implements LayoutAbstracts<Subject>, OnInit {
+
 
    items: Subject[];
 
@@ -23,7 +24,9 @@ export class SubjectsComponent implements LayoutAbstracts<Subject>{
     * and show them to user
     * @param service: it injected automatically
     */
-   constructor(private service: SubjectService) {
+   constructor(private service: SubjectService) { }
+
+   ngOnInit(): void {
       this.service.getAll(100).subscribe(
          (data: Subject[]) => {
             this.items = data['content'];

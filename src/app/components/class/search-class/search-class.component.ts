@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LevelService } from 'src/app/services/level.service';
 import { Level } from 'src/app/models/Level';
 import { Router } from '@angular/router';
+import { CacheObjectService } from 'src/app/services/cache-object.service';
 
 @Component({
    selector: 'app-search-class',
@@ -29,7 +30,7 @@ export class SearchClassComponent {
       name: new FormControl('', [Validators.required])
    });
 
-   constructor(private service: LevelService, private route: Router) {
+   constructor(private service: LevelService, private route: Router, private _cache: CacheObjectService) {
    }
 
    get controls() {
@@ -66,9 +67,9 @@ export class SearchClassComponent {
    }
 
 
-   getDetails(id) {
-      // this._cache.setObject = item;
-      this.route.navigate(['class/details/', id])
+   getDetails(item: Level) {
+      this._cache.setObject = item;
+      this.route.navigate(['class/details/', item.id])
       // this.route.navigate([item.id], { relativeTo: this.activeRoute })
    }
 

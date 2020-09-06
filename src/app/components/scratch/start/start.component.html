@@ -83,7 +83,6 @@
                   <a class="dropdown-toggle" data-toggle="dropdown">{{ "scratch.start.searchMenu.name" | translate }}
                      <span class="caret"></span>
                   </a>
-
                   <!-- leafs -->
                   <ul class="dropdown-menu">
 
@@ -154,6 +153,22 @@
                   </ul>
                </li>
 
+               <!-- Absence -->
+               <li class="dropdown">
+                  <!-- header -->
+                  <a class="dropdown-toggle" data-toggle="dropdown"> {{ "scratch.start.absenceMenu.name" | translate }}
+                     <span class="caret"></span>
+                  </a>
+                  <!-- leafs --> 
+                  <ul class="dropdown-menu">
+                     <!-- teacher -->
+                     <li>
+                        <a [routerLink]="['/student/absence']"> {{ "scratch.start.addMenu.student" | translate }}
+                        </a>
+                     </li>
+                  </ul>
+               </li>
+
                <!-- statistics menu -->
                <li class="dropdown">
                   <a class="dropdown-toggle"
@@ -216,13 +231,15 @@
                         </a>
                      </li>
                   </ul>
-
-
                </li>
 
-               <li *ngIf="username">
-                  <a class="hello-messgae" (click)="getDetails()">{{username}}</a>
+               <!-- username location -->
+               <li *ngIf="showname">
+                  <a class="hello-messgae text" (click)="getDetails()">
+                     {{showname}}
+                  </a>
                </li>
+
             </ul>
          </div>
       </div>

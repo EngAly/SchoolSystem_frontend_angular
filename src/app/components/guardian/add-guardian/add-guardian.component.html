@@ -97,7 +97,7 @@
    <!-- notes  -->
    <div class="col-sm-12">
       <h4 for="desc_id">{{'shared.desc' | translate}}</h4>
-      <textarea [(ngModel)]="guardian.notes" formControlName="notes" id="desc_id" rows="7"
+      <textarea (input)="guardian.notes = $event.target.value;" [(ngModel)]="guardian.notes" formControlName="notes" id="desc_id" rows="7"
          class="form-control">{{guardian.notes}}</textarea>
    </div>
 

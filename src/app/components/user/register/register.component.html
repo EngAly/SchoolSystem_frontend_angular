@@ -9,7 +9,7 @@
       <img id="profile-img" src="assets/images/user-avatar.png" class="profile-img-card" width="300px" />
    </div>
 
-   <form [formGroup]="formData" (submit)="save()">
+   <form [formGroup]="formData" (submit)="saveOrUpdate()">
       <div class="row">
          <div class="form-group center-screen">
 
@@ -25,6 +25,19 @@
                   *ngIf="controls.username.touched && (controls.username.errors?.required || controls.username.invalid)"
                   class="alert alert-danger">
                   {{'user.shared.usernameMsg' | translate}}
+               </div>
+            </div>
+
+            <!-- showname -->
+            <div class="col-sm-4 ltr">
+               <!-- <label for="username">{{'scratch.login.username' | translate}}</label> -->
+               <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input id="username" type="text" [(ngModel)]="user.showname" formControlName="showname"
+                     class="form-control" placeholder="{{'user.shared.showname' | translate}}">
+               </div>
+               <div *ngIf="controls.showname.touched && controls.showname.errors?.required" class="alert alert-danger">
+                  {{'user.shared.shownameMsg' | translate}}
                </div>
             </div>
 
@@ -96,19 +109,19 @@
             </div>
 
             <!-- gender -->
-            <div class="col-sm-3 ui-margin ltr" (change)="setGender()">
+            <div class="col-sm-12 ltr" (change)="setGender()">
                <div class="btn-group">
                   <div class="input-group">
-                     <span class="input-group-addon no-border">{{'shared.gender' | translate}}<i
+                  <span class="input-group-addon no-border">{{'shared.gender' | translate}}<i
                            class="glyphicon"></i></span>
-                     <label class="btn btn-info no-border">
-                        <input type="radio" value="Male" formControlName="gender">
-                        <span>{{'shared.male' | translate}} </span>
-                     </label>
-                     <label class="btn btn-info no-border">
-                        <input type="radio" value="Female" formControlName="gender">
-                        <span>{{'shared.female' | translate}} </span>
-                     </label>
+                  <label class="btn btn-info no-border">
+                     <input type="radio" value="Male" formControlName="gender">
+                     <span>{{'shared.male' | translate}} </span>
+                  </label>
+                  <label class="btn btn-info no-border">
+                     <input type="radio" value="Female" formControlName="gender">
+                     <span>{{'shared.female' | translate}} </span>
+                  </label>
                   </div>
                </div>
                <div *ngIf="controls.gender.invalid && controls.gender.errors?.required" class="alert alert-danger">
@@ -117,17 +130,17 @@
             </div>
 
             <!-- role -->
-            <div class="col-sm-3 ui-margin ltr" (change)="setRole()">
+            <div class="col-sm-12 ltr" (change)="setRole()">
                <div class="btn-group">
                   <div class="input-group">
                      <span class="input-group-addon no-border">{{'user.shared.account' | translate}}<i
                            class="glyphicon"></i></span>
                      <label class="btn btn-info no-border">
-                        <input type="radio" value="ROLE_USER" formControlName="role">
+                        <input type="radio" value="USER" formControlName="role">
                         <span>{{'user.shared.userRole' | translate}} </span>
                      </label>
                      <label class="btn btn-info no-border">
-                        <input type="radio" value="ROLE_ADMIN" formControlName="role">
+                        <input type="radio" value="ADMIN" formControlName="role">
                         <span>{{'user.shared.adminRole' | translate}} </span>
                      </label>
                   </div>
@@ -142,7 +155,7 @@
                <div class="btn-group">
                   <!-- save -->
                   <button type="submit" [disabled]="formData.invalid"
-                     class="btn btn-primary no-border">{{'user.register.registerBtn' | translate}}</button>
+                     class="btn btn-primary no-border">{{'shared.buttons.save' | translate}}</button>
                   <!-- reset -->
                   <button type="reset" class="btn btn-warning no-border">{{'shared.buttons.reset' | translate}}</button>
                </div>

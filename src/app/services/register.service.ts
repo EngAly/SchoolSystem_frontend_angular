@@ -15,17 +15,15 @@ export class RegisterService {
       this.url = this.root.getRootUrl() + "register";
    }
 
-   public async add(user: Register): Promise<boolean> {
-      let flag: boolean = false;
+   public async add(user: Register): Promise<number> {
+      let flag: number;
       await this.http.post(`${this.url}/add`, user, { observe: 'response' }).toPromise()
          .then((response) => {
-            response.status == 200 ? flag = true : flag;
+            flag = response.status
          }).catch((err) => {
-            // if (err.status == 401) {
-               alert(err.status)
-            // }
-            flag = false;
-            console.log(err)
+            flag = err.status;
+            console.log(err);
+            
          })
       return flag
    }

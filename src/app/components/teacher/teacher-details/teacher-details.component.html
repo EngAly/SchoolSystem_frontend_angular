@@ -1,8 +1,8 @@
-<div class="container">
+<body class="body-background" dir="ltr" *ngIf="hasData;else noData">
    <h1 class="text-center school-headers">{{'teacher.details.header' | translate}}</h1>
    <hr />
 
-   <div class="horizontal-middle">
+   <div class="container horizontal-middle">
       <div class="card" style="width:500px">
          <img class="card-img-top" src="assets/images/teacher.png" alt="Card image" style="width:50%">
          <div class="card-body">
@@ -75,6 +75,11 @@
          </div>
       </div>
    </div>
+</body>
 
-
-   <!-- <a href="#" class="btn btn-primary">See Profile</a> -->
+<br>
+<ng-template #noData>
+   <div class="container">
+      <h2 class="alert alert-info text-center">{{'shared.alerts.noData' | translate}}</h2>
+   </div>
+</ng-template>

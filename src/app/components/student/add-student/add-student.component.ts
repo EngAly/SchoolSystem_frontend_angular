@@ -7,19 +7,24 @@ import { AddGuardianComponent } from '../../guardian/add-guardian/add-guardian.c
 import { StudentService } from 'src/app/services/student.service';
 import { EndPointAbstracts } from 'src/app/interfaces/EndPointAbstracts';
 import { CacheObjectService } from 'src/app/services/cache-object.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
    selector: 'app-add-student',
    templateUrl: './add-student.component.html',
    styleUrls: ['./add-student.component.scss']
 })
-export class AddStudentComponent implements EndPointAbstracts {
-
+export class AddStudentComponent implements EndPointAbstracts, OnInit {
 
    student: Student = new Student();
    inPrograss: boolean = false;
    isGuardianValid: boolean = false;
+   id: any
+   hasData = true;
    levels = []
+
+   // test if component is ready
+   isLoaded = false;
 
    @ViewChild(StudentStatusComponent) statusChild: any;
    @ViewChild(ClassesComponent) classesChild: any;
@@ -39,14 +44,7 @@ export class AddStudentComponent implements EndPointAbstracts {
       address: new FormControl('', Validators.required),
    });
 
-   constructor(private service: StudentService, private _cache: CacheObjectService) {
-      // clear 
-      this.levels = [];
-      if (Object.keys(this._cache.getObject).length > 0) {
-         this.student = this._cache.getObject
-         this.controls.gender.setValue(this.student.gender);
-         this.levels.push(this.student.level)
-      }
+   constructor(private service: StudentService, private _cache: CacheObjectService, private activeRoute: ActivatedRoute) {
 
    }
 
@@ -54,8 +52,44 @@ export class AddStudentComponent implements EndPointAbstracts {
       return this.formData.controls;
    }
 
-   handleGenderChange(event: any) {
-      // alert(this.controls.gender.value)
+   ngOnInit(): void {
+      this.ready2update();
+   }
+
+   private ready2update() {
+      this.id = this.activeRoute.snapshot.paramMap.get('id');
+      // if url has id so dataflow intented to update statue
+      if (this.id) {
+         // test if object cached get it
+         if (Object.keys(this._cache.getObject).length > 0) {
+            this.student = this._cache.getObject
+            this.setLazyProperties()
+         } else
+            // getById call it in update state only
+            parseInt(this.id) ? this.getById(this.id) : this.hasData = false;
+      } else
+         this.isLoaded = true
+   }
+
+   private getById(id: number) {
+      return this.service.getById(id).subscribe(
+         data => {
+            this.student = data
+            this.setLazyProperties()
+            this.hasData = this.student ? true : false
+         }, err => {
+            this.hasData = false;
+            console.log(err)
+         });
+   }
+
+   private setLazyProperties() {
+      this.levels = [];
+      this.controls.gender.setValue(this.student.gender)
+      this.levels.push(this.student.level)
+   }
+
+   setGender() {
       this.student.gender = this.controls.gender.value;
    }
 
@@ -90,23 +124,43 @@ export class AddStudentComponent implements EndPointAbstracts {
    save() {
       this.student.grades = []
       this.getCurrentObject();
-      // alert(JSON.stringify(this.student));
+      // disable save and reset process
       this.inPrograss = true;
+      this.id ? this.update() : this.add()
+   }
+
+   private add() {
       this.service.add(this.student).then(
-         saved => {
-            if (saved) {
-               alert(document.getElementById('savedMsg').textContent);
+         (status: number) => {
+            if (status == 200) {
+               alert(document.getElementById('saved').textContent);
                this.reset();
-            } else {
+            } else if (status == 401 || status == 403)
+               alert(document.getElementById('notPermitMsg').textContent)
+            else
                alert(document.getElementById('unsavedMsg').textContent)
-            }
+            this.inPrograss = false;
+         });
+   }
+
+   private update() {
+      this.service.update(this.student).then(
+         (status: number) => {
+            if (status == 200) {
+               alert(document.getElementById('saved').textContent);
+               this.reset();
+            } else if (status === 401 || status === 403)
+               alert(document.getElementById('notPermitMsg').textContent)
+            else
+               alert(document.getElementById('unsaved').textContent)
             this.inPrograss = false;
          }
       );
-      console.log(this.student)
    }
 
    reset() {
-      this.controls.reset;
+      this.formData.reset();
+      //  to clear object data make it {} instead of null
+      this._cache.setObject = {}
    }
 }

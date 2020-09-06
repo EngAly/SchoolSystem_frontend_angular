@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, AfterContentInit } from '@angular/core';
 import { Guardian } from 'src/app/models/Guardian';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -8,6 +8,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
    styleUrls: ['./add-guardian.component.scss']
 })
 export class AddGuardianComponent implements OnInit {
+
 
    guardian = new Guardian();
 
@@ -28,7 +29,7 @@ export class AddGuardianComponent implements OnInit {
    constructor() { }
 
    ngOnInit(): void {
-      if (Object.keys(this.updatedObject).length > 0) {
+      if (this.updatedObject != undefined) {
          this.guardian = this.updatedObject;
          this.controls.gender.setValue(this.guardian.gender);
       }
