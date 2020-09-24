@@ -53,7 +53,7 @@ export class StudentAbsenceComponent {
    }
 
    public toggleSelected(item: Student) {
-      this.selected.absence = [];
+      this.selected.absences = [];
       this.absence = { date: new Date(1993, 12, 27), reason: "ill" }
 
       // this.selected = []
@@ -62,7 +62,7 @@ export class StudentAbsenceComponent {
       this.students.filter(student => {
          if (student['isDone']) { this.selected = student }
       })
-      this.selected.absence.push(this.absence);
+      this.selected.absences.push(this.absence);
    }
 
    public save() {
